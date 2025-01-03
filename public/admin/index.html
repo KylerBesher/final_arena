@@ -13,28 +13,61 @@
   </script>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script>
+    // Initialize the CMS with the config
     CMS.init({
       config: {
-        load_config_file: false,
         backend: {
-          name: "test-repo"
+          name: "test-repo" // Change to git-gateway for production
         },
-        media_folder: "public/img",
-        public_folder: "img",
+        media_folder: "public/images",
+        public_folder: "/images",
+        publish_mode: "editorial_workflow",
         collections: [
           {
-            name: "pages",
-            label: "Pages",
+            name: "config",
+            label: "Config",
+            delete: false,
+            editor: {
+              preview: false
+            },
             files: [
               {
-                label: "Revalidation Page",
-                name: "revalidation",
-                file: "content/revalidation/index.md",
+                name: "general",
+                label: "Site Config",
+                file: "config.json",
+                description: "General site settings",
                 fields: [
-                  { label: "Title", name: "title", widget: "string" },
-                  { label: "Body", name: "body", widget: "markdown" }
+                  {
+                    label: "URL",
+                    name: "base_url",
+                    widget: "string",
+                    hint: "Do not enter the trailing slash of the URL"
+                  },
+                  {
+                    label: "Site title",
+                    name: "site_title",
+                    widget: "string"
+                  },
+                  {
+                    label: "Site description",
+                    name: "site_description",
+                    widget: "string"
+                  }
                 ]
               }
+            ]
+          },
+          {
+            name: "blog",
+            label: "Blog",
+            folder: "content/blog",
+            create: true,
+            slug: "{{year}}-{{month}}-{{day}}-{{slug}}",
+            fields: [
+              { label: "Title", name: "title", widget: "string" },
+              { label: "Publish Date", name: "date", widget: "datetime" },
+              { label: "Description", name: "description", widget: "text" },
+              { label: "Body", name: "body", widget: "markdown" }
             ]
           }
         ]
