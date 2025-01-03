@@ -1,0 +1,15 @@
+backend:
+  name: git-gateway
+  branch: main
+media_folder: public/img
+public_folder: img
+collections:
+  - name: "pages"
+    label: "Pages"
+    files:
+      - label: "Revalidation Page"
+        name: "revalidation"
+        file: "app/revalidation/page.jsx"
+        fields:
+          - { label: "Title", name: "title", widget: "string" }
+          - { label: "Body", name: "body", widget: "markdown" }
