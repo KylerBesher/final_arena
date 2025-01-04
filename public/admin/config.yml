@@ -1,7 +1,6 @@
 backend:
   name: git-gateway
   branch: master
-
 local_backend: true
 media_folder: "public/images"
 public_folder: "/images"
@@ -17,10 +16,9 @@ collections:
       summary: '{{title}}'
     meta:
       path:
-        label: "Path"
-        widget: hidden
-        default: ${parent}/${slug}
-        index_file: "index"
+        widget: string
+        label: 'Path'
+        index_file: 'index'
     fields:
       - {label: "Title", name: "title", widget: "string"}
       - label: "Parent"
@@ -28,53 +26,7 @@ collections:
         widget: "relation"
         collection: "pages"
         search_fields: ["title"]
-        value_field: 'path'
-        display_fields: ["path"]
+        value_field: "path"
+        display_fields: ["title", "path"]
         required: false
-        default: "/"
-        multiple: false
-        min_search_length: 0
-        hint: "Select a parent page or leave empty for root"
-      - {label: "Slug", name: "slug", widget: "string", pattern: ['^[a-z0-9]+(?:-[a-z0-9]+)*$', "Must be lowercase letters, numbers, and hyphens only"]}
-      - {label: "Content", name: "body", widget: "markdown", required: false}
-
-  - name: "settings"
-    label: "Settings"
-    files:
-      - name: "navigation"
-        label: "Navigation"
-        file: "content/settings/navigation.yml"
-        fields:
-          - label: "Main Menu"
-            name: "main"
-            widget: "list"
-            fields:
-              - {label: "Label", name: "label", widget: "string"}
-              - label: "Link"
-                name: "link"
-                widget: "relation"
-                collection: "pages"
-                search_fields: ["title"]
-                value_field: "path"
-                display_fields: ["title", "path"]
-                required: false
-              - label: "Subpages"
-                name: "subpages"
-                widget: "boolean"
-                default: false
-                hint: "Automatically include child pages as dropdown items"
-
-      - name: "site"
-        label: "Site Settings"
-        file: "content/settings/site.yml"
-        fields:
-          - {label: "Site Title", name: "title", widget: "string"}
-          - {label: "Description", name: "description", widget: "text"}
-          - {label: "Logo", name: "logo", widget: "image"}
-          - label: "Social Media"
-            name: "social"
-            widget: "object"
-            fields:
-              - {label: "Facebook", name: "facebook", widget: "string", required: false}
-              - {label: "Twitter", name: "twitter", widget: "string", required: false}
-              - {label: "Instagram", name: "instagram", widget: "string", required: false}
+      
