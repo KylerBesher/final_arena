@@ -21,12 +21,4 @@ collections:
         index_file: 'index'
     fields:
       - {label: "Title", name: "title", widget: "string"}
-      - label: "Parent"
-        name: "parent"
-        widget: "relation"
-        collection: "pages"
-        search_fields: ["title"]
-        value_field: "path"
-        display_fields: ["title", "path"]
-        required: false
-      
+    
