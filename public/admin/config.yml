@@ -57,19 +57,12 @@ collections:
                 search_fields: ["title"]
                 value_field: "path"
                 display_fields: ["title", "path"]
-              - label: "Children"
-                name: "children"
-                widget: "list"
                 required: false
-                fields:
-                  - {label: "Label", name: "label", widget: "string"}
-                  - label: "Link"
-                    name: "link"
-                    widget: "relation"
-                    collection: "pages"
-                    search_fields: ["title"]
-                    value_field: "path"
-                    display_fields: ["title", "path"]
+              - label: "Subpages"
+                name: "subpages"
+                widget: "boolean"
+                default: false
+                hint: "Automatically include child pages as dropdown items"
 
       - name: "site"
         label: "Site Settings"
