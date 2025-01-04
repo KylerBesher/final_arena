@@ -6,15 +6,16 @@ const nextConfig = {
         config.module.rules.push(
             ...[
                 {
-                    test: /\.md$/,
-                    loader: 'frontmatter-markdown-loader',
-                    options: { mode: ['react-component'] }
-                },
-                {
                     test: /\.yml$/,
                     type: "json",
                     use: "yaml-loader",
                 },
+                {
+                    test: /\.md$/,
+                    loader: 'frontmatter-markdown-loader',
+                    options: { mode: ['react-component'] }
+                },
+                
                 // {
                 //     test: /\.svg$/,
                 //     use: "@svgr/webpack",
