@@ -22,5 +22,266 @@ collections:
         label: 'Path'
         index_file: 'index'
     fields:
-      - {label: "Title", name: "title", widget: "string"}
+      - {label: "Title", name: "title", widget: "string", required: true}
+      - {label: "Description", name: "description", widget: "text", required: false}
+      - {label: "Featured Image", name: "featuredImage", widget: "image", required: false}
+      - label: "Content Sections"
+        name: "sections"
+        widget: "list"
+        types:
+          - label: "Text Content"
+            name: "textContent"
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Content", name: "content", widget: "markdown"}
+              
+          - label: "Image with Text"
+            name: "imageWithText"
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Text", name: "text", widget: "markdown"}
+              - {label: "Image", name: "image", widget: "image"}
+              - {label: "Image Position", name: "imagePosition", widget: "select", options: ["left", "right"]}
+              
+          - label: "Hero"
+            name: "hero"
+            widget: object
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - {label: "Background Image", name: "backgroundImage", widget: "image"}
+              - {label: "Text Color", name: "textColor", widget: "select", options: ["light", "dark"]}
+
+  - name: "home"
+    label: "Homepage"
+    files:
+      - name: "home"
+        label: "Homepage"
+        file: "content/home.yml"
+        fields:
+          - {label: "Hero Title", name: "heroTitle", widget: "string"}
+          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string"}
+          - {label: "Hero Image", name: "heroImage", widget: "image"}
+          - label: "Featured Collections"
+            name: "featuredCollections"
+            widget: "list"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Collection"
+                name: "collection"
+                widget: "string"
+                hint: "Enter Shopify collection handle"
+          - label: "Content Sections"
+            name: "sections"
+            widget: "list"
+            types:
+              - label: "Featured Products"
+                name: "featuredProducts"
+                widget: object
+                fields:
+                  - {label: "Section Title", name: "title", widget: "string"}
+                  - {label: "Products to Show", name: "count", widget: "number", default: 4}
+                  
+              - label: "Text Content"
+                name: "textContent"
+                widget: object
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Content", name: "content", widget: "markdown"}
+                  
+              - label: "Image with Text"
+                name: "imageWithText"
+                widget: object
+                fields:
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Text", name: "text", widget: "markdown"}
+                  - {label: "Image", name: "image", widget: "image"}
+                  - {label: "Image Position", name: "imagePosition", widget: "select", options: ["left", "right"]}
+    
+  - name: "settings"
+    label: "Site Settings"
+    files:
+      - name: "navigation"
+        label: "Navigation"
+        file: "content/settings/navigation.yml"
+        fields:
+          - label: "Main Menu"
+            name: "mainMenu"
+            widget: "list"
+            types:
+              - label: "Simple Link"
+                name: "simpleLink"
+                widget: object
+                summary: '{{label}}'
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - label: "Link Configuration"
+                    name: "link"
+                    widget: "list"
+                    max: 1
+                    min: 1
+                    types:
+                      - label: "Page Link"
+                        name: "pageLink"
+                        widget: object
+                        summary: 'Page: {{pageLink}}'
+                        fields:
+                          - label: "Page"
+                            name: "pageLink"
+                            widget: "relation"
+                            collection: "pages"
+                            search_fields: ["title"]
+                            value_field: "title"
+                            display_fields: ["title"]
+                      
+                      - label: "External Link"
+                        name: "externalLink"
+                        widget: object
+                        summary: 'URL: {{url}}'
+                        fields:
+                          - label: "URL"
+                            name: "url"
+                            widget: "string"
+
+              - label: "Nested Pages"
+                name: "nestedPages"
+                widget: object
+                summary: '{{label}} (Auto-nested)'
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - label: "Parent Page"
+                    name: "pageLink"
+                    widget: "relation"
+                    collection: "pages"
+                    search_fields: ["title"]
+                    value_field: "title"
+                    display_fields: ["title"]
+                  - label: "Nesting Depth"
+                    name: "depth"
+                    widget: "number"
+                    default: 1
+                    min: 1
+                    max: 5
+
+              - label: "Manual Children"
+                name: "manualChildren"
+                widget: object
+                summary: '{{label}} (Manual children)'
+                fields:
+                  - {label: "Label", name: "label", widget: "string"}
+                  - label: "Link Configuration"
+                    name: "link"
+                    widget: "list"
+                    max: 1
+                    min: 1
+                    types:
+                      - label: "Page Link"
+                        name: "pageLink"
+                        widget: object
+                        summary: 'Page: {{pageLink}}'
+                        fields:
+                          - label: "Page"
+                            name: "pageLink"
+                            widget: "relation"
+                            collection: "pages"
+                            search_fields: ["title"]
+                            value_field: "title"
+                            display_fields: ["title"]
+                      
+                      - label: "External Link"
+                        name: "externalLink"
+                        widget: object
+                        summary: 'URL: {{url}}'
+                        fields:
+                          - label: "URL"
+                            name: "url"
+                            widget: "string"
+                  - label: "Children"
+                    name: "children"
+                    widget: "list"
+                    required: false
+                    types:
+                      - label: "Level 2 Item"
+                        name: "level2"
+                        widget: object
+                        summary: '{{label}}'
+                        fields:
+                          - {label: "Label", name: "label", widget: "string"}
+                          - label: "Link Configuration"
+                            name: "link"
+                            widget: "list"
+                            max: 1
+                            min: 1
+                            types:
+                              - label: "Page Link"
+                                name: "pageLink"
+                                widget: object
+                                summary: 'Page: {{pageLink}}'
+                                fields:
+                                  - label: "Page"
+                                    name: "pageLink"
+                                    widget: "relation"
+                                    collection: "pages"
+                                    search_fields: ["title"]
+                                    value_field: "title"
+                                    display_fields: ["title"]
+                              
+                              - label: "External Link"
+                                name: "externalLink"
+                                widget: object
+                                summary: 'URL: {{url}}'
+                                fields:
+                                  - label: "URL"
+                                    name: "url"
+                                    widget: "string"
+                          - label: "Children"
+                            name: "children"
+                            widget: "list"
+                            required: false
+                            types:
+                              - label: "Level 3 Item"
+                                name: "level3"
+                                widget: object
+                                summary: '{{label}}'
+                                fields:
+                                  - {label: "Label", name: "label", widget: "string"}
+                                  - label: "Link Configuration"
+                                    name: "link"
+                                    widget: "list"
+                                    max: 1
+                                    min: 1
+                                    types:
+                                      - label: "Page Link"
+                                        name: "pageLink"
+                                        widget: object
+                                        summary: 'Page: {{pageLink}}'
+                                        fields:
+                                          - label: "Page"
+                                            name: "pageLink"
+                                            widget: "relation"
+                                            collection: "pages"
+                                            search_fields: ["title"]
+                                            value_field: "title"
+                                            display_fields: ["title"]
+                                      
+                                      - label: "External Link"
+                                        name: "externalLink"
+                                        widget: object
+                                        summary: 'URL: {{url}}'
+                                        fields:
+                                          - label: "URL"
+                                            name: "url"
+                                            widget: "string"
+
+      - name: "general"
+        label: "General Settings"
+        file: "content/settings/general.yml"
+        fields:
+          - {label: "Site Title", name: "siteTitle", widget: "string"}
+          - {label: "Site Description", name: "siteDescription", widget: "text"}
+          - {label: "Site Logo", name: "siteLogo", widget: "image", required: false}
+          - {label: "Favicon", name: "favicon", widget: "image", required: false}
     

@@ -1,6 +1,6 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    reactStrictMode: true,
+    productionBrowserSourceMaps: true,
     // pageExtensions: ["tsx"],
     webpack: (config, { buildId, dev, isServer, defaultLoaders, webpack }) => {
         config.module.rules.push(
@@ -22,6 +22,12 @@ const nextConfig = {
                 // },
             ]
         );
+
+        // Enable source maps in development
+        if (dev) {
+            config.devtool = 'source-map';
+        }
+
         return config;
     },
 };

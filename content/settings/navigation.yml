@@ -1,0 +1,18 @@
+mainMenu:
+  - type: manualChildren
+    link:
+      - type: externalLink
+        url: https://httpbin.org/get
+    label: Navbar Label
+    children:
+      - type: level2
+        link:
+          - type: pageLink
+            pageLink: Community
+        children:
+          - type: level3
+            link:
+              - type: pageLink
+                pageLink: "Magic: The Gathering"
+            label: "Magic: The Gathering"
+        label: Community
