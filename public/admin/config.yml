@@ -49,6 +49,20 @@ collections:
               - {label: "Subtitle", name: "subtitle", widget: "text"}
               - {label: "Background Image", name: "backgroundImage", widget: "image"}
               - {label: "Text Color", name: "textColor", widget: "select", options: ["light", "dark"]}
+      - label: "Navigation"
+        name: "navigation"
+        widget: "object"
+        fields:
+          - { label: "Show in Navigation", name: "show_in_nav", widget: "boolean", default: true }
+          - { label: "Show Children", name: "show_children", widget: "boolean", default: false }
+          - label: "Additional Links"
+            name: "additional_links"
+            widget: "list"
+            fields:
+              - { label: "Link Title", name: "link_title", widget: "string" }
+              - { label: "Link URL", name: "link_url", widget: "string" }
+              - { label: "Link Weight", name: "link_weight", widget: "number", default: 0 }
+          - { label: "Page Weight", name: "page_weight", widget: "number", default: 0 }
     meta:
       path:
         widget: string
@@ -134,7 +148,7 @@ collections:
                             widget: "relation"
                             collection: "pages"
                             search_fields: ["title"]
-                            value_field: "title"
+                            value_field: "path"
                             display_fields: ["title"]
                       
                       - label: "External Link"
@@ -157,7 +171,7 @@ collections:
                     widget: "relation"
                     collection: "pages"
                     search_fields: ["title"]
-                    value_field: "title"
+                    value_field: "path"
                     display_fields: ["title"]
                   - label: "Nesting Depth"
                     name: "depth"
@@ -188,7 +202,7 @@ collections:
                             widget: "relation"
                             collection: "pages"
                             search_fields: ["title"]
-                            value_field: "title"
+                            value_field: "path"
                             display_fields: ["title"]
                       
                       - label: "External Link"
@@ -226,7 +240,7 @@ collections:
                                     widget: "relation"
                                     collection: "pages"
                                     search_fields: ["title"]
-                                    value_field: "title"
+                                    value_field: "path"
                                     display_fields: ["title"]
                               
                               - label: "External Link"
@@ -264,7 +278,7 @@ collections:
                                             widget: "relation"
                                             collection: "pages"
                                             search_fields: ["title"]
-                                            value_field: "title"
+                                            value_field: "path"
                                             display_fields: ["title"]
                                       
                                       - label: "External Link"
