@@ -21,14 +21,14 @@
             "primary": "#00FF9D",
             "secondary": "#4F46E5",
             "accent": "#FF3D6E",
-            "background": "#0A0A0A",
-            "text": "#FFFFFF"
+            "background": "#FFFFFF",
+            "text": "#0A0A0A"
         },
         "darkMode": {
             "primary": "#00FF9D",
             "secondary": "#6366F1",
             "accent": "#FF4E7E",
-            "background": "#000000",
+            "background": "#0A0A0A",
             "text": "#FFFFFF"
         }
     },

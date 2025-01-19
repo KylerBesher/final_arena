@@ -5,6 +5,7 @@ module.exports = {
         './components/**/*.{js,ts,jsx,tsx,mdx}',
         './app/**/*.{js,ts,jsx,tsx,mdx}',
     ],
+    darkMode: 'class',
     theme: {
         extend: {
             colors: {
@@ -16,6 +17,29 @@ module.exports = {
             },
             typography: (theme) => ({
                 DEFAULT: {
+                    css: {
+                        color: theme('colors.text'),
+                        a: {
+                            color: theme('colors.primary'),
+                            '&:hover': {
+                                color: theme('colors.secondary'),
+                            },
+                        },
+                        h1: {
+                            color: theme('colors.text'),
+                        },
+                        h2: {
+                            color: theme('colors.text'),
+                        },
+                        h3: {
+                            color: theme('colors.text'),
+                        },
+                        h4: {
+                            color: theme('colors.text'),
+                        },
+                    },
+                },
+                dark: {
                     css: {
                         color: theme('colors.text'),
                         a: {
