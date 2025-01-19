@@ -1,15 +1,15 @@
 import { notFound } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
-import matter from 'gray-matter';
 import { SectionComponent } from '../../components/sections';
+import { processMarkdown } from '../../lib/markdown';
 
-export default async function Page(props) {
+export default async function Page({ params }) {
     try {
-        const slug = props.params.slug;
+        const { slug } = await params;
         const filePath = path.join(process.cwd(), 'content/pages', slug, 'index.md');
         const fileContent = await fs.readFile(filePath, 'utf8');
-        const { data, content } = matter(fileContent);
+        const { data, content } = processMarkdown(fileContent);
 
         return (
             <div>
@@ -25,6 +25,7 @@ export default async function Page(props) {
             </div>
         );
     } catch (error) {
+        console.error('Error loading page:', error);
         notFound();
     }
 } 
