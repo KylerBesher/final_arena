@@ -1,0 +1,151 @@
+{
+    "branding": {
+        "name": "The Arena",
+        "tagline": "Level Up Your Gaming Experience",
+        "description": "Premium gaming gear and accessories for the modern player",
+        "logo": {
+            "main": "/images/logo.svg",
+            "dark": "/images/logo-dark.svg",
+            "favicon": "/images/favicon.ico",
+            "alt": "The Arena Logo"
+        },
+        "social": {
+            "twitter": "https://twitter.com/thearena",
+            "discord": "https://discord.gg/thearena",
+            "instagram": "https://instagram.com/thearena",
+            "twitch": "https://twitch.tv/thearena"
+        }
+    },
+    "theme": {
+        "colors": {
+            "primary": "#00FF9D",
+            "secondary": "#4F46E5",
+            "accent": "#FF3D6E",
+            "background": "#0A0A0A",
+            "text": "#FFFFFF"
+        },
+        "darkMode": {
+            "primary": "#00FF9D",
+            "secondary": "#6366F1",
+            "accent": "#FF4E7E",
+            "background": "#000000",
+            "text": "#FFFFFF"
+        }
+    },
+    "layout": {
+        "maxWidth": "1280px",
+        "spacing": {
+            "contentPadding": "1rem",
+            "sectionSpacing": "4rem",
+            "elementSpacing": "1.5rem"
+        },
+        "header": {
+            "height": "4rem",
+            "sticky": true,
+            "transparent": false
+        },
+        "footer": {
+            "columns": 4
+        }
+    },
+    "contact": {
+        "email": "contact@yourcompany.com",
+        "phone": "+1 (555) 123-4567",
+        "address": {
+            "street": "123 Business Street",
+            "city": "San Francisco",
+            "state": "CA",
+            "zip": "94105",
+            "country": "United States"
+        }
+    },
+    "seo": {
+        "titleTemplate": "%s | Your Company Name",
+        "defaultTitle": "Your Company Name - Your Tagline",
+        "defaultDescription": "Default meta description for your site",
+        "defaultImage": "/images/og-image.jpg",
+        "twitterHandle": "@yourcompany",
+        "googleAnalyticsId": "UA-XXXXXXXXX-X"
+    },
+    "features": {
+        "darkMode": true,
+        "newsletter": true,
+        "search": true,
+        "comments": false,
+        "cookieConsent": true,
+        "ecommerce": {
+            "enabled": true,
+            "cart": true,
+            "wishlist": true,
+            "compareProducts": true,
+            "reviews": true,
+            "quickView": true
+        },
+        "blog": {
+            "enabled": true,
+            "categories": true,
+            "tags": true,
+            "authors": true,
+            "relatedPosts": true,
+            "searchByTag": true
+        },
+        "auth": {
+            "enabled": true,
+            "socialLogin": true,
+            "passwordReset": true,
+            "emailVerification": true,
+            "twoFactorAuth": false
+        },
+        "localization": {
+            "enabled": true,
+            "languages": ["en", "es", "fr"],
+            "defaultLanguage": "en",
+            "currency": "USD",
+            "dateFormat": "MM/DD/YYYY"
+        },
+        "performance": {
+            "lazyLoading": true,
+            "imageOptimization": true,
+            "caching": true,
+            "preloading": true
+        },
+        "social": {
+            "sharing": true,
+            "followButtons": true,
+            "embedSocialFeeds": false
+        },
+        "navigation": {
+            "megaMenu": true,
+            "stickyHeader": true,
+            "breadcrumbs": true,
+            "backToTop": true,
+            "mobileMenu": "drawer"
+        },
+        "media": {
+            "videoPlayer": true,
+            "audioPlayer": false,
+            "lightbox": true,
+            "carousel": true
+        },
+        "forms": {
+            "recaptcha": true,
+            "fileUploads": true,
+            "autoSave": true,
+            "analytics": true
+        }
+    },
+    "integrations": {
+        "mailchimp": {
+            "enabled": false,
+            "audienceId": "YOUR_AUDIENCE_ID"
+        },
+        "intercom": {
+            "enabled": false,
+            "appId": "YOUR_APP_ID"
+        },
+        "crisp": {
+            "enabled": false,
+            "websiteId": "YOUR_WEBSITE_ID"
+        }
+    }
+}

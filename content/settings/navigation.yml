@@ -1,9 +1,9 @@
 mainMenu:
   - type: simpleLink
-    label: About Us
+    label: About
     link:
       - type: pageLink
-        pageLink: About Us
+        pageLink: About
   - type: nestedPages
     depth: 3
     label: Community

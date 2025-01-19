@@ -1,34 +1,48 @@
-const colors = require('tailwindcss/colors');
-const defaultTheme = require('tailwindcss/defaultTheme');
-
+/** @type {import('tailwindcss').Config} */
 module.exports = {
-    content: ['./app/**/*.{js,ts,jsx,tsx}', './components/**/*.{js,ts,jsx,tsx}'],
+    content: [
+        './pages/**/*.{js,ts,jsx,tsx,mdx}',
+        './components/**/*.{js,ts,jsx,tsx,mdx}',
+        './app/**/*.{js,ts,jsx,tsx,mdx}',
+    ],
     theme: {
         extend: {
-            backgroundImage: {
-                'grid-pattern': "linear-gradient(to bottom, theme('colors.neutral.950 / 0%'), theme('colors.neutral.950 / 100%')), url('/images/noise.png')"
-            },
             colors: {
-                neutral: colors.neutral
+                primary: 'var(--color-primary)',
+                secondary: 'var(--color-secondary)',
+                accent: 'var(--color-accent)',
+                background: 'var(--color-background)',
+                text: 'var(--color-text)',
             },
-            fontFamily: {
-                sans: ['Inter', ...defaultTheme.fontFamily.sans]
-            }
-        }
+            typography: (theme) => ({
+                DEFAULT: {
+                    css: {
+                        color: theme('colors.text'),
+                        a: {
+                            color: theme('colors.primary'),
+                            '&:hover': {
+                                color: theme('colors.secondary'),
+                            },
+                        },
+                        h1: {
+                            color: theme('colors.text'),
+                        },
+                        h2: {
+                            color: theme('colors.text'),
+                        },
+                        h3: {
+                            color: theme('colors.text'),
+                        },
+                        h4: {
+                            color: theme('colors.text'),
+                        },
+                    },
+                },
+            }),
+        },
     },
-    daisyui: {
-        themes: [
-            {
-                lofi: {
-                    ...require('daisyui/src/theming/themes')['lofi'],
-                    primary: '#2bdcd2',
-                    'primary-content': '#171717',
-                    secondary: '#016968',
-                    info: '#2bdcd2',
-                    'info-content': '#171717',
-                }
-            }
-        ]
-    },
-    plugins: [require('daisyui')]
+    plugins: [
+        require('@tailwindcss/typography'),
+        require('./lib/theme/tailwind-theme'),
+    ],
 };

@@ -16,53 +16,133 @@ collections:
     nested:
       depth: 100
       summary: '{{title}}'
-
     fields:
       - {label: "Title", name: "title", widget: "string", required: true}
-      - {label: "Description", name: "description", widget: "text", required: false}
-      - {label: "Featured Image", name: "featuredImage", widget: "image", required: false}
-      - label: "Content Sections"
+      - label: "Metadata"
+        name: "metadata"
+        widget: "object"
+        fields:
+          - {label: "Description", name: "description", widget: "text", required: true}
+          - {label: "Featured Image", name: "image", widget: "image", required: false}
+          - {label: "Slug", name: "slug", widget: "string", required: true}
+          - label: "Navigation"
+            name: "navigation"
+            widget: "object"
+            fields:
+              - {label: "Show in Navigation", name: "show_in_nav", widget: "boolean", default: true}
+              - {label: "Show Children", name: "show_children", widget: "boolean", default: false}
+              - {label: "Page Weight", name: "page_weight", widget: "number", default: 0}
+          - label: "SEO"
+            name: "seo"
+            widget: "object"
+            fields:
+              - {label: "SEO Title", name: "title", widget: "string", required: true}
+              - {label: "SEO Description", name: "description", widget: "text", required: true}
+              - {label: "Keywords", name: "keywords", widget: "string", required: false}
+              - label: "Open Graph"
+                name: "og"
+                widget: "object"
+                fields:
+                  - {label: "OG Title", name: "title", widget: "string", required: true}
+                  - {label: "OG Description", name: "description", widget: "text", required: true}
+                  - {label: "OG Image", name: "image", widget: "image", required: true}
+              - label: "Twitter Card"
+                name: "twitter"
+                widget: "object"
+                fields:
+                  - {label: "Card Type", name: "card", widget: "select", options: ["summary", "summary_large_image"], default: "summary_large_image"}
+                  - {label: "Twitter Title", name: "title", widget: "string", required: true}
+                  - {label: "Twitter Description", name: "description", widget: "text", required: true}
+                  - {label: "Twitter Image", name: "image", widget: "image", required: true}
+
+      - label: "Sections"
         name: "sections"
         widget: "list"
         types:
-          - label: "Text Content"
-            name: "textContent"
-            widget: object
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Content", name: "content", widget: "markdown"}
-              
-          - label: "Image with Text"
-            name: "imageWithText"
-            widget: object
-            fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Text", name: "text", widget: "markdown"}
-              - {label: "Image", name: "image", widget: "image"}
-              - {label: "Image Position", name: "imagePosition", widget: "select", options: ["left", "right"]}
-              
-          - label: "Hero"
+          - label: "Hero Section"
             name: "hero"
-            widget: object
+            widget: "object"
             fields:
               - {label: "Title", name: "title", widget: "string"}
-              - {label: "Subtitle", name: "subtitle", widget: "text"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
               - {label: "Background Image", name: "backgroundImage", widget: "image"}
-              - {label: "Text Color", name: "textColor", widget: "select", options: ["light", "dark"]}
-      - label: "Navigation"
-        name: "navigation"
-        widget: "object"
-        fields:
-          - { label: "Show in Navigation", name: "show_in_nav", widget: "boolean", default: true }
-          - { label: "Show Children", name: "show_children", widget: "boolean", default: false }
-          - label: "Additional Links"
-            name: "additional_links"
-            widget: "list"
+
+          - label: "Rich Text"
+            name: "richText"
+            widget: "object"
             fields:
-              - { label: "Link Title", name: "link_title", widget: "string" }
-              - { label: "Link URL", name: "link_url", widget: "string" }
-              - { label: "Link Weight", name: "link_weight", widget: "number", default: 0 }
-          - { label: "Page Weight", name: "page_weight", widget: "number", default: 0 }
+              - {label: "Content", name: "content", widget: "markdown"}
+              - {label: "Background Color", name: "backgroundColor", widget: "select", options: ["white", "gray", "primary"], default: "white"}
+
+          - label: "Two Column Text"
+            name: "twoColumnText"
+            widget: "object"
+            fields:
+              - {label: "Left Column", name: "leftContent", widget: "markdown"}
+              - {label: "Right Column", name: "rightContent", widget: "markdown"}
+              - {label: "Column Ratio", name: "ratio", widget: "select", options: ["50/50", "60/40", "40/60"], default: "50/50"}
+
+          - label: "Stats"
+            name: "stats"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Stats Items"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Number", name: "number", widget: "string"}
+                  - {label: "Label", name: "label", widget: "string"}
+
+          - label: "Testimonials"
+            name: "testimonials"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Testimonials"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Quote", name: "quote", widget: "text"}
+                  - {label: "Author", name: "author", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Image", name: "image", widget: "image", required: false}
+
+          - label: "Timeline"
+            name: "timeline"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Events"
+                name: "items"
+                widget: "list"
+                fields:
+                  - {label: "Date", name: "date", widget: "string"}
+                  - {label: "Title", name: "title", widget: "string"}
+                  - {label: "Description", name: "description", widget: "text"}
+
+          - label: "Team"
+            name: "team"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - label: "Team Members"
+                name: "members"
+                widget: "list"
+                fields:
+                  - {label: "Name", name: "name", widget: "string"}
+                  - {label: "Role", name: "role", widget: "string"}
+                  - {label: "Image", name: "image", widget: "image"}
+
+          - label: "Call to Action"
+            name: "cta"
+            widget: "object"
+            fields:
+              - {label: "Title", name: "title", widget: "string"}
+              - {label: "Subtitle", name: "subtitle", widget: "string"}
+              - {label: "Button Text", name: "buttonText", widget: "string"}
+              - {label: "Button Link", name: "buttonLink", widget: "string"}
+
     meta:
       path:
         widget: string
