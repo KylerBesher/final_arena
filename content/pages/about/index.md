@@ -1,8 +1,8 @@
 ---
 title: About Us
 metadata:
-  title: About The Arena
-  description: Learn about The Arena, your premier destination for tabletop gaming and community
+  title: About
+  description: Learn about {{site.name}}, your premier destination for tabletop gaming and community
   image: /images/about-hero.jpg
   slug: about
   navigation:
@@ -10,34 +10,34 @@ metadata:
     show_children: false
     page_weight: 10
   seo:
-    title: About The Arena | Premier Gaming Community Hub
-    description: Discover The Arena - your destination for tabletop gaming, card games, and miniature wargaming. Join our vibrant community today.
+    title: "About {{site.name}} | Premier Gaming Community Hub"
+    description: "{{site.default_description}}"
     keywords: gaming store, tabletop games, gaming community, MTG, Warhammer, D&D, board games
     og:
-      title: About The Arena - Premier Gaming Community Hub
-      description: Your destination for all things gaming - cards, miniatures, RPGs, and more
+      title: "About {{site.name}} - Premier Gaming Community Hub"
+      description: "{{site.default_description}}"
       image: /images/about-og.jpg
     twitter:
       card: summary_large_image
-      title: About The Arena | Gaming Community Hub
-      description: Your premier gaming destination
+      title: "About {{site.name}} | Gaming Community Hub"
+      description: "{{site.default_description}}"
       image: /images/about-twitter.jpg
 sections:
   - type: hero
-    title: Welcome to The Arena
-    subtitle: Where Gaming Communities Thrive
+    title: "Welcome to {{site.name}}"
+    subtitle: "{{site.default_description}}"
     backgroundImage: /images/hero-about.jpg
   - type: richText
     content: |
       ## Our Story
 
-      Founded by passionate gamers, The Arena was born from a simple vision: to create more than just a gaming store. We wanted to build a thriving community hub where players of all levels could come together, learn, compete, and most importantly, have fun.
+      Founded by passionate gamers, {{site.name}} was born from a simple vision: to create more than just a gaming store. We wanted to build a thriving community hub where players of all levels could come together, learn, compete, and most importantly, have fun.
 
       What started as a small local game store has grown into a vibrant community center, hosting hundreds of events each month and bringing together thousands of players across multiple gaming communities.
 
       ## Our Mission
 
-      At The Arena, our mission is to foster an inclusive, welcoming environment where gamers of all backgrounds and experience levels can pursue their passion. Whether you're a competitive tournament player or just starting your gaming journey, you'll find your place here.
+      At {{site.name}}, our mission is to foster an inclusive, welcoming environment where gamers of all backgrounds and experience levels can pursue their passion. Whether you're a competitive tournament player or just starting your gaming journey, you'll find your place here.
 
       ## Our Values
 
@@ -46,7 +46,7 @@ sections:
       - **Quality**: From our gaming space to our events, we maintain the highest standards
       - **Education**: We're committed to helping new players learn and veterans master their games
   - type: features
-    title: What Sets Us Apart
+    title: "What Sets {{site.name}} Apart"
     items:
       - title: Premium Gaming Space
         description: 10,000 sq ft of dedicated gaming space with professional tables and equipment
@@ -61,7 +61,7 @@ sections:
         description: Active communities for every major gaming system
         icon: heart
   - type: stats
-    title: The Arena in Numbers
+    title: "{{site.name}} in Numbers"
     items:
       - value: "15,000+"
         label: Active Community Members
@@ -73,7 +73,7 @@ sections:
         label: Gaming Communities
   - type: team
     title: Our Team
-    description: Meet the passionate gamers who make The Arena possible
+    description: "Meet the passionate gamers who make {{site.name}} possible"
     members:
       - name: Alex Chen
         role: Owner & Tournament Organizer
@@ -90,6 +90,6 @@ sections:
   - type: cta
     title: Join Our Community
     subtitle: Become part of something special
-    buttonText: View Events
+    buttonText: "{{cta.events_button}}"
     buttonLink: /community/events
 --- 
