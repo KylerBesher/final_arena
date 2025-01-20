@@ -2,6 +2,7 @@
 title: "Tournament Structure"
 metadata:
   title: "MTG Tournament Structure"
+  draft: true
   description: "Learn about our Magic: The Gathering tournament formats, rules, and competitive structure"
   image: /images/mtg-tournaments-hero.jpg
   slug: tournaments

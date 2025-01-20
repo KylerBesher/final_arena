@@ -2,6 +2,7 @@
 title: "Magic: The Gathering"
 metadata:
   title: "Magic: The Gathering Community"
+  draft: false
   description: Join our thriving MTG community for tournaments, casual play, and trading
   image: /images/mtg-hero.jpg
   slug: magic-the-gathering

@@ -3,17 +3,31 @@
 import { useState } from 'react';
 import Link from 'next/link';
 
-function MobileNavItem({ item, isOpen }) {
+function NavItem({ item, isMobile = false }) {
     const [isSubMenuOpen, setIsSubMenuOpen] = useState(false);
     const linkConfig = item.link?.[0];
     const href = linkConfig?.pageLink ? `/${linkConfig.pageLink}` : linkConfig?.url || '#';
 
-    if (item.children) {
+    if (!item.children?.length) {
+        return (
+            <Link
+                href={href}
+                className={isMobile ? 
+                    "block px-4 py-2 hover:bg-blue-800 text-white" :
+                    "px-3 py-2 text-white hover:text-gray-300"
+                }
+            >
+                {item.label}
+            </Link>
+        );
+    }
+
+    if (isMobile) {
         return (
             <div className="w-full">
                 <button
                     onClick={() => setIsSubMenuOpen(!isSubMenuOpen)}
-                    className="flex items-center justify-between w-full px-4 py-2 text-left hover:bg-blue-800"
+                    className="flex items-center justify-between w-full px-4 py-2 text-left hover:bg-blue-800 text-white"
                 >
                     <span>{item.label}</span>
                     <svg className={`w-4 h-4 transition-transform ${isSubMenuOpen ? 'rotate-180' : ''}`} fill="none" stroke="currentColor" viewBox="0 0 24 24">
@@ -22,7 +36,7 @@ function MobileNavItem({ item, isOpen }) {
                 </button>
                 <div className={`pl-4 ${isSubMenuOpen ? 'block' : 'hidden'}`}>
                     {item.children.map((child, index) => (
-                        <MobileNavItem key={index} item={child} isOpen={isOpen} />
+                        <NavItem key={`${href}-${index}`} item={child} isMobile={true} />
                     ))}
                 </div>
             </div>
@@ -30,9 +44,21 @@ function MobileNavItem({ item, isOpen }) {
     }
 
     return (
-        <Link href={href} className="block px-4 py-2 hover:bg-blue-800">
-            {item.label}
-        </Link>
+        <div className="relative group">
+            <button className="px-3 py-2 text-white hover:text-gray-300">
+                {item.label}
+                <svg className="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
+                </svg>
+            </button>
+            <div className="absolute left-0 hidden pt-2 group-hover:block">
+                <div className="bg-blue-800 rounded-md shadow-lg">
+                    {item.children.map((child, index) => (
+                        <NavItem key={`${href}-${index}`} item={child} isMobile={false} />
+                    ))}
+                </div>
+            </div>
+        </div>
     );
 }
 
@@ -52,46 +78,9 @@ export function NavBar({ items }) {
 
                     {/* Desktop Navigation */}
                     <nav className="hidden md:flex items-center space-x-4">
-                        {items.map((item, index) => {
-                            const linkConfig = item.link?.[0];
-                            const href = linkConfig?.pageLink ? `/${linkConfig.pageLink}` : linkConfig?.url || '#';
-
-                            if (item.children) {
-                                return (
-                                    <div key={index} className="relative group">
-                                        <button className="px-3 py-2 text-white hover:text-gray-300">
-                                            {item.label}
-                                            <svg className="w-4 h-4 ml-1 inline-block" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                                                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M19 9l-7 7-7-7" />
-                                            </svg>
-                                        </button>
-                                        <div className="absolute left-0 hidden pt-2 group-hover:block">
-                                            <div className="bg-blue-800 rounded-md shadow-lg">
-                                                {item.children.map((child, childIndex) => (
-                                                    <Link
-                                                        key={childIndex}
-                                                        href={child.link?.[0]?.pageLink ? `/${child.link[0].pageLink}` : '#'}
-                                                        className="block px-4 py-2 text-sm text-white hover:bg-blue-700"
-                                                    >
-                                                        {child.label}
-                                                    </Link>
-                                                ))}
-                                            </div>
-                                        </div>
-                                    </div>
-                                );
-                            }
-
-                            return (
-                                <Link
-                                    key={index}
-                                    href={href}
-                                    className="px-3 py-2 text-white hover:text-gray-300"
-                                >
-                                    {item.label}
-                                </Link>
-                            );
-                        })}
+                        {items.map((item, index) => (
+                            <NavItem key={`desktop-${index}`} item={item} isMobile={false} />
+                        ))}
                     </nav>
 
                     {/* Mobile menu button */}
@@ -112,7 +101,7 @@ export function NavBar({ items }) {
                 <div className={`md:hidden ${isMobileMenuOpen ? 'block' : 'hidden'}`}>
                     <div className="px-2 pt-2 pb-3 space-y-1">
                         {items.map((item, index) => (
-                            <MobileNavItem key={index} item={item} />
+                            <NavItem key={`mobile-${index}`} item={item} isMobile={true} />
                         ))}
                     </div>
                 </div>

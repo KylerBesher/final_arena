@@ -2,6 +2,7 @@
 title: "MTG Events"
 metadata:
   title: "Magic: The Gathering Events"
+  draft: false
   description: "View our calendar of Magic: The Gathering events, tournaments, and special occasions"
   image: /images/mtg-events-hero.jpg
   slug: events
