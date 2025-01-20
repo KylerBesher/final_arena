@@ -38,7 +38,7 @@ export function SectionComponent({ section }) {
     const Component = components[section.type];
     
     if (!Component) {
-        console.warn(`Section type "${section.type}" not found`);
+        console.log('Missing section type:', section.type);
         return null;
     }
     

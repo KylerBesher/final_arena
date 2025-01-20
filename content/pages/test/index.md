@@ -74,24 +74,6 @@ sections:
       - value: "50+"
         label: Features
 
-  - type: schedule
-    title: Weekly Schedule
-    events:
-      - day: Monday
-        events:
-          - time: "9:00 AM"
-            title: Morning Event
-          - time: "2:00 PM"
-            title: Afternoon Event
-      - day: Wednesday
-        events:
-          - time: "11:00 AM"
-            title: Mid-week Special
-      - day: Friday
-        events:
-          - time: "7:00 PM"
-            title: Evening Event
-
   - type: team
     title: Team Section
     description: "Meet our amazing team members"
@@ -105,19 +87,6 @@ sections:
       - name: Bob Wilson
         role: Designer
         image: /images/team/bob.jpg
-
-  - type: subpages
-    title: Related Pages
-    pages:
-      - title: First Page
-        description: Description of the first related page
-        link: /page-one
-      - title: Second Page
-        description: Description of the second related page
-        link: /page-two
-      - title: Third Page
-        description: Description of the third related page
-        link: /page-three
 
   - type: twoColumn
     title: Two Column Section

@@ -42,38 +42,9 @@ sections:
       - title: New Player Support
         description: Learn-to-play sessions and beginner-friendly games
         icon: book
-  - type: schedule
-    title: Weekly Schedule
-    events:
-      - day: Monday
-        events:
-          - time: "6:00 PM"
-            title: Beginner's Night
-      - day: Wednesday
-        events:
-          - time: "6:00 PM"
-            title: Campaign Night
-      - day: Saturday
-        events:
-          - time: "2:00 PM"
-            title: One-Shot Adventures
-          - time: "6:00 PM"
-            title: Advanced Campaigns
-  - type: subpages
-    title: More Information
-    pages:
-      - title: Events Calendar
-        description: View all upcoming D&D events
-        link: /community/dnd/events
-      - title: Campaign Registry
-        description: Browse ongoing campaigns
-        link: /community/dnd/campaigns
-      - title: DM Resources
-        description: Resources for Dungeon Masters
-        link: /community/dnd/resources
   - type: cta
     title: Start Your Journey
     subtitle: Join our D&D community today
     buttonText: View Next Event
     buttonLink: /community/dnd/events
---- 
+---

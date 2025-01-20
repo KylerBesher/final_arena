@@ -42,42 +42,9 @@ sections:
       - title: Learning
         description: New player workshops and strategy sessions
         icon: academic
-  - type: schedule
-    title: Weekly Schedule
-    events:
-      - day: Monday
-        events:
-          - time: "6:00 PM"
-            title: Modern Night
-      - day: Wednesday
-        events:
-          - time: "6:00 PM"
-            title: Commander Night
-      - day: Friday
-        events:
-          - time: "7:00 PM"
-            title: Friday Night Magic
-      - day: Saturday
-        events:
-          - time: "1:00 PM"
-            title: Standard Showdown
-          - time: "6:00 PM"
-            title: Draft Night
-  - type: subpages
-    title: More Information
-    pages:
-      - title: Events Calendar
-        description: View all upcoming MTG events
-        link: /community/magic-the-gathering/events
-      - title: Tournament Rules
-        description: Learn about our tournament structure
-        link: /community/magic-the-gathering/tournaments
-      - title: Trading Guidelines
-        description: Our community trading guidelines
-        link: /community/magic-the-gathering/trading
   - type: cta
-    title: Ready to Join?
-    subtitle: Get started with our MTG community today
+    title: Ready to Start Your Journey?
+    subtitle: Join the magical world of Magic
     buttonText: "{{cta.events_button}}"
     buttonLink: /community/magic-the-gathering/events
---- 
+---

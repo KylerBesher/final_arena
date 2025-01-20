@@ -1,65 +1,63 @@
 ---
-title: Community
+title: "Gaming Communities"
 metadata:
-  title: Gaming Communities
-  description: Join our diverse gaming communities and find your place among fellow enthusiasts
-  image: /images/community-hero.jpg
+  title: "Gaming Communities"
+  description: "Explore our diverse gaming communities at The Arena"
+  image: /images/communities-hero.jpg
   slug: community
   navigation:
     show_in_nav: true
     show_children: true
-    page_weight: 30
+    page_weight: 10
   seo:
-    title: Gaming Communities | The Arena
-    description: Join our vibrant gaming communities at The Arena. Find your favorite game group and participate in regular events.
-    keywords: gaming community, MTG players, Warhammer community, D&D groups, board game groups
+    title: "Gaming Communities | {{site.name}}"
+    description: "Join our vibrant gaming communities at {{site.name}}. From Magic: The Gathering to D&D, find your place here."
+    keywords: gaming communities, MTG, Warhammer, D&D, board games, Lorcana, miniature gaming
     og:
-      title: Gaming Communities - The Arena
-      description: Connect with fellow gamers in our diverse gaming communities
-      image: /images/community-og.jpg
+      title: "Gaming Communities - {{site.name}}"
+      description: "Find your gaming community"
+      image: /images/communities-og.jpg
     twitter:
       card: summary_large_image
-      title: Gaming Communities | The Arena
-      description: Join our gaming communities
-      image: /images/community-twitter.jpg
+      title: "Gaming Communities | {{site.name}}"
+      description: "Join our gaming communities"
+      image: /images/communities-twitter.jpg
 sections:
   - type: hero
-    title: Join Our Communities
-    subtitle: Find Your People, Play Your Games
-    backgroundImage: /images/hero-community.jpg
-  - type: communities
-    title: Our Gaming Communities
+    title: "Gaming Communities at {{site.name}}"
+    subtitle: "Find Your People, Play Your Game"
+    backgroundImage: /images/hero-communities.jpg
+  - type: features
+    title: Our Communities
     items:
-      - title: "Magic: The Gathering"
-        description: From Friday Night Magic to competitive tournaments
-        image: /images/communities/mtg.jpg
-        link: /community/magic-the-gathering
-      - title: Warhammer
-        description: Build, paint, and battle in the grimdark future
-        image: /images/communities/warhammer.jpg
-        link: /community/warhammer
-      - title: Dungeons & Dragons
-        description: Embark on epic adventures with fellow adventurers
-        image: /images/communities/dnd.jpg
-        link: /community/dnd
-      - title: Miniature Gaming
-        description: Various miniature games and painting groups
-        image: /images/communities/miniatures.jpg
-        link: /community/miniature-gaming
-      - title: Disney Lorcana
-        description: Join the newest TCG community
-        image: /images/communities/lorcana.jpg
-        link: /community/lorcana
+      - title: Card Games
+        description: "Magic: The Gathering, Lorcana, and more"
+        icon: cards
+      - title: Miniatures
+        description: Warhammer, historical, and skirmish games
+        icon: miniature
+      - title: Role-Playing
+        description: D&D and other tabletop RPGs
+        icon: dice
       - title: Board Games
-        description: Regular meetups for all types of board games
-        image: /images/communities/board-games.jpg
-        link: /community/board-games
-  - type: calendar
-    title: Upcoming Events
-    description: Check out our event calendar for all community activities
+        description: Modern and classic board gaming
+        icon: board
+  - type: richText
+    content: |
+      ## Welcome to Our Gaming Communities
+
+      At {{site.name}}, we believe in the power of community. Our gaming groups are more than just players - they're families of enthusiasts who share a passion for their chosen games. Whether you're a veteran player or just starting out, you'll find a welcoming home in our communities.
+
+      Each of our gaming communities offers:
+      - Regular events and tournaments
+      - Learning sessions for newcomers
+      - Dedicated play spaces
+      - Active community engagement
+      - Expert staff support
+
   - type: cta
-    title: Get Involved
-    subtitle: There's always room for more players
-    buttonText: Join Discord
-    buttonLink: /discord
+    title: Find Your Community
+    subtitle: Join one of our gaming groups today
+    buttonText: "{{cta.events_button}}"
+    buttonLink: /community/events
 --- 

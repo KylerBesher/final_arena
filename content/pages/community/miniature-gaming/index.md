@@ -1,88 +1,50 @@
 ---
-title: Miniature Gaming
+title: "Miniature Gaming"
 metadata:
-  title: Miniature Gaming Community
-  description: Join our miniature gaming community for various game systems, painting workshops, and tournaments
-  image: /images/miniatures-hero.jpg
+  title: "Miniature Gaming Community"
+  description: Join our miniature gaming community for various game systems, painting workshops, and terrain building
+  image: /images/miniature-gaming-hero.jpg
   slug: miniature-gaming
   navigation:
     show_in_nav: true
     show_children: true
-    page_weight: 40
+    page_weight: 60
   seo:
-    title: Miniature Gaming Community | The Arena
-    description: Join The Arena's miniature gaming community for various game systems, painting workshops, and regular events.
-    keywords: miniature gaming, tabletop wargames, painting, modeling, terrain building
+    title: "Miniature Gaming Community | {{site.name}}"
+    description: "Join {{site.name}}'s miniature gaming community for various game systems, painting workshops, and terrain building sessions."
+    keywords: miniature gaming, wargames, painting, terrain building, tabletop warfare
     og:
-      title: Miniature Gaming Community - The Arena
-      description: Your destination for all miniature gaming needs
-      image: /images/miniatures-og.jpg
+      title: "Miniature Gaming Community - {{site.name}}"
+      description: "Your home for all miniature gaming systems"
+      image: /images/miniature-gaming-og.jpg
     twitter:
       card: summary_large_image
-      title: Miniature Gaming Community | The Arena
-      description: Join our miniature gaming community
-      image: /images/miniatures-twitter.jpg
+      title: "Miniature Gaming Community | {{site.name}}"
+      description: "Join our miniature gaming community"
+      image: /images/miniature-gaming-twitter.jpg
 sections:
   - type: hero
-    title: Miniature Gaming at The Arena
-    subtitle: Paint, Play, Conquer
-    backgroundImage: /images/hero-miniatures.jpg
+    title: "Miniature Gaming at {{site.name}}"
+    subtitle: "Beyond Warhammer: Explore More Gaming Systems"
+    backgroundImage: /images/hero-miniature-gaming.jpg
   - type: features
     title: What We Offer
     items:
+      - title: Multiple Systems
+        description: Support for various miniature game rules
+        icon: dice
       - title: Gaming Tables
-        description: Multiple tables with varied terrain options
+        description: Large tables with varied terrain options
         icon: table
       - title: Painting Station
         description: Professional painting setup with tools
         icon: brush
-      - title: Multiple Systems
-        description: Support for various game systems
-        icon: dice
-      - title: Regular Events
-        description: Tournaments and painting competitions
-        icon: trophy
-  - type: gameTypes
-    title: Supported Games
-    items:
-      - title: Infinity
-        description: Sci-fi skirmish warfare
-      - title: Malifaux
-        description: Gothic horror skirmish
-      - title: Warmachine
-        description: Steampunk warfare
-      - title: Blood Bowl
-        description: Fantasy football mayhem
-  - type: schedule
-    title: Weekly Schedule
-    events:
-      - day: Tuesday
-        events:
-          - time: "5:00 PM"
-            title: Open Gaming
-      - day: Thursday
-        events:
-          - time: "6:00 PM"
-            title: Skirmish Night
-      - day: Sunday
-        events:
-          - time: "1:00 PM"
-            title: Painting Workshop
-  - type: subpages
-    title: More Information
-    pages:
-      - title: Events Calendar
-        description: View all upcoming miniature gaming events
-        link: /community/miniature-gaming/events
-      - title: Painting Guides
-        description: Learn painting techniques
-        link: /community/miniature-gaming/painting
-      - title: Game Systems
-        description: Information about supported games
-        link: /community/miniature-gaming/systems
+      - title: Terrain Workshop
+        description: Build and customize gaming terrain
+        icon: hammer
   - type: cta
-    title: Join the Action
-    subtitle: Get started with miniature gaming today
-    buttonText: View Next Event
+    title: Ready to Roll Dice?
+    subtitle: Join our miniature gaming community
+    buttonText: "{{cta.events_button}}"
     buttonLink: /community/miniature-gaming/events
---- 
+---
