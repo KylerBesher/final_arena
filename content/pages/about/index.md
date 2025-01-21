@@ -2,7 +2,7 @@
 title: About Us
 metadata:
   title: About
-  description: Learn about {{site.name}}, your premier destination for tabletop gaming and community
+  description: Learn about {{site.name}}, Salina's premier destination for tabletop gaming, trading card games, and community events
   image: /images/about-hero.jpg
   slug: about
   navigation:
@@ -24,72 +24,79 @@ metadata:
       image: /images/about-twitter.jpg
 sections:
   - type: hero
-    title: "Welcome to {{site.name}}"
-    subtitle: "{{site.default_description}}"
+    title: Welcome to {{site.name}}
+    subtitle: Your Premier Gaming Destination in Salina, Kansas
     backgroundImage: /images/hero-about.jpg
   - type: richText
     content: |
       ## Our Story
 
-      Founded by passionate gamers, {{site.name}} was born from a simple vision: to create more than just a gaming store. We wanted to build a thriving community hub where players of all levels could come together, learn, compete, and most importantly, have fun.
+      {{site.name}} is Salina's premier gaming store and community hub, located in the heart of Kansas. We're more than just a store - we're a gathering place for gamers, collectors, and enthusiasts of all kinds. From Magic: The Gathering tournaments to Dungeons & Dragons campaigns, we provide a welcoming space for both competitive players and casual gamers alike.
 
-      What started as a small local game store has grown into a vibrant community center, hosting hundreds of events each month and bringing together thousands of players across multiple gaming communities.
+      ## Our Space
 
-      ## Our Mission
+      Our facility features dedicated gaming areas for different communities:
+      - Multiple gaming tables for card games and board games
+      - Dedicated RPG rooms for private sessions
+      - Tournament space for competitive events
+      - Retail area with the latest games, cards, and accessories
+      - Comfortable lounge area for casual gaming
 
-      At {{site.name}}, our mission is to foster an inclusive, welcoming environment where gamers of all backgrounds and experience levels can pursue their passion. Whether you're a competitive tournament player or just starting your gaming journey, you'll find your place here.
+      ## Our Community
 
-      ## Our Values
+      At {{site.name}}, we believe in building strong communities around the games we love. We host regular events that cater to various interests:
+      - Friday Night Magic tournaments
+      - Dungeons & Dragons sessions
+      - Board game nights
+      - Trading card game leagues
+      - Special release events
+      - Beginner-friendly workshops
 
-      - **Community First**: Everything we do is centered around building and supporting our gaming communities
-      - **Inclusivity**: Everyone is welcome, regardless of experience level or background
-      - **Quality**: From our gaming space to our events, we maintain the highest standards
-      - **Education**: We're committed to helping new players learn and veterans master their games
   - type: features
-    title: "What Sets {{site.name}} Apart"
+    title: What Makes {{site.name}} Special
+    description: Experience the difference at {{site.name}}
     items:
-      - title: Premium Gaming Space
-        description: 10,000 sq ft of dedicated gaming space with professional tables and equipment
-        icon: building
-      - title: Expert Staff
-        description: Knowledgeable team members who are passionate about gaming
-        icon: users
-      - title: Regular Events
-        description: Hundreds of monthly events across all gaming communities
-        icon: calendar
-      - title: Community Focus
-        description: Active communities for every major gaming system
+      - title: Welcoming Environment
+        description: Whether you're a seasoned pro or just starting out, you'll find a welcoming community here
         icon: heart
+      - title: Regular Events
+        description: Weekly tournaments, game nights, and special events for all our gaming communities
+        icon: calendar
+      - title: Expert Staff
+        description: Our knowledgeable team is here to help with rules, deck building, and game recommendations
+        icon: star
+      - title: Great Selection
+        description: Extensive inventory of cards, games, and accessories at competitive prices
+        icon: sparkles
+
   - type: stats
-    title: "{{site.name}} in Numbers"
+    title: "{{site.name}} by the Numbers"
     items:
-      - value: "15,000+"
-        label: Active Community Members
-      - value: "500+"
-        label: Monthly Events
-      - value: "10,000"
-        label: Square Feet of Gaming Space
-      - value: "7"
+      - number: "1000+"
+        label: Regular Players
+      - number: "20+"
+        label: Weekly Events
+      - number: "5+"
         label: Gaming Communities
-  - type: team
-    title: Our Team
-    description: "Meet the passionate gamers who make {{site.name}} possible"
-    members:
-      - name: Alex Chen
-        role: Owner & Tournament Organizer
-        image: /images/team/alex.jpg
-      - name: Sarah Martinez
-        role: Community Manager
-        image: /images/team/sarah.jpg
-      - name: Mike Johnson
-        role: Events Coordinator
-        image: /images/team/mike.jpg
-      - name: Emily Wong
-        role: Retail Manager
-        image: /images/team/emily.jpg
+      - number: "100%"
+        label: Fun Guaranteed
+
+  - type: testimonials
+    title: What Our Community Says
+    items:
+      - quote: "{{site.name}} is more than just a game store - it's where I've made some of my best friends."
+        author: "Mike S."
+        role: "Magic Player"
+      - quote: "The staff is incredibly knowledgeable and always willing to help new players."
+        author: "Sarah K."
+        role: "D&D Player"
+      - quote: "Best place in Salina for Friday Night Magic and other TCG events!"
+        author: "Chris R."
+        role: "Tournament Player"
+
   - type: cta
     title: Join Our Community
-    subtitle: Become part of something special
-    buttonText: "{{cta.events_button}}"
+    subtitle: Come be part of something special
+    buttonText: View Our Events
     buttonLink: /community/events
 --- 
