@@ -1,6 +1,6 @@
 import Image from 'next/image';
 
-export default function TextWithImage({ title, content, image, imagePosition = 'right' }) {
+export function TextWithImage({ title, content, image, imagePosition = 'right' }) {
     return (
         <section className="py-16">
             <div className="container mx-auto px-4">

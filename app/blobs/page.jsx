@@ -1,5 +1,5 @@
 import { Markdown } from 'components/markdown';
-import { ShapeEditor } from './editor';
+import Editor from './editor';
 import { ContextAlert } from 'components/context-alert';
 import { getNetlifyContext, uploadDisabled } from 'utils';
 
@@ -37,7 +37,7 @@ User uploads are disabled in this site. To run your own and try it out:
 </a>
 `;
 
-export default async function Page() {
+export default async function BlobsPage() {
     return (
         <>
             <section className="flex flex-col gap-6 sm:gap-8">
@@ -51,7 +51,7 @@ export default async function Page() {
             {!!getNetlifyContext() && (
                 <div className="flex flex-col gap-8">
                     <Markdown content={explainer} />
-                    <ShapeEditor />
+                    <Editor />
                 </div>
             )}
         </>

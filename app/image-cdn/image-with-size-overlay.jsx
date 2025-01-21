@@ -2,6 +2,7 @@
 
 import { useCallback, useEffect, useRef, useState } from 'react';
 import { getResourceSize } from 'utils';
+import Image from 'next/image';
 
 export function ImageWithSizeOverlay({ src, srcSet, sizes, overlayPosition }) {
     const imageRef = useRef();
@@ -31,7 +32,16 @@ export function ImageWithSizeOverlay({ src, srcSet, sizes, overlayPosition }) {
                 >{`Size: ${Math.ceil(imgSize / 1024)}KB`}</span>
             )}
 
-            <img src={src} srcSet={srcSet} sizes={sizes} alt="Corgi" onLoad={handleImageLoad} ref={imageRef} />
+            <Image
+                src={src}
+                alt="Corgi"
+                width={500}
+                height={300}
+                sizes={sizes}
+                srcSet={srcSet}
+                onLoad={handleImageLoad}
+                ref={imageRef}
+            />
         </div>
     );
 }
