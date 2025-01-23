@@ -72,7 +72,62 @@ collections:
             widget: "object"
             fields:
               - {label: "Content", name: "content", widget: "markdown"}
-              - {label: "Background Color", name: "backgroundColor", widget: "select", options: ["white", "gray", "primary"], default: "white"}
+              - label: "Background"
+                name: "background"
+                widget: "select"
+                options:
+                  # Base colors
+                  - { label: "Transparent", value: "transparent" }
+                  - { label: "White", value: "white" }
+                  - { label: "Light Gray", value: "light" }
+                  - { label: "Gray", value: "gray" }
+                  - { label: "Dark", value: "dark" }
+                  - { label: "Black", value: "black" }
+                  
+                  # Brand colors
+                  - { label: "Primary (Light)", value: "primary" }
+                  - { label: "Primary (Solid)", value: "primary-solid" }
+                  - { label: "Secondary (Light)", value: "secondary" }
+                  - { label: "Secondary (Solid)", value: "secondary-solid" }
+                  - { label: "Accent (Light)", value: "accent" }
+                  - { label: "Accent (Solid)", value: "accent-solid" }
+                  
+                  # Utility colors
+                  - { label: "Success", value: "success" }
+                  - { label: "Warning", value: "warning" }
+                  - { label: "Error", value: "error" }
+                  - { label: "Info", value: "info" }
+                  
+                  # Gradients
+                  - { label: "Primary Gradient", value: "gradient-primary" }
+                  - { label: "Dark Gradient", value: "gradient-dark" }
+                  - { label: "Light Gradient", value: "gradient-light" }
+                  
+                  # Custom
+                  - { label: "Custom Color", value: "custom" }
+              - label: "Custom Background Color"
+                name: "customBackground"
+                widget: "string"
+                required: false
+                pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', "Must be a valid hex color (e.g., #FF0000)"]
+                hint: "Enter a hex color code (e.g., #FF0000) if you selected 'Custom Color' above"
+              - label: "Padding"
+                name: "padding"
+                widget: "select"
+                options:
+                  - { label: "None", value: "none" }
+                  - { label: "Small", value: "small" }
+                  - { label: "Default", value: "default" }
+                  - { label: "Large", value: "large" }
+                default: "default"
+              - label: "Width"
+                name: "width"
+                widget: "select"
+                options:
+                  - { label: "Full Width", value: "full" }
+                  - { label: "Default", value: "default" }
+                  - { label: "Narrow", value: "narrow" }
+                default: "default"
 
           - label: "Two Column Text"
             name: "twoColumnText"
@@ -126,13 +181,70 @@ collections:
             widget: "object"
             fields:
               - {label: "Title", name: "title", widget: "string"}
+              - {label: "Description", name: "description", widget: "text"}
+              - label: "Background"
+                name: "background"
+                widget: "select"
+                options:
+                  - { label: "Transparent", value: "transparent" }
+                  - { label: "White", value: "white" }
+                  - { label: "Light Gray", value: "light" }
+                  - { label: "Gray", value: "gray" }
+                  - { label: "Dark", value: "dark" }
+                  - { label: "Black", value: "black" }
+                  
+                  # Brand colors
+                  - { label: "Primary (Light)", value: "primary" }
+                  - { label: "Primary (Solid)", value: "primary-solid" }
+                  - { label: "Secondary (Light)", value: "secondary" }
+                  - { label: "Secondary (Solid)", value: "secondary-solid" }
+                  - { label: "Accent (Light)", value: "accent" }
+                  - { label: "Accent (Solid)", value: "accent-solid" }
+                  
+                  # Utility colors
+                  - { label: "Success", value: "success" }
+                  - { label: "Warning", value: "warning" }
+                  - { label: "Error", value: "error" }
+                  - { label: "Info", value: "info" }
+                  
+                  # Gradients
+                  - { label: "Primary Gradient", value: "gradient-primary" }
+                  - { label: "Dark Gradient", value: "gradient-dark" }
+                  - { label: "Light Gradient", value: "gradient-light" }
+                  
+                  # Custom
+                  - { label: "Custom Color", value: "custom" }
+              - label: "Custom Background Color"
+                name: "customBackground"
+                widget: "string"
+                required: false
+                pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', "Must be a valid hex color (e.g., #FF0000)"]
+                hint: "Enter a hex color code (e.g., #FF0000) if you selected 'Custom Color' above"
+              - label: "Padding"
+                name: "padding"
+                widget: "select"
+                options:
+                  - { label: "None", value: "none" }
+                  - { label: "Small", value: "small" }
+                  - { label: "Default", value: "default" }
+                  - { label: "Large", value: "large" }
+                default: "default"
+              - label: "Width"
+                name: "width"
+                widget: "select"
+                options:
+                  - { label: "Full Width", value: "full" }
+                  - { label: "Default", value: "default" }
+                  - { label: "Narrow", value: "narrow" }
+                default: "default"
               - label: "Team Members"
-                name: "members"
+                name: "items"
                 widget: "list"
                 fields:
                   - {label: "Name", name: "name", widget: "string"}
                   - {label: "Role", name: "role", widget: "string"}
                   - {label: "Image", name: "image", widget: "image"}
+                  - {label: "Bio", name: "bio", widget: "text"}
 
           - label: "Call to Action"
             name: "cta"
