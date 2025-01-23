@@ -1,40 +1,60 @@
 import React from 'react';
 import Image from 'next/image';
+import { getBackgroundStyle } from '../../lib/styles';
 
-export function Gallery({ title, images, columns = 3 }) {
+const GalleryImage = ({ src, index }) => {
+    const [error, setError] = React.useState(false);
+
+    if (!src || error) {
+        return (
+            <div className="w-full h-full bg-gray-100 flex items-center justify-center rounded">
+                <span className="text-gray-400 text-sm">Image {index + 1}</span>
+            </div>
+        );
+    }
+
     return (
-        <section className="py-12">
-            <div className="container mx-auto px-4">
-                {title && (
-                    <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
+        <Image
+            src={src}
+            alt={`Gallery image ${index + 1}`}
+            fill
+            className="object-cover rounded-lg"
+            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 33vw"
+            onError={() => setError(true)}
+        />
+    );
+};
+
+const Gallery = ({ title, description, images = [], background = 'white', customBackground, padding = 'default', width = 'default' }) => {
+    const bgStyle = getBackgroundStyle(background, customBackground);
+    const isDark = background?.includes('dark') || background?.includes('black');
+
+    // Filter out empty or invalid image URLs
+    const validImages = images.filter(image => image && typeof image === 'string' && image.trim() !== '');
+
+    if (!validImages || validImages.length === 0) {
+        return null;
+    }
+
+    return (
+        <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
+            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+                {(title || description) && (
+                    <div className="text-center mb-12">
+                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
+                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                    </div>
                 )}
-                <div
-                    className="grid gap-4"
-                    style={{
-                        gridTemplateColumns: `repeat(${columns}, minmax(0, 1fr))`,
-                    }}
-                >
-                    {images.map((item, index) => (
-                        <div key={index} className="relative group">
-                            <div className="aspect-w-4 aspect-h-3">
-                                <Image
-                                    src={item.image}
-                                    alt={item.caption || ''}
-                                    fill
-                                    className="object-cover rounded-lg"
-                                />
-                            </div>
-                            {item.caption && (
-                                <div className="absolute inset-0 flex items-end justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
-                                    <div className="bg-black bg-opacity-50 text-white p-4 w-full text-center rounded-b-lg">
-                                        <p className="text-sm">{item.caption}</p>
-                                    </div>
-                                </div>
-                            )}
+                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+                    {validImages.map((image, index) => (
+                        <div key={`${image}-${index}`} className="relative aspect-[4/3]">
+                            <GalleryImage src={image} index={index} />
                         </div>
                     ))}
                 </div>
             </div>
         </section>
     );
-} 
+};
+
+export default Gallery; 
