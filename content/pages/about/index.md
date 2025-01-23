@@ -29,12 +29,16 @@ sections:
     backgroundImage: /images/store-interior.jpg
 
   - type: richText
+    background: light
+    padding: large
     content: |
       ## Why We're Here
 
       Founded in 1997 by Todd Brown, {{site.name}} began with a simple mission: to create a space where people could come together to share their love for gaming and collecting. We believe that games and collectibles bring people together, creating lasting friendships and memories.
 
   - type: team
+    background: white
+    padding: large
     title: Who We Are
     description: Meet the people behind {{site.name}}
     items:
@@ -48,6 +52,8 @@ sections:
         bio: "Leading our day-to-day operations with expertise in both trading card games and sports memorabilia."
 
   - type: features
+    background: primary
+    padding: large
     title: What We Offer
     description: Everything you need for gaming and collecting
     items:
@@ -62,6 +68,8 @@ sections:
         icon: gamepad
 
   - type: richText
+    background: gray
+    padding: large
     content: |
       ## Where to Find Us
 
@@ -76,6 +84,8 @@ sections:
       Join us for regular events throughout the week, including Friday Night Magic at 7pm and weekend tournaments.
 
   - type: faq
+    background: dark
+    padding: large
     title: Common Questions
     items:
       - question: Do you buy sports cards and collectibles?

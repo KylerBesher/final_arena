@@ -1,31 +1,12 @@
 import React from 'react';
 import { Markdown } from '../../components/markdown';
+import { sectionStyles } from '../../lib/styles';
 
-export function RichText({ content, backgroundColor = 'transparent', padding = 'default', width = 'default' }) {
-    const bgColors = {
-        white: 'bg-white',
-        gray: 'bg-gray-100',
-        primary: 'bg-primary-50',
-        transparent: 'bg-transparent'
-    };
-
-    const paddings = {
-        none: '',
-        small: 'py-6',
-        default: 'py-12',
-        large: 'py-24'
-    };
-
-    const widths = {
-        full: 'w-full',
-        default: 'container mx-auto px-4 max-w-5xl',
-        narrow: 'container mx-auto px-4 max-w-3xl'
-    };
-
+export function RichText({ content, background = 'transparent', padding = 'default', width = 'default' }) {
     return (
-        <section className={`${bgColors[backgroundColor]} ${paddings[padding]}`}>
-            <div className={widths[width]}>
-                <div className="prose prose-lg dark:prose-invert max-w-none">
+        <section className={`${sectionStyles.backgrounds[background]} ${sectionStyles.paddings[padding]}`}>
+            <div className={sectionStyles.widths[width]}>
+                <div className={`prose prose-lg max-w-none ${background === 'dark' ? 'prose-invert' : ''}`}>
                     <Markdown content={content} />
                 </div>
             </div>
