@@ -60,7 +60,7 @@ const ContactForm = ({
                 <div className={`max-w-2xl mx-auto ${isDark ? 'text-white' : 'text-gray-900'}`}>
                     {submitStatus === 'success' && (
                         <div className="mb-6 p-4 bg-green-100 text-green-700 rounded-lg">
-                            Thank you for your message. We'll get back to you soon!
+                            Thank you for your message. We&apos;ll get back to you soon!
                         </div>
                     )}
                     {submitStatus === 'error' && (

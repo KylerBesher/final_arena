@@ -57,3 +57,7 @@ export default async function BlobsPage() {
         </>
     );
 }
+
+export async function generateStaticParams({ params }) {
+    return [];
+}

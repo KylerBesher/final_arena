@@ -1,6 +1,5 @@
 import React from 'react';
 import { Markdown } from '../../components/markdown';
-import { sectionStyles } from '../../lib/styles';
 
 export function RichText({ 
     content,
