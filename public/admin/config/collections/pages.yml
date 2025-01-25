@@ -1,0 +1,11 @@
+- name: "pages"
+  label: "Pages"
+  label_singular: "Page"
+  folder: "content/pages"
+  create: true
+  nested:
+    depth: 100
+    summary: '{{title}}'
+  fields:
+    - {label: "Title", name: "title", widget: "string", required: true}
+    - {label: "Description", name: "description", widget: "text", required: true} 

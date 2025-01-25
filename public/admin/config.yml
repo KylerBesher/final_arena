@@ -2,530 +2,269 @@ backend:
   name: git-gateway
   branch: main
 publish_mode: editorial_workflow
-
 local_backend: true
-media_folder: "public/images"
-public_folder: "/images"
-
+media_folder: public/images
+public_folder: /images
 collections:
-  - name: "pages"
-    label: "Pages"
-    label_singular: "Page"
-    folder: "content/pages"
+  - name: pages
+    label: Pages
+    folder: content/pages
     create: true
     nested:
       depth: 100
       summary: '{{title}}'
+    slug: '{{slug}}'
     fields:
-      - {label: "Title", name: "title", widget: "string", required: true}
-      - label: "Metadata"
-        name: "metadata"
-        widget: "object"
-        fields:
-          - {label: "Description", name: "description", widget: "text", required: true}
-          - {label: "Featured Image", name: "image", widget: "image", required: false}
-          - {label: "Slug", name: "slug", widget: "string", required: true}
-          - label: "Navigation"
-            name: "navigation"
-            widget: "object"
-            fields:
-              - {label: "Show in Navigation", name: "show_in_nav", widget: "boolean", default: true}
-              - {label: "Show Children", name: "show_children", widget: "boolean", default: false}
-              - {label: "Page Weight", name: "page_weight", widget: "number", default: 0}
-          - label: "SEO"
-            name: "seo"
-            widget: "object"
-            fields:
-              - {label: "SEO Title", name: "title", widget: "string", required: true}
-              - {label: "SEO Description", name: "description", widget: "text", required: true}
-              - {label: "Keywords", name: "keywords", widget: "string", required: false}
-              - label: "Open Graph"
-                name: "og"
-                widget: "object"
-                fields:
-                  - {label: "OG Title", name: "title", widget: "string", required: true}
-                  - {label: "OG Description", name: "description", widget: "text", required: true}
-                  - {label: "OG Image", name: "image", widget: "image", required: true}
-              - label: "Twitter Card"
-                name: "twitter"
-                widget: "object"
-                fields:
-                  - {label: "Card Type", name: "card", widget: "select", options: ["summary", "summary_large_image"], default: "summary_large_image"}
-                  - {label: "Twitter Title", name: "title", widget: "string", required: true}
-                  - {label: "Twitter Description", name: "description", widget: "text", required: true}
-                  - {label: "Twitter Image", name: "image", widget: "image", required: true}
-
-      - label: "Sections"
-        name: "sections"
-        widget: "list"
-        types:
-          - label: "Rich Text"
-            name: "richText"
-            widget: "object"
-            summary: '{{fields.content}}'
-            fields:
-              - {label: "Content", name: "content", widget: "markdown"}
-              - label: "Style"
-                name: "style"
-                widget: "object"
-                fields:
-                  - label: "Background"
-                    name: "background"
-                    widget: "object"
-                    fields:
-                      - label: "Light Mode"
-                        name: "light"
-                        widget: "select"
-                        options:
-                          - { label: "White", value: "white" }
-                          - { label: "Light", value: "light" }
-                          - { label: "Primary", value: "primary" }
-                          - { label: "Secondary", value: "secondary" }
-                          - { label: "Accent", value: "accent" }
-                          - { label: "Success", value: "success" }
-                          - { label: "Warning", value: "warning" }
-                          - { label: "Error", value: "error" }
-                        default: "white"
-                      - label: "Dark Mode"
-                        name: "dark"
-                        widget: "select"
-                        options:
-                          - { label: "Dark", value: "dark" }
-                          - { label: "Darker", value: "darker" }
-                          - { label: "Primary", value: "primary" }
-                          - { label: "Secondary", value: "secondary" }
-                          - { label: "Accent", value: "accent" }
-                          - { label: "Success", value: "success" }
-                          - { label: "Warning", value: "warning" }
-                          - { label: "Error", value: "error" }
-                        default: "dark"
-                  - label: "Padding"
-                    name: "padding"
-                    widget: "select"
-                    options:
-                      - { label: "None", value: "none" }
-                      - { label: "Small (1rem)", value: "small" }
-                      - { label: "Medium (2rem)", value: "medium" }
-                      - { label: "Large (3rem)", value: "large" }
-                      - { label: "Extra Large (4rem)", value: "xl" }
-                    default: "medium"
-                  - label: "Width"
-                    name: "width"
-                    widget: "select"
-                    options:
-                      - { label: "Full Width", value: "full" }
-                      - { label: "Wide (1280px)", value: "wide" }
-                      - { label: "Default (1024px)", value: "default" }
-                      - { label: "Narrow (768px)", value: "narrow" }
-                    default: "default"
-                  - label: "Vertical Spacing"
-                    name: "verticalSpacing"
-                    widget: "select"
-                    options:
-                      - { label: "Compact", value: "compact" }
-                      - { label: "Default", value: "default" }
-                      - { label: "Relaxed", value: "relaxed" }
-                    default: "default"
-                  - label: "Font Size"
-                    name: "fontSize"
-                    widget: "select"
-                    options:
-                      - { label: "Small", value: "small" }
-                      - { label: "Default", value: "default" }
-                      - { label: "Large", value: "large" }
-                    default: "default"
-                  - label: "Link Style"
-                    name: "linkStyle"
-                    widget: "select"
-                    options:
-                      - { label: "Subtle (Color Only)", value: "subtle" }
-                      - { label: "Default (Hover Underline)", value: "default" }
-                      - { label: "Prominent (Always Underlined)", value: "prominent" }
-                    default: "default"
-                  - label: "List Style"
-                    name: "listStyle"
-                    widget: "select"
-                    options:
-                      - { label: "Default Bullets/Numbers", value: "default" }
-                      - { label: "Custom Branded", value: "custom" }
-                      - { label: "Minimal Spacing", value: "minimal" }
-                    default: "default"
-                  - label: "Text Alignment"
-                    name: "align"
-                    widget: "select"
-                    options:
-                      - { label: "Left", value: "left" }
-                      - { label: "Center", value: "center" }
-                      - { label: "Right", value: "right" }
-                    default: "left"
-
-          # - label: "Hero Section"
-          #   name: "hero"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - {label: "Subtitle", name: "subtitle", widget: "string"}
-          #     - {label: "Background Image", name: "backgroundImage", widget: "image"}
-
-          # - label: "Two Column Text"
-          #   name: "twoColumnText"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Left Column", name: "leftContent", widget: "markdown"}
-          #     - {label: "Right Column", name: "rightContent", widget: "markdown"}
-          #     - {label: "Column Ratio", name: "ratio", widget: "select", options: ["50/50", "60/40", "40/60"], default: "50/50"}
-
-          # - label: "Stats"
-          #   name: "stats"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - label: "Stats Items"
-          #       name: "items"
-          #       widget: "list"
-          #       fields:
-          #         - {label: "Number", name: "number", widget: "string"}
-          #         - {label: "Label", name: "label", widget: "string"}
-
-          # - label: "Testimonials"
-          #   name: "testimonials"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - label: "Testimonials"
-          #       name: "items"
-          #       widget: "list"
-          #       fields:
-          #         - {label: "Quote", name: "quote", widget: "text"}
-          #         - {label: "Author", name: "author", widget: "string"}
-          #         - {label: "Role", name: "role", widget: "string"}
-          #         - {label: "Image", name: "image", widget: "image", required: false}
-
-          # - label: "Timeline"
-          #   name: "timeline"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - label: "Events"
-          #       name: "items"
-          #       widget: "list"
-          #       fields:
-          #         - {label: "Date", name: "date", widget: "string"}
-          #         - {label: "Title", name: "title", widget: "string"}
-          #         - {label: "Description", name: "description", widget: "text"}
-
-          # - label: "Team"
-          #   name: "team"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - {label: "Description", name: "description", widget: "text"}
-          #     - label: "Background"
-          #       name: "background"
-          #       widget: "select"
-          #       options:
-          #         - { label: "Transparent", value: "transparent" }
-          #         - { label: "White", value: "white" }
-          #         - { label: "Light Gray", value: "light" }
-          #         - { label: "Gray", value: "gray" }
-          #         - { label: "Dark", value: "dark" }
-          #         - { label: "Black", value: "black" }
-                  
-          #         # Brand colors
-          #         - { label: "Primary (Light)", value: "primary" }
-          #         - { label: "Primary (Solid)", value: "primary-solid" }
-          #         - { label: "Secondary (Light)", value: "secondary" }
-          #         - { label: "Secondary (Solid)", value: "secondary-solid" }
-          #         - { label: "Accent (Light)", value: "accent" }
-          #         - { label: "Accent (Solid)", value: "accent-solid" }
-                  
-          #         # Utility colors
-          #         - { label: "Success", value: "success" }
-          #         - { label: "Warning", value: "warning" }
-          #         - { label: "Error", value: "error" }
-          #         - { label: "Info", value: "info" }
-                  
-          #         # Gradients
-          #         - { label: "Primary Gradient", value: "gradient-primary" }
-          #         - { label: "Dark Gradient", value: "gradient-dark" }
-          #         - { label: "Light Gradient", value: "gradient-light" }
-                  
-          #         # Custom
-          #         - { label: "Custom Color", value: "custom" }
-          #     - label: "Custom Background Color"
-          #       name: "customBackground"
-          #       widget: "string"
-          #       required: false
-          #       pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', "Must be a valid hex color (e.g., #FF0000)"]
-          #       hint: "Enter a hex color code (e.g., #FF0000) if you selected 'Custom Color' above"
-          #     - label: "Padding"
-          #       name: "padding"
-          #       widget: "select"
-          #       options:
-          #         - { label: "None", value: "none" }
-          #         - { label: "Small", value: "small" }
-          #         - { label: "Default", value: "default" }
-          #         - { label: "Large", value: "large" }
-          #       default: "default"
-          #     - label: "Width"
-          #       name: "width"
-          #       widget: "select"
-          #       options:
-          #         - { label: "Full Width", value: "full" }
-          #         - { label: "Default", value: "default" }
-          #         - { label: "Narrow", value: "narrow" }
-          #       default: "default"
-          #     - label: "Team Members"
-          #       name: "items"
-          #       widget: "list"
-          #       fields:
-          #         - {label: "Name", name: "name", widget: "string"}
-          #         - {label: "Role", name: "role", widget: "string"}
-          #         - {label: "Image", name: "image", widget: "image"}
-          #         - {label: "Bio", name: "bio", widget: "text"}
-
-          # - label: "Call to Action"
-          #   name: "cta"
-          #   widget: "object"
-          #   fields:
-          #     - {label: "Title", name: "title", widget: "string"}
-          #     - {label: "Subtitle", name: "subtitle", widget: "string"}
-          #     - {label: "Button Text", name: "buttonText", widget: "string"}
-          #     - {label: "Button Link", name: "buttonLink", widget: "string"}
-
-    meta:
-      path:
+      - label: Title
+        name: title
         widget: string
-        label: 'Path'
-        index_file: 'index'
-  - name: "home"
-    label: "Homepage"
-    files:
-      - name: "home"
-        label: "Homepage"
-        file: "content/home.yml"
-        fields:
-          - {label: "Hero Title", name: "heroTitle", widget: "string"}
-          - {label: "Hero Subtitle", name: "heroSubtitle", widget: "string"}
-          - {label: "Hero Image", name: "heroImage", widget: "image"}
-          - label: "Featured Collections"
-            name: "featuredCollections"
-            widget: "list"
+      - label: Description
+        name: description
+        widget: text
+      - label: Sections
+        name: sections
+        widget: list
+        types:
+          - name: rich-text
+            type: rich-text
+            label: Rich Text
             fields:
-              - {label: "Title", name: "title", widget: "string"}
-              - {label: "Description", name: "description", widget: "text"}
-              - label: "Collection"
-                name: "collection"
-                widget: "string"
-                hint: "Enter Shopify collection handle"
-          - label: "Content Sections"
-            name: "sections"
-            widget: "list"
-            types:
-              - label: "Featured Products"
-                name: "featuredProducts"
+              - label: Content
+                name: content
+                widget: markdown
+              - label: Style
+                name: style
                 widget: object
                 fields:
-                  - {label: "Section Title", name: "title", widget: "string"}
-                  - {label: "Products to Show", name: "count", widget: "number", default: 4}
-                  
-              - label: "Text Content"
-                name: "textContent"
-                widget: object
-                fields:
-                  - {label: "Title", name: "title", widget: "string"}
-                  - {label: "Content", name: "content", widget: "markdown"}
-                  
-              - label: "Image with Text"
-                name: "imageWithText"
-                widget: object
-                fields:
-                  - {label: "Title", name: "title", widget: "string"}
-                  - {label: "Text", name: "text", widget: "markdown"}
-                  - {label: "Image", name: "image", widget: "image"}
-                  - {label: "Image Position", name: "imagePosition", widget: "select", options: ["left", "right"]}
-    
-  - name: "settings"
-    label: "Site Settings"
-    files:
-      - name: "navigation"
-        label: "Navigation"
-        file: "content/settings/navigation.yml"
-        fields:
-          - label: "Main Menu"
-            name: "mainMenu"
-            widget: "list"
-            types:
-              - label: "Simple Link"
-                name: "simpleLink"
-                widget: object
-                summary: '{{label}}'
-                fields:
-                  - {label: "Label", name: "label", widget: "string"}
-                  - label: "Link Configuration"
-                    name: "link"
-                    widget: "list"
-                    max: 1
-                    min: 1
-                    types:
-                      - label: "Page Link"
-                        name: "pageLink"
-                        widget: object
-                        summary: 'Page: {{pageLink}}'
-                        fields:
-                          - label: "Page"
-                            name: "pageLink"
-                            widget: "relation"
-                            collection: "pages"
-                            search_fields: ["title"]
-                            value_field: "path"
-                            display_fields: ["title"]
-                      
-                      - label: "External Link"
-                        name: "externalLink"
-                        widget: object
-                        summary: 'URL: {{url}}'
-                        fields:
-                          - label: "URL"
-                            name: "url"
-                            widget: "string"
-
-              - label: "Nested Pages"
-                name: "nestedPages"
-                widget: object
-                summary: '{{label}} (Auto-nested)'
-                fields:
-                  - {label: "Label", name: "label", widget: "string"}
-                  - label: "Parent Page"
-                    name: "pageLink"
-                    widget: "relation"
-                    collection: "pages"
-                    search_fields: ["title"]
-                    value_field: "path"
-                    display_fields: ["title"]
-                  - label: "Nesting Depth"
-                    name: "depth"
-                    widget: "number"
-                    default: 1
-                    min: 1
-                    max: 5
-
-              - label: "Manual Children"
-                name: "manualChildren"
-                widget: object
-                summary: '{{label}} (Manual children)'
-                fields:
-                  - {label: "Label", name: "label", widget: "string"}
-                  - label: "Link Configuration"
-                    name: "link"
-                    widget: "list"
-                    max: 1
-                    min: 1
-                    types:
-                      - label: "Page Link"
-                        name: "pageLink"
-                        widget: object
-                        summary: 'Page: {{pageLink}}'
-                        fields:
-                          - label: "Page"
-                            name: "pageLink"
-                            widget: "relation"
-                            collection: "pages"
-                            search_fields: ["title"]
-                            value_field: "path"
-                            display_fields: ["title"]
-                      
-                      - label: "External Link"
-                        name: "externalLink"
-                        widget: object
-                        summary: 'URL: {{url}}'
-                        fields:
-                          - label: "URL"
-                            name: "url"
-                            widget: "string"
-                  - label: "Children"
-                    name: "children"
-                    widget: "list"
+                  - label: Background
+                    name: background
+                    widget: select
+                    options:
+                      - label: White
+                        value: white
+                      - label: Light
+                        value: light
+                      - label: Gray
+                        value: gray
+                      - label: Dark
+                        value: dark
+                      - label: Primary
+                        value: primary
+                      - label: Secondary
+                        value: secondary
+                      - label: Accent
+                        value: accent
+                      - label: Custom
+                        value: custom
+                    default: white
+                  - label: Custom Background Color
+                    name: customBackground
+                    widget: string
                     required: false
-                    types:
-                      - label: "Level 2 Item"
-                        name: "level2"
-                        widget: object
-                        summary: '{{label}}'
-                        fields:
-                          - {label: "Label", name: "label", widget: "string"}
-                          - label: "Link Configuration"
-                            name: "link"
-                            widget: "list"
-                            max: 1
-                            min: 1
-                            types:
-                              - label: "Page Link"
-                                name: "pageLink"
-                                widget: object
-                                summary: 'Page: {{pageLink}}'
-                                fields:
-                                  - label: "Page"
-                                    name: "pageLink"
-                                    widget: "relation"
-                                    collection: "pages"
-                                    search_fields: ["title"]
-                                    value_field: "path"
-                                    display_fields: ["title"]
-                              
-                              - label: "External Link"
-                                name: "externalLink"
-                                widget: object
-                                summary: 'URL: {{url}}'
-                                fields:
-                                  - label: "URL"
-                                    name: "url"
-                                    widget: "string"
-                          - label: "Children"
-                            name: "children"
-                            widget: "list"
-                            required: false
-                            types:
-                              - label: "Level 3 Item"
-                                name: "level3"
-                                widget: object
-                                summary: '{{label}}'
-                                fields:
-                                  - {label: "Label", name: "label", widget: "string"}
-                                  - label: "Link Configuration"
-                                    name: "link"
-                                    widget: "list"
-                                    max: 1
-                                    min: 1
-                                    types:
-                                      - label: "Page Link"
-                                        name: "pageLink"
-                                        widget: object
-                                        summary: 'Page: {{pageLink}}'
-                                        fields:
-                                          - label: "Page"
-                                            name: "pageLink"
-                                            widget: "relation"
-                                            collection: "pages"
-                                            search_fields: ["title"]
-                                            value_field: "path"
-                                            display_fields: ["title"]
-                                      
-                                      - label: "External Link"
-                                        name: "externalLink"
-                                        widget: object
-                                        summary: 'URL: {{url}}'
-                                        fields:
-                                          - label: "URL"
-                                            name: "url"
-                                            widget: "string"
-
-      - name: "general"
-        label: "General Settings"
-        file: "content/settings/general.yml"
+                    pattern:
+                      - ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+                      - 'Must be a valid hex color (e.g. #FF0000)'
+                    hint: Only used when background is set to "Custom"
+                  - label: Padding
+                    name: padding
+                    widget: select
+                    options:
+                      - label: None
+                        value: none
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    default: medium
+                  - label: Width
+                    name: width
+                    widget: select
+                    options:
+                      - label: Full Width
+                        value: full
+                      - label: Container Width
+                        value: container
+                      - label: Narrow Width
+                        value: narrow
+                    default: container
+                  - label: Vertical Spacing
+                    name: verticalSpacing
+                    widget: select
+                    options:
+                      - label: None
+                        value: none
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    default: medium
+                  - label: Font Size
+                    name: fontSize
+                    widget: select
+                    options:
+                      - label: Small
+                        value: small
+                      - label: Normal
+                        value: normal
+                      - label: Large
+                        value: large
+                    default: normal
+                  - label: Text Alignment
+                    name: alignment
+                    widget: select
+                    options:
+                      - label: Left
+                        value: left
+                      - label: Center
+                        value: center
+                      - label: Right
+                        value: right
+                    default: left
+                  - label: Link Style
+                    name: linkStyle
+                    widget: select
+                    options:
+                      - label: Underline
+                        value: underline
+                      - label: No Underline
+                        value: no-underline
+                      - label: Underline on Hover
+                        value: hover-underline
+                    default: underline
+                  - label: List Style
+                    name: listStyle
+                    widget: select
+                    options:
+                      - label: Default
+                        value: default
+                      - label: No Bullets
+                        value: none
+                      - label: Custom Bullets
+                        value: custom
+                    default: default
+    sectionTypes:
+      - name: rich-text
+        type: rich-text
+        label: Rich Text
         fields:
-          - {label: "Site Title", name: "siteTitle", widget: "string"}
-          - {label: "Site Description", name: "siteDescription", widget: "text"}
-          - {label: "Site Logo", name: "siteLogo", widget: "image", required: false}
-          - {label: "Favicon", name: "favicon", widget: "image", required: false}
-    
+          - label: Content
+            name: content
+            widget: markdown
+          - label: Style
+            name: style
+            widget: object
+            fields:
+              - label: Background
+                name: background
+                widget: select
+                options:
+                  - label: White
+                    value: white
+                  - label: Light
+                    value: light
+                  - label: Gray
+                    value: gray
+                  - label: Dark
+                    value: dark
+                  - label: Primary
+                    value: primary
+                  - label: Secondary
+                    value: secondary
+                  - label: Accent
+                    value: accent
+                  - label: Custom
+                    value: custom
+                default: white
+              - label: Custom Background Color
+                name: customBackground
+                widget: string
+                required: false
+                pattern:
+                  - ^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$
+                  - 'Must be a valid hex color (e.g. #FF0000)'
+                hint: Only used when background is set to "Custom"
+              - label: Padding
+                name: padding
+                widget: select
+                options:
+                  - label: None
+                    value: none
+                  - label: Small
+                    value: small
+                  - label: Medium
+                    value: medium
+                  - label: Large
+                    value: large
+                default: medium
+              - label: Width
+                name: width
+                widget: select
+                options:
+                  - label: Full Width
+                    value: full
+                  - label: Container Width
+                    value: container
+                  - label: Narrow Width
+                    value: narrow
+                default: container
+              - label: Vertical Spacing
+                name: verticalSpacing
+                widget: select
+                options:
+                  - label: None
+                    value: none
+                  - label: Small
+                    value: small
+                  - label: Medium
+                    value: medium
+                  - label: Large
+                    value: large
+                default: medium
+              - label: Font Size
+                name: fontSize
+                widget: select
+                options:
+                  - label: Small
+                    value: small
+                  - label: Normal
+                    value: normal
+                  - label: Large
+                    value: large
+                default: normal
+              - label: Text Alignment
+                name: alignment
+                widget: select
+                options:
+                  - label: Left
+                    value: left
+                  - label: Center
+                    value: center
+                  - label: Right
+                    value: right
+                default: left
+              - label: Link Style
+                name: linkStyle
+                widget: select
+                options:
+                  - label: Underline
+                    value: underline
+                  - label: No Underline
+                    value: no-underline
+                  - label: Underline on Hover
+                    value: hover-underline
+                default: underline
+              - label: List Style
+                name: listStyle
+                widget: select
+                options:
+                  - label: Default
+                    value: default
+                  - label: No Bullets
+                    value: none
+                  - label: Custom Bullets
+                    value: custom
+                default: default
