@@ -1,0 +1,168 @@
+body {
+    margin: 0;
+    background-color: var(--theme-bg);
+    color: var(--theme-text);
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+}
+
+#nc-root {
+    flex: 1;
+    height: calc(100vh - 57px) !important;
+    background-color: var(--theme-bg);
+}
+
+/* Style the CMS interface elements */
+.css-12xblbx-StyledWrapper {
+    background-color: var(--theme-surface) !important;
+}
+
+.css-1hvrgvd-CollectionTopContainer-card-cardTop {
+    background-color: var(--theme-surface) !important;
+}
+
+.css-1j3qsng-CardHeading {
+    color: var(--theme-text) !important;
+}
+
+.css-1q5892v-ToolbarContainer {
+    background-color: var(--theme-surface) !important;
+}
+
+/* Collection cards and tiles - Grid View */
+.css-1yqr0je-Card {
+    background-color: var(--theme-bg) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* List View Items */
+[class*="CardsGrid"] a {
+    background-color: #2a2e36 !important;
+    color: var(--theme-text) !important;
+    display: block;
+    margin-bottom: 4px;
+    padding: 8px;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Grid Card Links */
+[class*="GridCardLink"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    background-image: none !important;
+    text-decoration: none !important;
+    padding: 12px !important;
+    border-radius: 4px !important;
+}
+
+[class*="GridCardLink"] [class*="CardBody"] {
+    background: none !important;
+    color: var(--theme-text) !important;
+}
+
+[class*="GridCardLink"] [class*="CardHeading"] {
+    color: var(--theme-text) !important;
+    margin: 0 !important;
+}
+
+/* Card Body */
+[class*="CardBody"] {
+    color: var(--theme-text) !important;
+}
+
+/* List Card Title */
+[class*="ListCardTitle"] {
+    color: var(--theme-text) !important;
+}
+
+/* Sidebar */
+[class*="SidebarContainer"] {
+    background-color: var(--theme-bg) !important;
+}
+
+/* Sidebar Heading and Search */
+[class*="SidebarHeading"],
+[class*="SearchInput"] {
+    color: var(--theme-text) !important;
+}
+
+/* Active Sidebar Link */
+[class*="TreeNavLink"].sidebar-active {
+    background-color: var(--theme-primary) !important;
+    color: var(--theme-text) !important;
+}
+
+/* Collection links and headings */
+[class*="Card-"] a,
+[class*="card-"] a,
+[class*="Collection-"] a,
+[class*="CardHeading-"],
+[class*="CollectionTop"] {
+    color: var(--theme-text) !important;
+}
+
+/* Search and filter inputs */
+[class*="SearchInput-"],
+[class*="FilterInput-"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Toolbar and action buttons */
+[class*="Toolbar-"],
+[class*="AppHeader-"],
+[class*="TopBar-"] {
+    background-color: var(--theme-surface) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Style buttons and interactive elements */
+button, 
+.css-1hvrgvd-CollectionTopContainer-card-cardTop button {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Style links */
+a {
+    color: var(--theme-primary) !important;
+}
+
+/* Style inputs and text areas */
+input, textarea {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Quick add dropdown and menu items */
+[class*="Dropdown-"],
+[class*="DropdownItem-"],
+[class*="MenuItem-"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Collection Top Container */
+[class*="CollectionTopContainer"] {
+    background-color: var(--theme-bg) !important;
+}
+
+[class*="CollectionTopRow"] {
+    background-color: var(--theme-bg) !important;
+}
+
+/* Top Control Bar */
+#control-bar {
+    background-color: var(--theme-bg);
+    border-bottom: 1px solid var(--theme-text-secondary);
+    padding: 8px 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 48px;
+} 

@@ -7,5 +7,4 @@ module.exports = {
     local_backend: true,
     media_folder: 'public/images',
     public_folder: '/images',
-
 }; 

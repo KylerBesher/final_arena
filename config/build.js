@@ -16,15 +16,17 @@ function getConfigs() {
     clearRequireCache();
     const baseConfig = require('./base');
     const pagesConfig = require('./collections/pages');
-    return { baseConfig, pagesConfig };
+    const settingsConfig = require('./collections/settings');
+    return { baseConfig, pagesConfig, settingsConfig };
 }
 
 // Combine configurations
 function buildConfig() {
-    const { baseConfig, pagesConfig } = getConfigs();
+    const { baseConfig, pagesConfig, settingsConfig } = getConfigs();
     const config = {
         ...baseConfig,
         collections: [
+            settingsConfig,
             pagesConfig,
             // Add more collections here
         ]
