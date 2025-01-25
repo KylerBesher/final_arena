@@ -20,16 +20,17 @@ function createSection(type, config) {
  * @returns {object} Complete collection configuration
  */
 function createCollection(name, config) {
+    const { sectionTypes, ...restConfig } = config;
     return {
         name,
-        ...config,
+        ...restConfig,
         fields: [
-            ...(config.fields || []),
+            ...(restConfig.fields || []),
             {
                 label: 'Sections',
                 name: 'sections',
                 widget: 'list',
-                types: config.sectionTypes || [],
+                types: sectionTypes || [],
             },
         ],
     };
