@@ -1,8 +1,9 @@
 const { createSection } = require('../../../utils');
 const styles = require('./styles');
 
-module.exports = createSection('rich-text', {
+module.exports = createSection('richText', {
     label: 'Rich Text',
+    stripFields: [],
     fields: [
         {
             label: 'Content',
@@ -14,16 +15,8 @@ module.exports = createSection('rich-text', {
             name: 'style',
             widget: 'object',
             fields: [
-                styles.background,
-                styles.customBackground,
-                styles.padding,
-                styles.width,
-                styles.verticalSpacing,
-                styles.fontSize,
-                styles.alignment,
-                styles.linkStyle,
-                styles.listStyle
-            ],
+                styles.typography
+            ]
         },
     ],
 }); 
