@@ -47,13 +47,35 @@
     }
   </script>
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+      background-color: var(--theme-bg);
+      color: var(--theme-text);
+    }
+
     #control-bar {
+      background-color: var(--theme-bg);
+      border-bottom: 1px solid var(--theme-text-secondary);
       padding: 12px 24px;
       display: flex;
       align-items: center;
       justify-content: space-between;
       height: 64px;
-      box-sizing: border-box;
+      z-index: 100;
+    }
+
+    #cms-container {
+      flex: 1;
+      height: calc(100vh - 64px);
+      overflow: hidden;
+    }
+
+    #nc-root {
+      height: 100% !important;
     }
 
     .left-controls {
@@ -176,7 +198,9 @@
       </button>
     </div>
   </div>
-  <div id="nc-root"></div>
+  <div id="cms-container">
+    <div id="nc-root"></div>
+  </div>
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
   <script src="config.js"></script>
 </body>

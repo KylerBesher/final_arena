@@ -1,19 +1,12 @@
 /* Base styles */
 body {
     margin: 0;
-    background-color: var(--theme-bg);
-    color: var(--theme-text);
-    min-height: 100vh;
+    padding: 0;
     display: flex;
     flex-direction: column;
-}
-
-/* CMS root container */
-#nc-root {
-    flex: 1;
-    height: calc(100vh - 64px) !important;
+    min-height: 100vh;
     background-color: var(--theme-bg);
-    margin-top: 64px; /* Add margin to account for fixed navbar */
+    color: var(--theme-text);
 }
 
 /* Control bar */
@@ -25,11 +18,31 @@ body {
     align-items: center;
     justify-content: space-between;
     height: 64px;
-    position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    z-index: 2000; /* Increase z-index to stay above CMS UI */
+    z-index: 100;
+}
+
+/* CMS container */
+#cms-container {
+    flex: 1;
+    height: calc(100vh - 64px);
+    overflow: hidden;
+    background-color: var(--theme-bg);
+}
+
+#nc-root {
+    height: 100% !important;
+}
+
+/* Hide custom navbar when in editor */
+.css-12xblbx-StyledWrapper ~ #control-bar,
+.css-1hvrgvd-CollectionTopContainer-card-cardTop ~ #control-bar {
+    display: none;
+}
+
+/* Adjust CMS root margin only when navbar is visible */
+.css-12xblbx-StyledWrapper:not(~ #control-bar) + #nc-root,
+.css-1hvrgvd-CollectionTopContainer-card-cardTop:not(~ #control-bar) + #nc-root {
+    margin-top: 64px;
 }
 
 .left-controls {
