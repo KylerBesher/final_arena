@@ -1,3 +1,4 @@
+/* Base styles */
 body {
     margin: 0;
     background-color: var(--theme-bg);
@@ -7,10 +8,192 @@ body {
     flex-direction: column;
 }
 
+/* CMS root container */
 #nc-root {
     flex: 1;
-    height: calc(100vh - 57px) !important;
+    height: calc(100vh - 64px) !important;
     background-color: var(--theme-bg);
+    margin-top: 64px; /* Add margin to account for fixed navbar */
+}
+
+/* Control bar */
+#control-bar {
+    background-color: var(--theme-bg);
+    border-bottom: 1px solid var(--theme-text-secondary);
+    padding: 12px 24px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    height: 64px;
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 2000; /* Increase z-index to stay above CMS UI */
+}
+
+.left-controls {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+}
+
+.right-controls {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+}
+
+.theme-select {
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    border: 1px solid var(--theme-text-secondary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    min-width: 110px;
+}
+
+.theme-select:focus {
+    outline: none;
+    border-color: var(--theme-primary);
+}
+
+.theme-select option {
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    padding: 8px;
+}
+
+.nav-button {
+    background: var(--theme-surface);
+    color: var(--theme-text);
+    border: 1px solid var(--theme-text-secondary);
+    padding: 6px 12px;
+    border-radius: 4px;
+    cursor: pointer;
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    min-width: 90px;
+    line-height: 1.4;
+}
+
+.nav-button:hover {
+    border-color: var(--theme-primary);
+    background: var(--theme-bg);
+}
+
+.user-email {
+    font-size: 11px;
+    color: var(--theme-text-secondary);
+}
+
+.status-indicator {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    padding: 6px 12px;
+    border-radius: 4px;
+    background: var(--theme-surface);
+    border: 1px solid var(--theme-text-secondary);
+    font-size: 13px;
+}
+
+.status-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--theme-success);
+}
+
+.divider {
+    width: 1px;
+    height: 24px;
+    background: var(--theme-text-secondary);
+    opacity: 0.5;
+    margin: 0 4px;
+}
+
+.brand-name {
+    color: var(--theme-text);
+    font-weight: 500;
+    font-size: 15px;
+    letter-spacing: -0.2px;
+}
+
+/* CMS UI Elements */
+.css-f7u68r-CardBody,
+.effeus41,
+[class*="CardBody"],
+[class*="CardContent"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+}
+
+/* Collection cards and tiles */
+[class*="Card"],
+[class*="card-"],
+[class*="GridCardLink"],
+[class*="ListCard"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Toolbar and header elements */
+[class*="Toolbar"],
+[class*="AppHeader"],
+[class*="TopBar"] {
+    background-color: var(--theme-surface) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Sidebar elements */
+[class*="SidebarContainer"] {
+    background-color: var(--theme-bg) !important;
+}
+
+[class*="SidebarHeading"],
+[class*="SearchInput"] {
+    color: var(--theme-text) !important;
+}
+
+/* Active sidebar link */
+[class*="TreeNavLink"].sidebar-active {
+    background-color: var(--theme-primary) !important;
+    color: var(--theme-text) !important;
+}
+
+/* Form elements */
+input, 
+textarea, 
+select,
+button:not(.nav-button) {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Links */
+a {
+    color: var(--theme-primary) !important;
+}
+
+/* Dropdowns and menus */
+[class*="Dropdown"],
+[class*="MenuItem"] {
+    background-color: var(--theme-surface) !important;
+    color: var(--theme-text) !important;
+    border-color: var(--theme-text-secondary) !important;
+}
+
+/* Collection containers */
+[class*="CollectionContainer"],
+[class*="CollectionMain"] {
+    background-color: var(--theme-bg) !important;
 }
 
 /* Style the CMS interface elements */
@@ -47,49 +230,13 @@ body {
 }
 
 /* Grid Card Links */
-[class*="GridCardLink"] {
-    background-color: var(--theme-surface) !important;
-    color: var(--theme-text) !important;
-    background-image: none !important;
-    text-decoration: none !important;
-    padding: 12px !important;
-    border-radius: 4px !important;
-}
-
 [class*="GridCardLink"] [class*="CardBody"] {
     background: none !important;
     color: var(--theme-text) !important;
 }
 
-[class*="GridCardLink"] [class*="CardHeading"] {
-    color: var(--theme-text) !important;
-    margin: 0 !important;
-}
-
 /* Card Body */
 [class*="CardBody"] {
-    color: var(--theme-text) !important;
-}
-
-/* List Card Title */
-[class*="ListCardTitle"] {
-    color: var(--theme-text) !important;
-}
-
-/* Sidebar */
-[class*="SidebarContainer"] {
-    background-color: var(--theme-bg) !important;
-}
-
-/* Sidebar Heading and Search */
-[class*="SidebarHeading"],
-[class*="SearchInput"] {
-    color: var(--theme-text) !important;
-}
-
-/* Active Sidebar Link */
-[class*="TreeNavLink"].sidebar-active {
-    background-color: var(--theme-primary) !important;
     color: var(--theme-text) !important;
 }
 
@@ -107,14 +254,6 @@ body {
 [class*="FilterInput-"] {
     background-color: var(--theme-surface) !important;
     color: var(--theme-text) !important;
-    border-color: var(--theme-text-secondary) !important;
-}
-
-/* Toolbar and action buttons */
-[class*="Toolbar-"],
-[class*="AppHeader-"],
-[class*="TopBar-"] {
-    background-color: var(--theme-surface) !important;
     border-color: var(--theme-text-secondary) !important;
 }
 
@@ -140,8 +279,7 @@ input, textarea {
 
 /* Quick add dropdown and menu items */
 [class*="Dropdown-"],
-[class*="DropdownItem-"],
-[class*="MenuItem-"] {
+[class*="DropdownItem-"] {
     background-color: var(--theme-surface) !important;
     color: var(--theme-text) !important;
     border-color: var(--theme-text-secondary) !important;
@@ -154,15 +292,4 @@ input, textarea {
 
 [class*="CollectionTopRow"] {
     background-color: var(--theme-bg) !important;
-}
-
-/* Top Control Bar */
-#control-bar {
-    background-color: var(--theme-bg);
-    border-bottom: 1px solid var(--theme-text-secondary);
-    padding: 8px 16px;
-    display: flex;
-    align-items: center;
-    justify-content: space-between;
-    height: 48px;
 } 

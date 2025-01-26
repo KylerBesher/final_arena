@@ -1,38 +1,5 @@
-// Ensure CMS is loaded before using it
-const settingsCollection = {
-    name: 'settings',
-    label: 'Settings',
-    files: [
-        {
-            name: 'site',
-            label: 'Site Settings',
-            file: 'content/settings/site.json',
-            fields: [
-                {
-                    name: 'branding',
-                    label: 'Branding',
-                    widget: 'object',
-                    fields: [
-                        { name: 'name', label: 'Site Name', widget: 'string' },
-                        { name: 'tagline', label: 'Tagline', widget: 'string' },
-                        { name: 'description', label: 'Description', widget: 'text' },
-                        {
-                            name: 'logo',
-                            label: 'Logo Settings',
-                            widget: 'object',
-                            fields: [
-                                { name: 'main', label: 'Main Logo', widget: 'image' },
-                                { name: 'dark', label: 'Dark Mode Logo', widget: 'image' },
-                                { name: 'favicon', label: 'Favicon', widget: 'image' },
-                                { name: 'alt', label: 'Logo Alt Text', widget: 'string' }
-                            ]
-                        }
-                    ]
-                }
-            ]
-        }
-    ]
-};
+// Import the settings page
+import settingsPage from '../../config/collections/settings';
 
 window.CMS_MANUAL_INIT = true;
 
@@ -91,7 +58,6 @@ const config = {
     media_folder: 'public/images',
     public_folder: '/images',
     collections: [
-        settingsCollection,
         {
             name: 'pages',
             label: 'Pages',
@@ -135,6 +101,8 @@ const config = {
             ]
         }
     ],
+    // Add settings as a top-level page
+    settings: settingsPage,
     // Add the custom header component
     display_url: window.location.origin,
     logo_url: false, // Hide default CMS logo
