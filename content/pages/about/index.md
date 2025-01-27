@@ -10,17 +10,17 @@ metadata:
     show_children: false
     page_weight: 10
   seo:
-    title: "About {{site.name}} | Premier Gaming Community Hub"
-    description: "{{site.default_description}}"
+    title: 'About {{site.name}} | Premier Gaming Community Hub'
+    description: '{{site.default_description}}'
     keywords: gaming store, tabletop games, gaming community, MTG, Warhammer, D&D, board games, sports cards, memorabilia
     og:
-      title: "About {{site.name}} - Premier Gaming Community Hub"
-      description: "{{site.default_description}}"
+      title: 'About {{site.name}} - Premier Gaming Community Hub'
+      description: '{{site.default_description}}'
       image: /images/about-og.jpg
     twitter:
       card: summary_large_image
-      title: "About {{site.name}} | Gaming Community Hub"
-      description: "{{site.default_description}}"
+      title: 'About {{site.name}} | Gaming Community Hub'
+      description: '{{site.default_description}}'
       image: /images/about-twitter.jpg
 sections:
   - type: hero
@@ -45,11 +45,11 @@ sections:
       - name: Todd Brown
         role: Owner & Founder
         image: /images/todd.jpg
-        bio: "Founded {{site.name}} in 1997, bringing over 25 years of experience in sports cards and gaming to the Salina community."
+        bio: 'Founded {{site.name}} in 1997, bringing over 25 years of experience in sports cards and gaming to the Salina community.'
       - name: Chris Brown
         role: Store Manager
         image: /images/chris.jpg
-        bio: "Leading our day-to-day operations with expertise in both trading card games and sports memorabilia."
+        bio: 'Leading our day-to-day operations with expertise in both trading card games and sports memorabilia.'
 
   - type: features
     background: gradient-primary
@@ -58,13 +58,13 @@ sections:
     description: Everything you need for gaming and collecting
     items:
       - title: Sports Cards & Memorabilia
-        description: "Extensive collection of vintage and modern sports cards, autographs, and collectibles. We buy, sell, and help with grading."
+        description: 'Extensive collection of vintage and modern sports cards, autographs, and collectibles. We buy, sell, and help with grading.'
         icon: trophy
       - title: Gaming Center
-        description: "Magic: The Gathering, Pokemon, Warhammer, RPGs, and board games. Join our weekly tournaments and game nights in our dedicated play spaces."
+        description: 'Magic: The Gathering, Pokemon, Warhammer, RPGs, and board games. Join our weekly tournaments and game nights in our dedicated play spaces.'
         icon: dice
       - title: Digital Media & Tech
-        description: "Video games, DVDs, Blu-rays, and 3D printing supplies. Everything you need for modern entertainment and creative projects."
+        description: 'Video games, DVDs, Blu-rays, and 3D printing supplies. Everything you need for modern entertainment and creative projects.'
         icon: gamepad
 
   - type: richText
@@ -91,11 +91,11 @@ sections:
       - question: Do you buy sports cards and collectibles?
         answer: "Yes! We're always interested in purchasing quality sports cards, memorabilia, and collections. Stop by for a free evaluation."
       - question: When do you host tournaments?
-        answer: "We host regular tournaments throughout the week. Friday Night Magic starts at 7pm, and we have various other events - check our Events page for the full schedule."
+        answer: 'We host regular tournaments throughout the week. Friday Night Magic starts at 7pm, and we have various other events - check our Events page for the full schedule.'
       - question: Do I need to be experienced to join game nights?
         answer: "Not at all! We welcome players of all skill levels and have a friendly community that's happy to teach new players."
       - question: Can I reserve a gaming table?
-        answer: "Yes, you can reserve a table for your gaming group. Just give us a call or stop by to check availability."
+        answer: 'Yes, you can reserve a table for your gaming group. Just give us a call or stop by to check availability.'
       - question: Do you take special orders?
-        answer: "Absolutely! We can help you track down specific cards, games, or collectibles. Just ask our staff for assistance."
---- 
+        answer: 'Absolutely! We can help you track down specific cards, games, or collectibles. Just ask our staff for assistance.'
+---

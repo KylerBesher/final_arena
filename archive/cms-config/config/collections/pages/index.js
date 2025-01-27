@@ -15,17 +15,17 @@ module.exports = createCollection('pages', {
         {
             label: 'Title',
             name: 'title',
-            widget: 'string',
+            widget: 'string'
         },
         {
             label: 'Description',
             name: 'description',
-            widget: 'text',
-        },
+            widget: 'text'
+        }
     ],
     // Register available section types
     sectionTypes: [
-        richText,
+        richText
         // Add other section types here
-    ],
-}); 
+    ]
+});

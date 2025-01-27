@@ -15,11 +15,7 @@ export function StringProvider({ children }) {
         })
     };
 
-    return (
-        <StringContext.Provider value={strings}>
-            {children}
-        </StringContext.Provider>
-    );
+    return <StringContext.Provider value={strings}>{children}</StringContext.Provider>;
 }
 
 export function useStrings() {
@@ -28,4 +24,4 @@ export function useStrings() {
         throw new Error('useStrings must be used within a StringProvider');
     }
     return context;
-} 
+}

@@ -23,18 +23,14 @@ export function DarkModeProvider({ children }) {
     }, []);
 
     const toggleDarkMode = () => {
-        setIsDarkMode(prev => {
+        setIsDarkMode((prev) => {
             const newMode = !prev;
             localStorage.setItem('darkMode', String(newMode));
             return newMode;
         });
     };
 
-    return (
-        <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>
-            {children}
-        </DarkModeContext.Provider>
-    );
+    return <DarkModeContext.Provider value={{ isDarkMode, toggleDarkMode }}>{children}</DarkModeContext.Provider>;
 }
 
 export function useDarkMode() {
@@ -43,4 +39,4 @@ export function useDarkMode() {
         throw new Error('useDarkMode must be used within a DarkModeProvider');
     }
     return context;
-} 
+}

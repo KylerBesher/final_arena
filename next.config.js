@@ -7,15 +7,15 @@ const nextConfig = {
             ...[
                 {
                     test: /\.yml$/,
-                    type: "json",
-                    use: "yaml-loader",
+                    type: 'json',
+                    use: 'yaml-loader'
                 },
                 {
                     test: /\.md$/,
                     loader: 'frontmatter-markdown-loader',
                     options: { mode: ['react-component'] }
-                },
-                
+                }
+
                 // {
                 //     test: /\.svg$/,
                 //     use: "@svgr/webpack",
@@ -29,7 +29,7 @@ const nextConfig = {
         }
 
         return config;
-    },
+    }
 };
 
 module.exports = nextConfig;

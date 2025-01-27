@@ -28,4 +28,4 @@ export default async function Page({ params }) {
         console.error('Error loading page:', error);
         notFound();
     }
-} 
+}

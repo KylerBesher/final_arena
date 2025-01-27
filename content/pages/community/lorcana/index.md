@@ -47,6 +47,6 @@ sections:
   - type: cta
     title: Ready to Start Your Journey?
     subtitle: Join the magical world of Lorcana
-    buttonText: "{{cta.events_button}}"
+    buttonText: '{{cta.events_button}}'
     buttonLink: /community/lorcana/events
 ---

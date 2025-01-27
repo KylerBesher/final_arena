@@ -1,7 +1,7 @@
 ---
-title: "Magic: The Gathering"
+title: 'Magic: The Gathering'
 metadata:
-  title: "Magic: The Gathering Community"
+  title: 'Magic: The Gathering Community'
   draft: false
   description: Join our thriving MTG community for tournaments, casual play, and trading
   image: /images/mtg-hero.jpg
@@ -11,21 +11,21 @@ metadata:
     show_children: true
     page_weight: 10
   seo:
-    title: "Magic: The Gathering Community | {{site.name}}"
+    title: 'Magic: The Gathering Community | {{site.name}}'
     description: "Join {{site.name}}'s MTG community for regular events, tournaments, and casual play. All skill levels welcome."
     keywords: MTG, Magic The Gathering, FNM, Commander, Modern, Standard, Draft
     og:
-      title: "MTG Community - {{site.name}}"
-      description: "Your home for Magic: The Gathering in the area"
+      title: 'MTG Community - {{site.name}}'
+      description: 'Your home for Magic: The Gathering in the area'
       image: /images/mtg-og.jpg
     twitter:
       card: summary_large_image
-      title: "MTG Community | {{site.name}}"
-      description: "Join our Magic: The Gathering community"
+      title: 'MTG Community | {{site.name}}'
+      description: 'Join our Magic: The Gathering community'
       image: /images/mtg-twitter.jpg
 sections:
   - type: hero
-    title: "Magic: The Gathering at {{site.name}}"
+    title: 'Magic: The Gathering at {{site.name}}'
     subtitle: Your Home for All Things Magic
     backgroundImage: /images/hero-mtg.jpg
   - type: features
@@ -46,6 +46,6 @@ sections:
   - type: cta
     title: Ready to Start Your Journey?
     subtitle: Join the magical world of Magic
-    buttonText: "{{cta.events_button}}"
+    buttonText: '{{cta.events_button}}'
     buttonLink: /community/magic-the-gathering/events
 ---

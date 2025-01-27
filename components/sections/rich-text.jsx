@@ -1,7 +1,7 @@
 import React from 'react';
 import { Markdown } from '../../components/markdown';
 
-export function RichText({ 
+export function RichText({
     content,
     style = {
         background: 'transparent',
@@ -80,4 +80,4 @@ export function RichText({
             </div>
         </section>
     );
-} 
+}

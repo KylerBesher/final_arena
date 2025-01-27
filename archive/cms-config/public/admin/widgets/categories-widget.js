@@ -13,9 +13,9 @@ const CategoriesControl = createClass({
             className: this.props.classNameWrapper,
             type: 'text',
             value: value ? value.join(separator) : '',
-            onChange: this.handleChange,
+            onChange: this.handleChange
         });
-    },
+    }
 });
 
 // Define the CategoriesPreview component
@@ -28,14 +28,14 @@ const CategoriesPreview = createClass({
                 return h('li', { key: index }, val);
             })
         );
-    },
+    }
 });
 
 // Define the schema for the widget
 const schema = {
     properties: {
-        separator: { type: 'string' },
-    },
+        separator: { type: 'string' }
+    }
 };
 
 // Register the widget with CMS

@@ -108,12 +108,7 @@ const TreeNode = (props) => {
                     </NodeTitleContainer>
                 </TreeNavLink>
                 {node.expanded && (
-                    <TreeNode
-                        collection={collection}
-                        depth={depth + 1}
-                        treeData={node.children}
-                        onToggle={onToggle}
-                    />
+                    <TreeNode collection={collection} depth={depth + 1} treeData={node.children} onToggle={onToggle} />
                 )}
             </React.Fragment>
         );
@@ -125,7 +120,7 @@ export const getTreeData = (collection, entries, selected) => {
     const rootFolder = '/';
     const entriesObj = entries.map((e) => ({
         ...e,
-        path: e.path.substring(collectionFolder.length),
+        path: e.path.substring(collectionFolder.length)
     }));
 
     const dirs = entriesObj.reduce((acc, entry) => {
@@ -143,22 +138,22 @@ export const getTreeData = (collection, entries, selected) => {
             title: collection.get('label'),
             path: rootFolder,
             isDir: true,
-            isRoot: true,
+            isRoot: true
         },
         ...Object.entries(dirs).map(([key, value]) => ({
             title: value,
             path: key,
             isDir: true,
-            isRoot: false,
+            isRoot: false
         })),
         ...entriesObj.map((e) => {
             return {
                 ...e,
                 title: e.data.title,
                 isDir: false,
-                isRoot: false,
+                isRoot: false
             };
-        }),
+        })
     ];
 
     const parentsToChildren = flatData.reduce((acc, node) => {
@@ -182,7 +177,7 @@ export const getTreeData = (collection, entries, selected) => {
             ...node,
             expanded: selected.startsWith(node.path),
             selected: selected === node.path,
-            children,
+            children
         });
         return acc;
     };
@@ -208,7 +203,7 @@ export class NestedCollection extends React.Component {
         super(props);
         const selected = `/${this.props.selected}`;
         this.state = {
-            treeData: getTreeData(this.props.collection, this.props.entries, selected),
+            treeData: getTreeData(this.props.collection, this.props.entries, selected)
         };
     }
 

@@ -14,7 +14,7 @@ const layout = {
                 { label: 'Container Width', value: 'container' },
                 { label: 'Narrow Width', value: 'narrow' }
             ],
-            default: 'container',
+            default: 'container'
         },
         {
             label: 'Padding',
@@ -26,7 +26,7 @@ const layout = {
                 { label: 'Medium', value: 'medium' },
                 { label: 'Large', value: 'large' }
             ],
-            default: 'medium',
+            default: 'medium'
         },
         {
             label: 'Vertical Spacing',
@@ -38,7 +38,7 @@ const layout = {
                 { label: 'Medium', value: 'medium' },
                 { label: 'Large', value: 'large' }
             ],
-            default: 'medium',
+            default: 'medium'
         }
     ]
 };
@@ -69,9 +69,9 @@ const appearance = {
                 { label: 'Blue', value: 'blue' },
                 { label: 'Purple', value: 'purple' },
                 { label: 'Pink', value: 'pink' },
-                { label: 'Custom', value: 'custom' },
+                { label: 'Custom', value: 'custom' }
             ],
-            default: 'blue',
+            default: 'blue'
         },
         {
             label: 'Custom Background Color',
@@ -99,7 +99,7 @@ const typography = {
                 { label: 'Normal', value: 'normal' },
                 { label: 'Large', value: 'large' }
             ],
-            default: 'normal',
+            default: 'normal'
         },
         {
             label: 'Text Alignment',
@@ -110,7 +110,7 @@ const typography = {
                 { label: 'Center', value: 'center' },
                 { label: 'Right', value: 'right' }
             ],
-            default: 'left',
+            default: 'left'
         },
         {
             label: 'Link Style',
@@ -121,7 +121,7 @@ const typography = {
                 { label: 'No Underline', value: 'no-underline' },
                 { label: 'Underline on Hover', value: 'hover-underline' }
             ],
-            default: 'underline',
+            default: 'underline'
         },
         {
             label: 'List Style',
@@ -132,7 +132,7 @@ const typography = {
                 { label: 'No Bullets', value: 'none' },
                 { label: 'Custom Bullets', value: 'custom' }
             ],
-            default: 'default',
+            default: 'default'
         }
     ]
 };
@@ -141,4 +141,4 @@ module.exports = {
     layout,
     appearance,
     typography
-}; 
+};

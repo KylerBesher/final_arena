@@ -9,14 +9,14 @@ const defaultFields = [
     { label: 'message', type: 'textarea', placeholder: 'Your Message', required: true }
 ];
 
-const ContactForm = ({ 
-    title, 
-    description, 
+const ContactForm = ({
+    title,
+    description,
     fields = defaultFields,
-    background = 'white', 
-    customBackground, 
-    padding = 'default', 
-    width = 'narrow' 
+    background = 'white',
+    customBackground,
+    padding = 'default',
+    width = 'narrow'
 }) => {
     const [formData, setFormData] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -45,16 +45,24 @@ const ContactForm = ({
 
     const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     return (
         <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+            <div
+                className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}
+            >
                 {(title || description) && (
                     <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                        {title && (
+                            <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                                {title}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>
+                        )}
                     </div>
                 )}
                 <div className={`max-w-2xl mx-auto ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -120,4 +128,4 @@ const ContactForm = ({
     );
 };
 
-export default ContactForm; 
+export default ContactForm;

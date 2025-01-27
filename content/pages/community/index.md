@@ -1,8 +1,8 @@
 ---
-title: "Gaming Communities"
+title: 'Gaming Communities'
 metadata:
-  title: "Gaming Communities"
-  description: "Explore our diverse gaming communities at The Arena"
+  title: 'Gaming Communities'
+  description: 'Explore our diverse gaming communities at The Arena'
   image: /images/communities-hero.jpg
   slug: community
   navigation:
@@ -10,28 +10,28 @@ metadata:
     show_children: true
     page_weight: 10
   seo:
-    title: "Gaming Communities | {{site.name}}"
-    description: "Join our vibrant gaming communities at {{site.name}}. From Magic: The Gathering to D&D, find your place here."
+    title: 'Gaming Communities | {{site.name}}'
+    description: 'Join our vibrant gaming communities at {{site.name}}. From Magic: The Gathering to D&D, find your place here.'
     keywords: gaming communities, MTG, Warhammer, D&D, board games, Lorcana, miniature gaming
     og:
-      title: "Gaming Communities - {{site.name}}"
-      description: "Find your gaming community"
+      title: 'Gaming Communities - {{site.name}}'
+      description: 'Find your gaming community'
       image: /images/communities-og.jpg
     twitter:
       card: summary_large_image
-      title: "Gaming Communities | {{site.name}}"
-      description: "Join our gaming communities"
+      title: 'Gaming Communities | {{site.name}}'
+      description: 'Join our gaming communities'
       image: /images/communities-twitter.jpg
 sections:
   - type: hero
-    title: "Gaming Communities at {{site.name}}"
-    subtitle: "Find Your People, Play Your Game"
+    title: 'Gaming Communities at {{site.name}}'
+    subtitle: 'Find Your People, Play Your Game'
     backgroundImage: /images/hero-communities.jpg
   - type: features
     title: Our Communities
     items:
       - title: Card Games
-        description: "Magic: The Gathering, Lorcana, and more"
+        description: 'Magic: The Gathering, Lorcana, and more'
         icon: cards
       - title: Miniatures
         description: Warhammer, historical, and skirmish games
@@ -58,6 +58,6 @@ sections:
   - type: cta
     title: Find Your Community
     subtitle: Join one of our gaming groups today
-    buttonText: "{{cta.events_button}}"
+    buttonText: '{{cta.events_button}}'
     buttonLink: /community/events
---- 
+---

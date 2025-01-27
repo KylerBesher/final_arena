@@ -5,7 +5,7 @@ import matter from 'gray-matter';
 
 export default async function BlogPage() {
     const postsDirectory = path.join(process.cwd(), 'content/blog');
-  
+
     // Create the directory if it doesn't exist
     try {
         await fs.access(postsDirectory);
@@ -20,19 +20,21 @@ export default async function BlogPage() {
     }
 
     const files = await fs.readdir(postsDirectory);
-  
+
     const posts = await Promise.all(
-        files.filter(filename => filename.endsWith('.md')).map(async (filename) => {
-            const filePath = path.join(postsDirectory, filename);
-            const fileContent = await fs.readFile(filePath, 'utf8');
-            const { data } = matter(fileContent);
-            return {
-                slug: filename.replace('.md', ''),
-                title: data.title,
-                date: data.date,
-                description: data.description
-            };
-        })
+        files
+            .filter((filename) => filename.endsWith('.md'))
+            .map(async (filename) => {
+                const filePath = path.join(postsDirectory, filename);
+                const fileContent = await fs.readFile(filePath, 'utf8');
+                const { data } = matter(fileContent);
+                return {
+                    slug: filename.replace('.md', ''),
+                    title: data.title,
+                    date: data.date,
+                    description: data.description
+                };
+            })
     );
 
     return (
@@ -60,4 +62,4 @@ export default async function BlogPage() {
             )}
         </div>
     );
-} 
+}

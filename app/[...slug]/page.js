@@ -23,13 +23,13 @@ export default async function Page({ params }) {
         }
 
         const filePath = path.join(process.cwd(), 'content/pages', slugPath, 'index.md');
-        
+
         const fileContent = await fs.readFile(filePath, 'utf8');
         const { data, content } = processMarkdown(fileContent);
 
         // Get navigation items to find current page's children
         const navItems = await getNavigationItems();
-        const currentNavItem = navItems.find(item => item.href === `/${resolvedParams.slug[0]}`);
+        const currentNavItem = navItems.find((item) => item.href === `/${resolvedParams.slug[0]}`);
         const showSubNav = resolvedParams.slug.length === 1 && currentNavItem?.children?.length > 0;
 
         return (
@@ -52,4 +52,4 @@ export default async function Page({ params }) {
         console.error('Error loading page:', error);
         notFound();
     }
-} 
+}

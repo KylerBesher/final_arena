@@ -3,7 +3,7 @@ module.exports = {
     content: [
         './pages/**/*.{js,ts,jsx,tsx,mdx}',
         './components/**/*.{js,ts,jsx,tsx,mdx}',
-        './app/**/*.{js,ts,jsx,tsx,mdx}',
+        './app/**/*.{js,ts,jsx,tsx,mdx}'
     ],
     darkMode: 'class',
     theme: {
@@ -20,7 +20,7 @@ module.exports = {
                     600: '#2563eb',
                     700: '#1d4ed8',
                     800: '#1e40af',
-                    900: '#1e3a8a',
+                    900: '#1e3a8a'
                 },
                 secondary: {
                     DEFAULT: '#7c3aed', // Violet 600
@@ -33,7 +33,7 @@ module.exports = {
                     600: '#7c3aed',
                     700: '#6d28d9',
                     800: '#5b21b6',
-                    900: '#4c1d95',
+                    900: '#4c1d95'
                 },
                 accent: {
                     DEFAULT: '#db2777', // Pink 600
@@ -46,14 +46,14 @@ module.exports = {
                     600: '#db2777',
                     700: '#be185d',
                     800: '#9d174d',
-                    900: '#831843',
+                    900: '#831843'
                 },
                 background: 'var(--color-background)',
-                text: 'var(--color-text)',
+                text: 'var(--color-text)'
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))'
             },
             typography: (theme) => ({
                 DEFAULT: {
@@ -78,10 +78,10 @@ module.exports = {
                         a: {
                             color: theme('colors.primary'),
                             '&:hover': {
-                                color: theme('colors.secondary'),
-                            },
-                        },
-                    },
+                                color: theme('colors.secondary')
+                            }
+                        }
+                    }
                 },
                 dark: {
                     css: {
@@ -89,28 +89,25 @@ module.exports = {
                         a: {
                             color: theme('colors.primary'),
                             '&:hover': {
-                                color: theme('colors.secondary'),
-                            },
+                                color: theme('colors.secondary')
+                            }
                         },
                         h1: {
-                            color: theme('colors.text'),
+                            color: theme('colors.text')
                         },
                         h2: {
-                            color: theme('colors.text'),
+                            color: theme('colors.text')
                         },
                         h3: {
-                            color: theme('colors.text'),
+                            color: theme('colors.text')
                         },
                         h4: {
-                            color: theme('colors.text'),
-                        },
-                    },
-                },
-            }),
-        },
+                            color: theme('colors.text')
+                        }
+                    }
+                }
+            })
+        }
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-        require('./lib/theme/tailwind-theme'),
-    ],
+    plugins: [require('@tailwindcss/typography'), require('./lib/theme/tailwind-theme')]
 };

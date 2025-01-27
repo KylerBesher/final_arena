@@ -8,10 +8,7 @@ export function Testimonials({ title, items }) {
                 <h2 className="text-3xl font-bold text-center mb-12">{title}</h2>
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
                     {items.map((testimonial, index) => (
-                        <div
-                            key={index}
-                            className="bg-white rounded-lg shadow-lg p-6 flex flex-col"
-                        >
+                        <div key={index} className="bg-white rounded-lg shadow-lg p-6 flex flex-col">
                             <div className="flex-grow">
                                 <p className="text-gray-600 italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
                             </div>
@@ -38,4 +35,4 @@ export function Testimonials({ title, items }) {
             </div>
         </section>
     );
-} 
+}

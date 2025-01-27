@@ -1,7 +1,7 @@
 ---
-title: "Warhammer"
+title: 'Warhammer'
 metadata:
-  title: "Warhammer Community"
+  title: 'Warhammer Community'
   description: Join our Warhammer community for battles, painting workshops, and tournaments
   image: /images/warhammer-hero.jpg
   slug: warhammer
@@ -10,22 +10,22 @@ metadata:
     show_children: true
     page_weight: 20
   seo:
-    title: "Warhammer Community | {{site.name}}"
+    title: 'Warhammer Community | {{site.name}}'
     description: "Join {{site.name}}'s Warhammer community for epic battles, painting workshops, and competitive tournaments. All skill levels welcome."
     keywords: Warhammer, 40K, Age of Sigmar, Kill Team, painting, miniatures, tournaments
     og:
-      title: "Warhammer Community - {{site.name}}"
-      description: "Your home for all things Warhammer"
+      title: 'Warhammer Community - {{site.name}}'
+      description: 'Your home for all things Warhammer'
       image: /images/warhammer-og.jpg
     twitter:
       card: summary_large_image
-      title: "Warhammer Community | {{site.name}}"
-      description: "Join our Warhammer community"
+      title: 'Warhammer Community | {{site.name}}'
+      description: 'Join our Warhammer community'
       image: /images/warhammer-twitter.jpg
 sections:
   - type: hero
-    title: "Warhammer at {{site.name}}"
-    subtitle: "In the Grim Darkness of the Far Future, There is Only War"
+    title: 'Warhammer at {{site.name}}'
+    subtitle: 'In the Grim Darkness of the Far Future, There is Only War'
     backgroundImage: /images/hero-warhammer.jpg
   - type: features
     title: What We Offer
@@ -45,6 +45,6 @@ sections:
   - type: cta
     title: Ready for Battle?
     subtitle: Join our next Warhammer event
-    buttonText: "{{cta.events_button}}"
+    buttonText: '{{cta.events_button}}'
     buttonLink: /community/warhammer/events
 ---

@@ -36,12 +36,12 @@ const components = {
 
 export function SectionComponent({ section }) {
     const Component = components[section.type];
-    
+
     if (!Component) {
         console.log('Missing section type:', section.type);
         return null;
     }
-    
+
     return <Component {...section} />;
 }
 

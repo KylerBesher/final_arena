@@ -31,11 +31,11 @@ const resolvers = {
                 return {
                     title: data.title,
                     content,
-                    slug: filename.replace('.md', ''),
+                    slug: filename.replace('.md', '')
                 };
             });
-        },
-    },
+        }
+    }
 };
 
 // Create the Apollo Server
@@ -43,8 +43,8 @@ const apolloServer = new ApolloServer({ typeDefs, resolvers });
 
 export const config = {
     api: {
-        bodyParser: false,
-    },
+        bodyParser: false
+    }
 };
 
-export default apolloServer.createHandler({ path: '/api/graphql' }); 
+export default apolloServer.createHandler({ path: '/api/graphql' });

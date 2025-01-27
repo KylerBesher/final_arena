@@ -4,7 +4,7 @@ const yaml = require('js-yaml');
 
 // Clear require cache to get fresh configs
 function clearRequireCache() {
-    Object.keys(require.cache).forEach(key => {
+    Object.keys(require.cache).forEach((key) => {
         if (key.includes('/config/') && !key.includes('/config/build.js')) {
             delete require.cache[key];
         }
@@ -27,7 +27,7 @@ function buildConfig() {
         ...baseConfig,
         collections: [
             settingsConfig,
-            pagesConfig,
+            pagesConfig
             // Add more collections here
         ]
     };
@@ -42,17 +42,13 @@ function buildConfig() {
     const yamlStr = yaml.dump(config, {
         indent: 2,
         lineWidth: -1, // Prevent line wrapping
-        noRefs: true,  // Prevent aliases
+        noRefs: true // Prevent aliases
     });
 
-    fs.writeFileSync(
-        path.join(outputDir, 'config.yml'),
-        yamlStr,
-        'utf8'
-    );
+    fs.writeFileSync(path.join(outputDir, 'config.yml'), yamlStr, 'utf8');
 
     console.log('CMS config generated successfully!');
 }
 
 // Run the build
-buildConfig(); 
+buildConfig();

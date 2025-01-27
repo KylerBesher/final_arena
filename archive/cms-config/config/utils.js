@@ -10,26 +10,28 @@ function createSection(type, config) {
     const { stripFields = [], fields = [], ...restConfig } = config;
 
     // Process fields to handle style object stripping
-    const processedFields = fields.map(field => {
+    const processedFields = fields.map((field) => {
         if (field.name === 'style' && field.widget === 'object') {
             const { fields: styleFields = [], ...styleRest } = field;
-            
-            if (!styleFields.some(field => field.name === styles.appearance.name)) {
+
+            if (!styleFields.some((field) => field.name === styles.appearance.name)) {
                 styleFields.push(styles.appearance);
             }
-            if (!styleFields.some(field => field.name === styles.layout.name)) {
+            if (!styleFields.some((field) => field.name === styles.layout.name)) {
                 styleFields.push(styles.layout);
             }
 
             // Get all style fields
-            const allStyleFields = styleFields.map(f => {
-                // If it's layout or appearance, include by default
-                if (f.name === 'layout' || f.name === 'appearance') {
-                    return f;
-                }
-                // For other fields, check if they should be stripped
-                return stripFields.some(stripField => stripField.name === f.name) ? null : f;
-            }).filter(Boolean); // Remove null values
+            const allStyleFields = styleFields
+                .map((f) => {
+                    // If it's layout or appearance, include by default
+                    if (f.name === 'layout' || f.name === 'appearance') {
+                        return f;
+                    }
+                    // For other fields, check if they should be stripped
+                    return stripFields.some((stripField) => stripField.name === f.name) ? null : f;
+                })
+                .filter(Boolean); // Remove null values
 
             // Sort fields by weight
             const sortedFields = allStyleFields.sort((a, b) => {
@@ -71,13 +73,13 @@ function createCollection(name, config) {
                 label: 'Sections',
                 name: 'sections',
                 widget: 'list',
-                types: sectionTypes || [],
-            },
-        ],
+                types: sectionTypes || []
+            }
+        ]
     };
 }
 
 module.exports = {
     createSection,
-    createCollection,
-}; 
+    createCollection
+};

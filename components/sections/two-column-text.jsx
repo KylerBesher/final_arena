@@ -5,7 +5,7 @@ export function TwoColumnText({ leftContent, rightContent, ratio = '50/50' }) {
     const ratioClasses = {
         '50/50': 'lg:w-1/2 lg:w-1/2',
         '60/40': 'lg:w-3/5 lg:w-2/5',
-        '40/60': 'lg:w-2/5 lg:w-3/5',
+        '40/60': 'lg:w-2/5 lg:w-3/5'
     };
 
     const [leftWidth, rightWidth] = ratioClasses[ratio].split(' ');
@@ -28,4 +28,4 @@ export function TwoColumnText({ leftContent, rightContent, ratio = '50/50' }) {
             </div>
         </section>
     );
-} 
+}

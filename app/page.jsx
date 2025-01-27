@@ -19,7 +19,7 @@ export default async function Home() {
 
     if (!homeData) {
         return <div>Loading...</div>;
-    } 
+    }
 
     return (
         <main>

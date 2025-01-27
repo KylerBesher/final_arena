@@ -8,15 +8,13 @@ module.exports = createSection('richText', {
         {
             label: 'Content',
             name: 'content',
-            widget: 'markdown',
+            widget: 'markdown'
         },
         {
             label: 'Style',
             name: 'style',
             widget: 'object',
-            fields: [
-                styles.typography
-            ]
-        },
-    ],
-}); 
+            fields: [styles.typography]
+        }
+    ]
+});

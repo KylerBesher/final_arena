@@ -14,7 +14,7 @@ export default function Editor() {
             <div className="md:w-2/5">
                 <NewShape setLastMutationTime={setLastMutationTime} />
             </div>
-            <div className='w-full'>
+            <div className="w-full">
                 <StoredBlobsList lastMutationTime={lastMutationTime} />
             </div>
         </div>

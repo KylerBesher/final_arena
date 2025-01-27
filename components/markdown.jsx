@@ -5,7 +5,13 @@ export function Markdown({ content }) {
     const HighlightedCodeBlock = ({ children }) => {
         const { props } = children;
         const matchLanguage = /lang-(\w+)/.exec(props?.className || '');
-        return <CodeBlock code={props?.children} lang={matchLanguage ? matchLanguage[1] : undefined} title={props?.title} />;
+        return (
+            <CodeBlock
+                code={props?.children}
+                lang={matchLanguage ? matchLanguage[1] : undefined}
+                title={props?.title}
+            />
+        );
     };
 
     return (

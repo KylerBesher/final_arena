@@ -31,11 +31,7 @@ export function ThemeProvider({ children }) {
         console.log('Theme updated:', { isDarkMode, colors });
     }, [isDarkMode, theme]);
 
-    return (
-        <ThemeContext.Provider value={{ theme, isDarkMode }}>
-            {children}
-        </ThemeContext.Provider>
-    );
+    return <ThemeContext.Provider value={{ theme, isDarkMode }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -44,4 +40,4 @@ export function useTheme() {
         throw new Error('useTheme must be used within a ThemeProvider');
     }
     return context;
-} 
+}

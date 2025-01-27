@@ -57,4 +57,4 @@ sections:
     title: Stay Updated
     subtitle: Subscribe to our newsletter for the latest updates
     buttonText: Subscribe
---- 
+---

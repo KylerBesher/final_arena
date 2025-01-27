@@ -14,4 +14,4 @@ export function Stats({ title, items }) {
             </div>
         </section>
     );
-} 
+}

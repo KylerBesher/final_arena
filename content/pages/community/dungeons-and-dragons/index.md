@@ -1,7 +1,7 @@
 ---
-title: "Dungeons & Dragons"
+title: 'Dungeons & Dragons'
 metadata:
-  title: "D&D Community"
+  title: 'D&D Community'
   description: Join our D&D community for campaigns, one-shots, and DM workshops
   image: /images/dnd-hero.jpg
   slug: dungeons-and-dragons
@@ -10,22 +10,22 @@ metadata:
     show_children: true
     page_weight: 50
   seo:
-    title: "D&D Community | {{site.name}}"
+    title: 'D&D Community | {{site.name}}'
     description: "Join {{site.name}}'s D&D community for epic campaigns, one-shot adventures, and DM workshops. All experience levels welcome."
     keywords: D&D, Dungeons and Dragons, RPG, tabletop RPG, DM, campaigns, one-shots
     og:
-      title: "D&D Community - {{site.name}}"
-      description: "Your home for tabletop roleplaying adventures"
+      title: 'D&D Community - {{site.name}}'
+      description: 'Your home for tabletop roleplaying adventures'
       image: /images/dnd-og.jpg
     twitter:
       card: summary_large_image
-      title: "D&D Community | {{site.name}}"
-      description: "Join our D&D community"
+      title: 'D&D Community | {{site.name}}'
+      description: 'Join our D&D community'
       image: /images/dnd-twitter.jpg
 sections:
   - type: hero
-    title: "D&D at {{site.name}}"
-    subtitle: "Where Adventures Begin"
+    title: 'D&D at {{site.name}}'
+    subtitle: 'Where Adventures Begin'
     backgroundImage: /images/hero-dnd.jpg
   - type: features
     title: What We Offer
@@ -45,6 +45,6 @@ sections:
   - type: cta
     title: Ready for Adventure?
     subtitle: Join our next D&D session
-    buttonText: "{{cta.events_button}}"
+    buttonText: '{{cta.events_button}}'
     buttonLink: /community/dungeons-and-dragons/events
 ---

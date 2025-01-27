@@ -31,7 +31,7 @@ sections:
     title: Product Categories
     items:
       - title: Trading Card Games
-        description: "Magic: The Gathering, Lorcana, Pokémon, and more"
+        description: 'Magic: The Gathering, Lorcana, Pokémon, and more'
         image: /images/categories/tcg.jpg
         link: /products/trading-cards
       - title: Miniature Games
@@ -66,4 +66,4 @@ sections:
     subtitle: Our team is here to help you find exactly what you need
     buttonText: Contact Us
     buttonLink: /contact
---- 
+---

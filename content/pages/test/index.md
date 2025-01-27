@@ -3,7 +3,7 @@ title: Test Pages
 description: Collection of test pages for components and styling
 template: page
 metadata:
-  description: "A comprehensive testing ground for components, layouts, and styling options"
+  description: 'A comprehensive testing ground for components, layouts, and styling options'
   navigation:
     show_in_nav: true
     show_children: true
@@ -80,5 +80,4 @@ sections:
     background: light
     padding: large
     width: default
-
---- 
+---

@@ -4,7 +4,7 @@ import { randomInt } from 'utils';
 // See: https://github.com/lokesh-coder/blobs.app/blob/master/src/components/Blob.js
 export function ShapeRenderer(props) {
     const { svgPath, colors } = props;
-    const uniqueGradientId = `gradient-${randomInt(10_000_000, 100_000_000)}` 
+    const uniqueGradientId = `gradient-${randomInt(10_000_000, 100_000_000)}`;
     return (
         <div className="w-full bg-white text-primary aspect-square">
             {!!svgPath && !!colors && (
@@ -23,7 +23,8 @@ export function ShapeRenderer(props) {
                         </defs>
                         <path id="blob" d={svgPath} fill={`url(#${uniqueGradientId})`} />
                     </>
-                </svg>)}
+                </svg>
+            )}
         </div>
     );
 }

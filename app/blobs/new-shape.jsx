@@ -43,7 +43,11 @@ export function NewShape(props) {
                 <button className="btn btn-primary" onClick={randomizeBlob}>
                     Randomize
                 </button>
-                <button className="btn btn-primary" onClick={onUpload} disabled={uploadDisabled || wasUploaded || !blobData}>
+                <button
+                    className="btn btn-primary"
+                    onClick={onUpload}
+                    disabled={uploadDisabled || wasUploaded || !blobData}
+                >
                     Upload
                 </button>
             </div>

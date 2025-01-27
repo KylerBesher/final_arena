@@ -75,7 +75,12 @@ const settingsCollection = {
                     label: 'Site Text',
                     widget: 'object',
                     fields: [
-                        { name: 'title_template', label: 'Title Template', widget: 'string', hint: 'Use %s for page title' },
+                        {
+                            name: 'title_template',
+                            label: 'Title Template',
+                            widget: 'string',
+                            hint: 'Use %s for page title'
+                        },
                         { name: 'default_title', label: 'Default Title', widget: 'string' },
                         { name: 'default_description', label: 'Default Description', widget: 'text' },
                         {
@@ -92,7 +97,12 @@ const settingsCollection = {
                             label: 'Footer',
                             widget: 'object',
                             fields: [
-                                { name: 'copyright', label: 'Copyright Text', widget: 'string', hint: 'Use {{year}} for current year' }
+                                {
+                                    name: 'copyright',
+                                    label: 'Copyright Text',
+                                    widget: 'string',
+                                    hint: 'Use {{year}} for current year'
+                                }
                             ]
                         },
                         {

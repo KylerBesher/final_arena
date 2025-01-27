@@ -9,7 +9,10 @@
         "lint": "next lint",
         "build:cms": "esbuild src/admin/index.js --bundle --outfile=public/admin/cms.js --platform=node --format=iife --global-name=CMS --loader:.js=jsx --loader:.jsx=jsx --define:process.env.NODE_ENV=\\\"production\\\" --define:global=window",
         "dev:cms": "esbuild src/admin/index.js --bundle --outfile=public/admin/cms.js --platform=node --format=iife --global-name=CMS --loader:.js=jsx --loader:.jsx=jsx --define:process.env.NODE_ENV=\\\"development\\\" --define:global=window --define:process.env.REACT_APP_SUPPRESS_WARNINGS=\\\"true\\\"",
-        "watch:cms": "nodemon --watch src/admin --ext js,jsx --exec 'npm run dev:cms'"
+        "watch:cms": "nodemon --watch src/admin --ext js,jsx --exec 'npm run dev:cms'",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+        "lint:fix": "next lint --fix",
+        "fix": "npm run format && npm run lint:fix"
     },
     "dependencies": {
         "@apollo/client": "^3.12.4",
