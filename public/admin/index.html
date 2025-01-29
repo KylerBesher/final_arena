@@ -201,7 +201,59 @@
   <div id="cms-container">
     <div id="nc-root"></div>
   </div>
+  {{/*  <script src="/admin/preview-templates/page.js"></script>  */}}
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+  <script>
+    CMS.registerPreviewStyle('/admin/preview.css');
+    
+    const PagePreview = createClass({
+      render: function() {
+        const entry = this.props.entry;
+        const data = entry.get('data').toJS();
+        console.log('Preview Data:', data); // Debug log
+        
+        const renderSection = (section, index) => {
+          console.log('Rendering section:', section); // Debug log
+          
+          if (section.type === 'richText') {
+            const content = entry.getIn(['data', 'sections', index, 'content']);
+            console.log('Section content:', content); // Debug log
+            
+            return h('div', {
+              key: index,
+              className: 'prose prose-invert max-w-none',
+              style: {
+                padding: section.style?.layout?.padding === 'large' ? '3rem' : 
+                        section.style?.layout?.padding === 'medium' ? '2rem' : 
+                        section.style?.layout?.padding === 'small' ? '1rem' : '0',
+                maxWidth: section.style?.layout?.width === 'narrow' ? '65ch' :
+                         section.style?.layout?.width === 'container' ? '1200px' : 'none',
+                margin: '0 auto',
+                backgroundColor: section.style?.appearance?.background === 'white' ? '#ffffff' :
+                               section.style?.appearance?.background === 'gray' ? '#f3f4f6' :
+                               section.style?.appearance?.background === 'dark' ? '#1f2937' : 'transparent',
+                color: section.style?.appearance?.background === 'white' ? '#1f2937' : '#ffffff',
+              }
+            }, 
+            // Use the markdown widget to render the content
+            this.props.widgetFor('sections')?.props?.value?.get(index)?.get('content') || content
+            );
+          }
+          return null;
+        };
+
+        return h('div', { className: 'preview-content' },
+          h('h1', { className: 'text-3xl font-bold mb-4' }, data.title),
+          h('p', { className: 'text-lg mb-8' }, data.description),
+          h('div', {},
+            data.sections ? data.sections.map((section, index) => renderSection(section, index)) : null
+          )
+        );
+      }
+    });
+
+    CMS.registerPreviewTemplate("pages", PagePreview);
+  </script>
   <script src="config.js"></script>
 </body>
 </html>

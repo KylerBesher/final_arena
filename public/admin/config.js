@@ -57,6 +57,7 @@ const config = {
     publish_mode: 'editorial_workflow',
     media_folder: 'public/images',
     public_folder: '/images',
+    load_config_file: false,
     collections: [
         {
             name: 'pages',
@@ -122,3 +123,5 @@ if (window.CMS) {
         window.CMS.init({ config });
     });
 }
+
+export default config;

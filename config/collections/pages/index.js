@@ -6,6 +6,7 @@ module.exports = createCollection('pages', {
     label: 'Pages',
     folder: 'content/pages',
     create: true,
+    preview_component: 'PagePreview',
     nested: {
         depth: 100,
         summary: '{{title}}'
