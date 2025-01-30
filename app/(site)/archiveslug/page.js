@@ -1,10 +1,10 @@
 import { notFound } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
-import { SectionComponent } from '../../components/sections';
-import { processMarkdown } from '../../lib/markdown';
-import { SubNav } from '../../components/SubNav';
-import { getNavigationItems } from '../../lib/navigation.server';
+import { SectionComponent } from '../../../../components/sections';
+import { processMarkdown } from '../../../lib/markdown';
+import { SubNav } from '../../../../components/SubNav';
+import { getNavigationItems } from '../../../lib/navigation.server';
 
 export default async function Page({ params }) {
     try {

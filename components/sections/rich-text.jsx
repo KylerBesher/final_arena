@@ -1,5 +1,5 @@
 import React from 'react';
-import { Markdown } from '../../components/markdown';
+import { Markdown } from '../../../components/markdown';
 
 export function RichText({ 
     content,

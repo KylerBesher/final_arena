@@ -1,10 +1,10 @@
-import '../styles/globals.css';
-import { Footer } from '../components/footer';
-import { Header } from '../components/header';
-import { ThemeProvider } from '../lib/theme/ThemeContext';
-import { DarkModeProvider } from '../lib/theme/DarkModeContext';
-import { StringProvider } from '../lib/context/StringContext';
-import siteConfig from '../content/settings/site.json';
+import '../../styles/globals.css';
+import { Footer } from '../../components/footer';
+import { Header } from '../../components/header';
+import { ThemeProvider } from '../../lib/theme/ThemeContext';
+import { DarkModeProvider } from '../../lib/theme/DarkModeContext';
+import { StringProvider } from '../../lib/context/StringContext';
+import siteConfig from '../../content/settings/site.json';
 
 export const metadata = {
     title: {
