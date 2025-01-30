@@ -183,8 +183,6 @@ collections:
     label: Pages
     folder: content/pages
     create: true
-    preview_path: '{{slug}}'
-    preview_template: pages
     preview_component: PagePreview
     nested:
       depth: 100

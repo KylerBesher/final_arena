@@ -56,8 +56,6 @@
         };
 
         return h('div', { className: 'preview-content' },
-          h('h1', { className: 'text-3xl font-bold mb-4' }, data.title),
-          h('p', { className: 'text-lg mb-8' }, data.description),
           h('div', {},
             data.sections ? data.sections.map((section, index) => renderSection(section, index)) : null
           )
