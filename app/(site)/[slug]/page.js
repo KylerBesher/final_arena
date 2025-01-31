@@ -1,7 +1,7 @@
 import { notFound } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
-import { SectionComponent } from '../../../../components/sections';
+import { SectionComponent } from '../../../components/sections';
 import { processMarkdown } from '../../../lib/markdown';
 
 export default async function Page({ params }) {

@@ -1,5 +1,7 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+    reactStrictMode: false, // Disable strict mode to prevent duplicate unmounting
+
     productionBrowserSourceMaps: true,
     // pageExtensions: ["tsx"],
     experimental: {
