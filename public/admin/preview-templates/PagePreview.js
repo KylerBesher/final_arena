@@ -16,7 +16,7 @@ const PagePreview = createClass({
                             h('div', null, section.content)
                         );
                     }
-                    return null;
+                    return h('div', null, `${section.type} not implemented`);
                 })
             )
         );
