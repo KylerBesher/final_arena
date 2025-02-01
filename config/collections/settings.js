@@ -1,6 +1,7 @@
 const settingsCollection = {
     name: 'static',
     label: 'Static',
+    preview_component: 'PagePreview',
     files: [
         {
             name: 'site',
