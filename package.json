@@ -9,7 +9,11 @@
         "lint": "next lint",
         "build:cms": "node config/build.js",
         "watch:cms": "nodemon --watch config --ext js --exec 'npm run build:cms'",
-        "build:cms-components": "node scripts/build-cms-components.js"
+        "watch:cms-components": "nodemon --watch components --ext jsx --exec 'npm run build:cms-components'",
+        "build:cms-components": "node scripts/build-cms-components.js",
+        "build:css": "npx tailwindcss -i ./styles/globals.css -o ./public/styles/globals.css --minify",
+        "watch:css": "nodemon --watch styles --ext css --exec 'npm run build:css'",
+        "watch:all": "concurrently \"npm run watch:cms\" \"npm run watch:cms-components\" \"npm run watch:css\""
     },
     "dependencies": {
         "@apollo/client": "^3.12.4",
@@ -45,16 +49,17 @@
         "@babel/preset-react": "^7.26.3",
         "@tailwindcss/typography": "^0.5.16",
         "@types/node": "^22.12.0",
-        "autoprefixer": "^10.4.18",
+        "autoprefixer": "^10.4.20",
         "babel-loader": "^9.2.1",
         "chokidar": "^3.6.0",
+        "concurrently": "^9.1.2",
         "daisyui": "^4.12.8",
         "eslint": "^8.57.1",
         "eslint-config-next": "^15.1.3",
         "eslint-config-prettier": "^9.1.0",
         "frontmatter-markdown-loader": "^3.7.0",
         "nodemon": "^3.1.9",
-        "postcss": "^8.4.36",
+        "postcss": "^8.5.1",
         "prettier": "^3.4.2",
         "tailwindcss": "^3.4.17",
         "typescript": "^5.7.3"

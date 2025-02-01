@@ -20,15 +20,9 @@ export default function RootLayout({ children }) {
                 <DarkModeProvider>
                     <ThemeProvider>
                         <StringProvider>
-                            <div>
-                                <Header />
-                                <div>
-                                    <div>
-                                        <div>{children}</div>
-                                        <Footer />
-                                    </div>
-                                </div>
-                            </div>
+                            <Header />
+                            <div>{children}</div>
+                            <Footer />
                         </StringProvider>
                     </ThemeProvider>
                 </DarkModeProvider>

@@ -36,7 +36,7 @@ export function RichText({
                 <div className={contentClasses}>
                     <div>check this here</div>
                     <Markdown content={content} />
-                    <div>check this here</div>
+
                 </div>
             </div>
         </section>
