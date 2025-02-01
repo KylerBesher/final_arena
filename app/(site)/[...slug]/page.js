@@ -1,4 +1,3 @@
-
 import { notFound } from 'next/navigation';
 import fs from 'fs/promises';
 import path from 'path';
@@ -36,7 +35,7 @@ export default async function Page({ params }) {
         return (
             <>
                 {showSubNav && <SubNav items={currentNavItem.children} />}
-                <div className={showSubNav ? 'mt-12' : ''}>
+                <div>
                     {data.sections?.map((section, index) => (
                         <SectionComponent key={index} section={section} />
                     ))}
