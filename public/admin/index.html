@@ -8,12 +8,20 @@
   <!-- Add React dependencies -->
   <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
   <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+  <!-- Include your site's styles -->
+  <link href="/styles/globals.css" rel="stylesheet">
 </head>
 <body>
+  <!-- Load your components first -->
+  <script src="/admin/components/cms-components.js"></script>
+  <script>
+    // Debug what components are available
+    console.log('CMS Components:', window['cms-components']);
+  </script>
+  
   <!-- Include the script that builds the page and powers Decap CMS -->
   <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <!-- Include your preview template -->
+  <!-- Then load your preview template -->
   <script src="/admin/preview-templates/PagePreview.js"></script>
-  
 </body>
 </html>

@@ -4,11 +4,12 @@
     "private": true,
     "scripts": {
         "dev": "next dev",
-        "build": "npm run build:cms && next build",
+        "build": "npm run build:cms-components && next build",
         "start": "next start",
         "lint": "next lint",
         "build:cms": "node config/build.js",
-        "watch:cms": "nodemon --watch config --ext js --exec 'npm run build:cms'"
+        "watch:cms": "nodemon --watch config --ext js --exec 'npm run build:cms'",
+        "build:cms-components": "node scripts/build-cms-components.js"
     },
     "dependencies": {
         "@apollo/client": "^3.12.4",
@@ -16,6 +17,8 @@
         "@netlify/blobs": "^8.1.0",
         "@portabletext/react": "^3.2.0",
         "@shopify/shopify-api": "^11.6.1",
+        "@types/react": "^18.2.0",
+        "@types/react-dom": "^18.2.0",
         "ajv": "^8.12.0",
         "ajv-keywords": "^5.1.0",
         "apollo-server-micro": "^3.13.0",
@@ -34,8 +37,7 @@
         "react-dom": "18.3.1",
         "slate-hyperscript": "^0.100.0",
         "unique-names-generator": "^4.7.1",
-        "@types/react": "^18.2.0",
-        "@types/react-dom": "^18.2.0"
+        "webpack": "^5.97.1"
     },
     "devDependencies": {
         "@babel/core": "^7.26.7",

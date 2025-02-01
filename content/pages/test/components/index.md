@@ -35,5 +35,41 @@ sections:
         alignment: left
         linkStyle: underline
         listStyle: default
-    content: this si thet text
+    content: |-
+      # header 1
+
+      ## header 2
+
+      ### header 3
+
+      #### header 4
+
+      ##### header 5
+
+      ###### header 6
+  - type: poorText
+    style:
+      layout:
+        width: container
+        padding: medium
+        verticalSpacing: medium
+      appearance:
+        background: primary
+      typography:
+        fontSize: normal
+        alignment: left
+        linkStyle: underline
+        listStyle: default
+    content: |-
+      # header 1
+
+      ## header 2
+
+      ### header 3
+
+      #### header 4
+
+      ##### header 5
+
+      ###### header 6
 ---

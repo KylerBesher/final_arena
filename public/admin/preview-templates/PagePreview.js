@@ -6,17 +6,29 @@ const PagePreview = createClass({
         const description = entry.getIn(['data', 'description']);
         const sections = entry.getIn(['data', 'sections'])?.toJS() || [];
 
+        // Debug what components are available
+        console.log('Available components:', window['cms-components']);
+        console.log('Sections:', sections);
+
         return h('div', { className: 'preview-content' },
             h('h1', null, title),
             h('p', null, description),
             h('div', { className: 'sections' },
                 sections.map((section, index) => {
                     if (section.type === 'richText') {
-                        return h('div', { key: index, className: 'rich-text-section' },
-                            h('div', null, section.content)
-                        );
+                        const RichText = window['cms-components'].RichText;
+                        console.log('RichText component:', RichText); // Debug log
+                        if (!RichText) {
+                            console.error('RichText component not found');
+                            return null;
+                        }
+                        return h(RichText, {
+                            key: index,
+                            content: section.content || '',
+                            style: section.style || {}
+                        });
                     }
-                    return h('div', null, `${section.type} not implemented`);
+                    return h('div', { key: index }, `${section.type} not implemented`);
                 })
             )
         );
