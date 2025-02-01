@@ -1,3 +1,5 @@
+/* global h, createClass, CMS */
+
 const PagePreview = createClass({
     render: function() {
         // Get the entry data
