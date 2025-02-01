@@ -1,4 +1,4 @@
-const styles = require('./collections/pages/sections/styles');
+const styles = require('./collections/pages/styles');
 
 /**
  * Creates a section configuration with common fields and validation

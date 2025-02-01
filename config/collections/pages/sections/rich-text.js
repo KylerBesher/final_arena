@@ -1,5 +1,5 @@
 const { createSection } = require('../../../utils');
-const styles = require('./styles');
+const styles = require('../styles');
 
 module.exports = createSection('richText', {
     label: 'Rich Text',
