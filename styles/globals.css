@@ -5,5 +5,4 @@
 /* Optional custom base styles */
 body {
   @apply antialiased bg-background text-text;
-  background-color: green
 } 

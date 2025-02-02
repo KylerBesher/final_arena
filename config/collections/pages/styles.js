@@ -1,144 +1,122 @@
-// Common style configurations for sections
+const createSelectField = (label, name, options, defaultValue) => ({
+    label,
+    name,
+    widget: "select",
+    options,
+    default: defaultValue,
+});
+
+const colorFields = [
+    { name: "primary", label: "Primary Color", widget: "color" },
+    { name: "secondary", label: "Secondary Color", widget: "color" },
+    { name: "accent", label: "Accent Color", widget: "color" },
+    { name: "background", label: "Background Color", widget: "color" },
+    { name: "text", label: "Text Color", widget: "color" },
+    { name: "backgroundImage", label: "Background Image", widget: "image", required: false },
+    {
+        label: "Background Overlay",
+        name: "backgroundOverlay",
+        widget: "object",
+        fields: [
+            { name: "overlayColor", label: "Overlay Color", widget: "color" },
+            { name: "overlayOpacity", label: "Overlay Opacity", widget: "number", min: 0, max: 1, step: 0.1 },
+        ],
+    },
+];
+
 const layout = {
-    label: 'Layout',
-    name: 'layout',
-    widget: 'object',
+    label: "Layout",
+    name: "layout",
+    widget: "object",
     weight: 100,
     fields: [
-        {
-            label: 'Width',
-            name: 'width',
-            widget: 'select',
-            options: [
-                { label: 'Full Width', value: 'full' },
-                { label: 'Container Width', value: 'container' },
-                { label: 'Narrow Width', value: 'narrow' }
-            ],
-            default: 'container',
-        },
-        {
-            label: 'Padding',
-            name: 'padding',
-            widget: 'select',
-            options: [
-                { label: 'None', value: 'none' },
-                { label: 'Small', value: 'small' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Large', value: 'large' }
-            ],
-            default: 'medium',
-        },
-        {
-            label: 'Vertical Spacing',
-            name: 'verticalSpacing',
-            widget: 'select',
-            options: [
-                { label: 'None', value: 'none' },
-                { label: 'Small', value: 'small' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Large', value: 'large' }
-            ],
-            default: 'medium',
-        }
-    ]
+        createSelectField("Width", "width", [
+            { label: "Full Width", value: "full" },
+            { label: "Standard Width", value: "standard" },
+            { label: "Narrow Width", value: "narrow" },
+        ], "standard"),
+        createSelectField("Padding", "padding", [
+            { label: "None", value: "none" },
+            { label: "Small", value: "small" },
+            { label: "Medium", value: "medium" },
+            { label: "Large", value: "large" },
+        ], "medium"),
+        createSelectField("Vertical Spacing", "verticalSpacing", [
+            { label: "None", value: "none" },
+            { label: "Small", value: "small" },
+            { label: "Medium", value: "medium" },
+            { label: "Large", value: "large" },
+        ], "medium"),
+        createSelectField("Flex Direction", "flexDirection", [
+            { label: "Row", value: "row" },
+            { label: "Column", value: "column" },
+            { label: "Row Reverse", value: "row-reverse" },
+            { label: "Column Reverse", value: "column-reverse" },
+        ], "row"),
+        createSelectField("Justify Content", "justifyContent", [
+            { label: "Start", value: "start" },
+            { label: "Center", value: "center" },
+            { label: "End", value: "end" },
+            { label: "Space Between", value: "space-between" },
+            { label: "Space Around", value: "space-around" },
+            { label: "Space Evenly", value: "space-evenly" },
+        ], "start"),
+        createSelectField("Align Items", "alignItems", [
+            { label: "Stretch", value: "stretch" },
+            { label: "Center", value: "center" },
+            { label: "Start", value: "start" },
+            { label: "End", value: "end" },
+            { label: "Baseline", value: "baseline" },
+        ], "stretch"),
+    ],
 };
 
 const appearance = {
-    label: 'Appearance',
-    name: 'appearance',
-    widget: 'object',
+    label: "Appearance",
+    name: "appearance",
+    widget: "object",
     weight: 200,
     fields: [
-        {
-            label: 'Background',
-            name: 'background',
-            widget: 'select',
-            options: [
-                { label: 'White', value: 'white' },
-                { label: 'Light Gray', value: 'lightGray' },
-                { label: 'Gray', value: 'gray' },
-                { label: 'Dark Gray', value: 'darkGray' },
-                { label: 'Black', value: 'black' },
-                { label: 'Primary', value: 'primary' },
-                { label: 'Secondary', value: 'secondary' },
-                { label: 'Accent', value: 'accent' },
-                { label: 'Red', value: 'red' },
-                { label: 'Orange', value: 'orange' },
-                { label: 'Yellow', value: 'yellow' },
-                { label: 'Green', value: 'green' },
-                { label: 'Blue', value: 'blue' },
-                { label: 'Purple', value: 'purple' },
-                { label: 'Pink', value: 'pink' },
-                { label: 'Custom', value: 'custom' },
-            ],
-            default: 'blue',
-        },
-        {
-            label: 'Custom Background Color',
-            name: 'customBackground',
-            widget: 'string',
-            required: false,
-            pattern: ['^#([A-Fa-f0-9]{6}|[A-Fa-f0-9]{3})$', 'Must be a valid hex color (e.g. #FF0000)'],
-            hint: 'Only used when background is set to "Custom"'
-        }
-    ]
+        { label: "Light Mode", name: "lightMode", widget: "object", fields: colorFields },
+        { label: "Dark Mode", name: "darkMode", widget: "object", fields: colorFields },
+    ],
 };
 
 const typography = {
-    label: 'Typography',
-    name: 'typography',
-    widget: 'object',
+    label: "Typography & Text Effects",
+    name: "typography",
+    widget: "object",
     weight: 300,
     fields: [
-        {
-            label: 'Font Size',
-            name: 'fontSize',
-            widget: 'select',
-            options: [
-                { label: 'Small', value: 'small' },
-                { label: 'Normal', value: 'normal' },
-                { label: 'Large', value: 'large' }
-            ],
-            default: 'normal',
-        },
-        {
-            label: 'Text Alignment',
-            name: 'alignment',
-            widget: 'select',
-            options: [
-                { label: 'Left', value: 'left' },
-                { label: 'Center', value: 'center' },
-                { label: 'Right', value: 'right' }
-            ],
-            default: 'left',
-        },
-        {
-            label: 'Link Style',
-            name: 'linkStyle',
-            widget: 'select',
-            options: [
-                { label: 'Underline', value: 'underline' },
-                { label: 'No Underline', value: 'no-underline' },
-                { label: 'Underline on Hover', value: 'hover-underline' }
-            ],
-            default: 'underline',
-        },
-        {
-            label: 'List Style',
-            name: 'listStyle',
-            widget: 'select',
-            options: [
-                { label: 'Default', value: 'default' },
-                { label: 'No Bullets', value: 'none' },
-                { label: 'Custom Bullets', value: 'custom' }
-            ],
-            default: 'default',
-        }
-    ]
+        createSelectField("Font Size", "fontSize", [
+            { label: "Small", value: "small" },
+            { label: "Normal", value: "normal" },
+            { label: "Large", value: "large" },
+        ], "normal"),
+        createSelectField("Font Weight", "fontWeight", [
+            { label: "Thin", value: "100" },
+            { label: "Light", value: "300" },
+            { label: "Regular", value: "400" },
+            { label: "Medium", value: "500" },
+            { label: "Bold", value: "700" },
+            { label: "Black", value: "900" },
+        ], "400"),
+        createSelectField("Line Height", "lineHeight", [
+            { label: "Tight", value: "tight" },
+            { label: "Normal", value: "normal" },
+            { label: "Relaxed", value: "relaxed" },
+        ], "normal"),
+        createSelectField("Text Alignments", "textAlign", [
+            { label: "Left", value: "left" },
+            { label: "Center", value: "center" },
+            { label: "Right", value: "right" },
+            { label: "Justify", value: "justify" },
+        ], "left"),
+    ],
 };
 
 module.exports = {
     layout,
     appearance,
-    typography
-}; 
+    typography,
+};

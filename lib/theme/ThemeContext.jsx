@@ -13,7 +13,7 @@ export function ThemeProvider({ children }) {
     useEffect(() => {
         // Apply theme colors to CSS variables
         const root = document.documentElement;
-        const colors = isDarkMode ? theme.darkMode : theme.colors;
+        const colors = isDarkMode ? theme.colors.darkMode : theme.colors.lightMode;
 
         // Apply dark mode class
         if (isDarkMode) {
