@@ -40,6 +40,7 @@ function createSection(type, config) {
 
             return {
                 ...styleRest,
+                slug: '',
                 fields: sortedFields
             };
         }

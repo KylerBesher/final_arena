@@ -7,22 +7,32 @@ const createSelectField = (label, name, options, defaultValue) => ({
 });
 
 const colorFields = [
-    { name: "primary", label: "Primary Color", widget: "color" },
-    { name: "secondary", label: "Secondary Color", widget: "color" },
-    { name: "accent", label: "Accent Color", widget: "color" },
-    { name: "background", label: "Background Color", widget: "color" },
-    { name: "text", label: "Text Color", widget: "color" },
+    { name: "primary", label: "Primary Color", widget: "color" , required: false},
+    { name: "secondary", label: "Secondary Color", widget: "color" , required: false},
+    { name: "accent", label: "Accent Color", widget: "color" , required: false},
+    { name: "background", label: "Background Color", widget: "color" , required: false},
+    { name: "text", label: "Text Color", widget: "color" , required: false},
     { name: "backgroundImage", label: "Background Image", widget: "image", required: false },
     {
         label: "Background Overlay",
         name: "backgroundOverlay",
         widget: "object",
         fields: [
-            { name: "overlayColor", label: "Overlay Color", widget: "color" },
-            { name: "overlayOpacity", label: "Overlay Opacity", widget: "number", min: 0, max: 1, step: 0.1 },
+            { name: "overlayColor", label: "Overlay Color", widget: "color", required: false },
+            { name: "overlayOpacity", label: "Overlay Opacity", widget: "number", min: 0, max: 1, step: 0.1, required: false },
         ],
     },
 ];
+
+// Define a defaults object for layout options
+const layoutDefaults = {
+    width: "standard",
+    padding: "medium",
+    verticalSpacing: "medium",
+    flexDirection: "row",
+    justifyContent: "start",
+    alignItems: "stretch",
+};
 
 const layout = {
     label: "Layout",
@@ -34,25 +44,25 @@ const layout = {
             { label: "Full Width", value: "full" },
             { label: "Standard Width", value: "standard" },
             { label: "Narrow Width", value: "narrow" },
-        ], "standard"),
+        ], layoutDefaults.width),
         createSelectField("Padding", "padding", [
             { label: "None", value: "none" },
             { label: "Small", value: "small" },
             { label: "Medium", value: "medium" },
             { label: "Large", value: "large" },
-        ], "medium"),
+        ], layoutDefaults.padding),
         createSelectField("Vertical Spacing", "verticalSpacing", [
             { label: "None", value: "none" },
             { label: "Small", value: "small" },
             { label: "Medium", value: "medium" },
             { label: "Large", value: "large" },
-        ], "medium"),
+        ], layoutDefaults.verticalSpacing),
         createSelectField("Flex Direction", "flexDirection", [
             { label: "Row", value: "row" },
             { label: "Column", value: "column" },
             { label: "Row Reverse", value: "row-reverse" },
             { label: "Column Reverse", value: "column-reverse" },
-        ], "row"),
+        ], layoutDefaults.flexDirection),
         createSelectField("Justify Content", "justifyContent", [
             { label: "Start", value: "start" },
             { label: "Center", value: "center" },
@@ -60,14 +70,14 @@ const layout = {
             { label: "Space Between", value: "space-between" },
             { label: "Space Around", value: "space-around" },
             { label: "Space Evenly", value: "space-evenly" },
-        ], "start"),
+        ], layoutDefaults.justifyContent),
         createSelectField("Align Items", "alignItems", [
             { label: "Stretch", value: "stretch" },
             { label: "Center", value: "center" },
             { label: "Start", value: "start" },
             { label: "End", value: "end" },
             { label: "Baseline", value: "baseline" },
-        ], "stretch"),
+        ], layoutDefaults.alignItems),
     ],
 };
 
