@@ -1,5 +1,6 @@
 const { createCollection } = require('../../utils');
 const richText = require('./sections/rich-text');
+const Metadata = require('./metadata');
 // Import other section types here
 
 module.exports = createCollection('pages', {
@@ -11,7 +12,7 @@ module.exports = createCollection('pages', {
         depth: 100,
         summary: '{{title}}'
     },
-    slug: '{{slug}}',
+    meta: { path: { widget: 'string', label: 'Path', index_file: 'index' } },
     fields: [
         {
             label: 'Title',
@@ -23,6 +24,7 @@ module.exports = createCollection('pages', {
             name: 'path',
             widget: 'string',
         },
+        Metadata,
     ],
     // Register available section types
     sectionTypes: [

@@ -15,7 +15,7 @@ async function getHomeData() {
 }
 
 export default async function Home() {
-    const homeData = await getHomeData();
+    const homeData = 'replace me home layout';//await getHomeData();
 
     if (!homeData) {
         return <div>Loading...</div>;
@@ -23,8 +23,9 @@ export default async function Home() {
 
     return (
         <main>
-            <h1>{homeData.heroTitle}</h1>
-            <p>{homeData.heroSubtitle}</p>
+            <div>{homeData}</div>
+            {/* <h1>{homeData.heroTitle}</h1> */}
+            {/* <p>{homeData.heroSubtitle}</p> */}
         </main>
     );
 }
