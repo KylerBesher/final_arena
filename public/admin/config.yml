@@ -140,125 +140,273 @@ collections:
       - label: Title
         name: title
         widget: string
-      - label: Metadata
-        name: metadata
-        widget: object
-        required: false
-        fields:
-          - label: Description
-            name: description
-            widget: string
-            hint: Provide a brief summary of the page's content.
-            required: false
-          - label: Navigation
-            name: navigation
-            widget: object
-            hint: Settings that determine how this page appears in the site navigation.
-            required: false
+      - label: Sections
+        name: sections
+        widget: list
+        types:
+          - name: richText
+            type: richText
+            label: Rich Text
             fields:
-              - label: Show In Nav
-                name: show_in_nav
-                widget: boolean
-                hint: Toggle to display this page in the main navigation menu.
-                required: false
-              - label: Show Children
-                name: show_children
-                widget: boolean
-                hint: Toggle to display child pages in the navigation drop-down.
-                required: false
-              - label: Page Weight
-                name: page_weight
-                widget: number
-                hint: Determines the page order in navigation; lower numbers appear first.
-                required: false
-          - label: SEO
-            name: seo
-            widget: object
-            hint: Manage search engine optimization settings for this page.
-            required: false
-            fields:
-              - label: SEO Title
-                name: seo_title
-                widget: string
-                hint: A custom title for search engines (defaults to the page title if left blank).
-                required: false
-              - label: Keywords
-                name: keywords
+              - label: Content
+                name: content
+                widget: markdown
+              - label: Metadata
+                name: metadata
+                widget: object
+                fields:
+                  - name: id
+                    label: ID
+                    widget: string
+                  - name: classes
+                    label: Classes
+                    widget: list
+                    field:
+                      widget: string
+                      label: Class
+                      name: class
+                      required: false
+              - label: Style Override
+                name: style
                 widget: list
-                hint: Add keywords to improve search engine visibility; create one per list item.
-                required: false
-                field:
-                  label: Keyword
-                  name: keyword
-                  widget: string
-                  hint: A single keyword for SEO purposes.
-                  required: false
-              - label: Canonical URL
-                name: canonical
-                widget: string
-                hint: The preferred URL for this page to prevent duplicate content issues.
-                required: false
-          - label: Publication Information
-            name: publication
-            widget: object
-            hint: Information about when this page was published or updated.
-            required: false
-            fields:
-              - label: Publish Date
-                name: publish_date
-                widget: datetime
-                hint: The date and time when this page is or will be published.
-                required: false
-              - label: Last Updated
-                name: updated_date
-                widget: datetime
-                hint: The date and time when this page was last updated.
-                required: false
-          - label: Social / Open Graph
-            name: social
-            widget: object
-            hint: Settings for how this page is presented when shared on social media.
-            required: false
-            fields:
-              - label: OG Title
-                name: og_title
-                widget: string
-                hint: A custom title for Open Graph sharing (overrides the page title if provided).
-                required: false
-              - label: OG Description
-                name: og_description
-                widget: text
-                hint: A description that appears when the page is shared on social networks.
-                required: false
-              - label: OG Image
-                name: og_image
-                widget: image
-                hint: The image used when the page is shared on social platforms.
-                required: false
-              - label: Twitter Card Type
-                name: twitter_card
-                widget: select
-                options:
-                  - label: Summary
-                    value: summary
-                  - label: Summary with Large Image
-                    value: summary_large_image
-                default: summary
-                hint: Select the style of Twitter card to use when the page is shared.
-                required: false
-          - label: Tags
-            name: tags
-            widget: list
-            hint: Categorize this page with tags for better organization.
-            required: false
-            field:
-              label: Tag
-              name: tag
-              widget: string
-              hint: Enter a single tag or keyword for this page.
-              required: false
-      - label: Styles
-        name: styles
+                types:
+                  - label: Appearance
+                    name: appearance
+                    widget: object
+                    weight: 200
+                    fields:
+                      - label: Light Mode
+                        name: lightMode
+                        widget: object
+                        fields:
+                          - name: primary
+                            label: Primary Color
+                            widget: color
+                            required: false
+                          - name: secondary
+                            label: Secondary Color
+                            widget: color
+                            required: false
+                          - name: accent
+                            label: Accent Color
+                            widget: color
+                            required: false
+                          - name: background
+                            label: Background Color
+                            widget: color
+                            required: false
+                          - name: text
+                            label: Text Color
+                            widget: color
+                            required: false
+                          - name: backgroundImage
+                            label: Background Image
+                            widget: image
+                            required: false
+                          - label: Background Overlay
+                            name: backgroundOverlay
+                            widget: object
+                            fields:
+                              - name: overlayColor
+                                label: Overlay Color
+                                widget: color
+                                required: false
+                              - name: overlayOpacity
+                                label: Overlay Opacity
+                                widget: number
+                                min: 0
+                                max: 1
+                                step: 0.1
+                                required: false
+                      - label: Dark Mode
+                        name: darkMode
+                        widget: object
+                        fields:
+                          - name: primary
+                            label: Primary Color
+                            widget: color
+                            required: false
+                          - name: secondary
+                            label: Secondary Color
+                            widget: color
+                            required: false
+                          - name: accent
+                            label: Accent Color
+                            widget: color
+                            required: false
+                          - name: background
+                            label: Background Color
+                            widget: color
+                            required: false
+                          - name: text
+                            label: Text Color
+                            widget: color
+                            required: false
+                          - name: backgroundImage
+                            label: Background Image
+                            widget: image
+                            required: false
+                          - label: Background Overlay
+                            name: backgroundOverlay
+                            widget: object
+                            fields:
+                              - name: overlayColor
+                                label: Overlay Color
+                                widget: color
+                                required: false
+                              - name: overlayOpacity
+                                label: Overlay Opacity
+                                widget: number
+                                min: 0
+                                max: 1
+                                step: 0.1
+                                required: false
+                  - label: Layout
+                    name: layout
+                    widget: object
+                    weight: 100
+                    fields:
+                      - label: Width
+                        name: width
+                        widget: select
+                        options:
+                          - label: Full Width
+                            value: full
+                          - label: Standard Width
+                            value: standard
+                          - label: Narrow Width
+                            value: narrow
+                        default: standard
+                      - label: Padding
+                        name: padding
+                        widget: select
+                        options:
+                          - label: None
+                            value: none
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        default: medium
+                      - label: Vertical Spacing
+                        name: verticalSpacing
+                        widget: select
+                        options:
+                          - label: None
+                            value: none
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        default: medium
+                      - label: Flex Direction
+                        name: flexDirection
+                        widget: select
+                        options:
+                          - label: Row
+                            value: row
+                          - label: Column
+                            value: column
+                          - label: Row Reverse
+                            value: row-reverse
+                          - label: Column Reverse
+                            value: column-reverse
+                        default: row
+                      - label: Justify Content
+                        name: justifyContent
+                        widget: select
+                        options:
+                          - label: Start
+                            value: start
+                          - label: Center
+                            value: center
+                          - label: End
+                            value: end
+                          - label: Space Between
+                            value: space-between
+                          - label: Space Around
+                            value: space-around
+                          - label: Space Evenly
+                            value: space-evenly
+                        default: start
+                      - label: Align Items
+                        name: alignItems
+                        widget: select
+                        options:
+                          - label: Stretch
+                            value: stretch
+                          - label: Center
+                            value: center
+                          - label: Start
+                            value: start
+                          - label: End
+                            value: end
+                          - label: Baseline
+                            value: baseline
+                        default: stretch
+                  - label: Typography & Text Effects
+                    name: typography
+                    widget: object
+                    weight: 300
+                    fields:
+                      - label: Font Size
+                        name: fontSize
+                        widget: select
+                        options:
+                          - label: Small
+                            value: small
+                          - label: Normal
+                            value: normal
+                          - label: Large
+                            value: large
+                        default: normal
+                      - label: Font Weight
+                        name: fontWeight
+                        widget: select
+                        options:
+                          - label: Thin
+                            value: '100'
+                          - label: Light
+                            value: '300'
+                          - label: Regular
+                            value: '400'
+                          - label: Medium
+                            value: '500'
+                          - label: Bold
+                            value: '700'
+                          - label: Black
+                            value: '900'
+                        default: '400'
+                      - label: Line Height
+                        name: lineHeight
+                        widget: select
+                        options:
+                          - label: Tight
+                            value: tight
+                          - label: Normal
+                            value: normal
+                          - label: Relaxed
+                            value: relaxed
+                        default: normal
+                      - label: Text Alignments
+                        name: textAlign
+                        widget: select
+                        options:
+                          - label: Left
+                            value: left
+                          - label: Center
+                            value: center
+                          - label: Right
+                            value: right
+                          - label: Justify
+                            value: justify
+                        default: left
+      - label: Style Override
+        name: style
         widget: list
         types:
           - label: Layout
@@ -496,253 +644,120 @@ collections:
                   - label: Justify
                     value: justify
                 default: left
-      - label: Sections
-        name: sections
-        widget: list
-        types:
-          - name: richText
-            type: richText
-            label: Rich Text
+      - label: Metadata
+        name: metadata
+        widget: object
+        required: false
+        fields:
+          - label: Navigation
+            name: navigation
+            widget: object
+            hint: Settings that determine how this page appears in the site navigation.
+            required: false
             fields:
-              - label: Content
-                name: content
-                widget: markdown
-              - label: Style
-                name: style
-                widget: object
-                fields:
-                  - label: Layout
-                    name: layout
-                    widget: object
-                    weight: 100
-                    fields:
-                      - label: Width
-                        name: width
-                        widget: select
-                        options:
-                          - label: Full Width
-                            value: full
-                          - label: Standard Width
-                            value: standard
-                          - label: Narrow Width
-                            value: narrow
-                        default: standard
-                      - label: Padding
-                        name: padding
-                        widget: select
-                        options:
-                          - label: None
-                            value: none
-                          - label: Small
-                            value: small
-                          - label: Medium
-                            value: medium
-                          - label: Large
-                            value: large
-                        default: medium
-                      - label: Vertical Spacing
-                        name: verticalSpacing
-                        widget: select
-                        options:
-                          - label: None
-                            value: none
-                          - label: Small
-                            value: small
-                          - label: Medium
-                            value: medium
-                          - label: Large
-                            value: large
-                        default: medium
-                      - label: Flex Direction
-                        name: flexDirection
-                        widget: select
-                        options:
-                          - label: Row
-                            value: row
-                          - label: Column
-                            value: column
-                          - label: Row Reverse
-                            value: row-reverse
-                          - label: Column Reverse
-                            value: column-reverse
-                        default: row
-                      - label: Justify Content
-                        name: justifyContent
-                        widget: select
-                        options:
-                          - label: Start
-                            value: start
-                          - label: Center
-                            value: center
-                          - label: End
-                            value: end
-                          - label: Space Between
-                            value: space-between
-                          - label: Space Around
-                            value: space-around
-                          - label: Space Evenly
-                            value: space-evenly
-                        default: start
-                      - label: Align Items
-                        name: alignItems
-                        widget: select
-                        options:
-                          - label: Stretch
-                            value: stretch
-                          - label: Center
-                            value: center
-                          - label: Start
-                            value: start
-                          - label: End
-                            value: end
-                          - label: Baseline
-                            value: baseline
-                        default: stretch
-                  - label: Appearance
-                    name: appearance
-                    widget: object
-                    weight: 200
-                    fields:
-                      - label: Light Mode
-                        name: lightMode
-                        widget: object
-                        fields:
-                          - name: primary
-                            label: Primary Color
-                            widget: color
-                            required: false
-                          - name: secondary
-                            label: Secondary Color
-                            widget: color
-                            required: false
-                          - name: accent
-                            label: Accent Color
-                            widget: color
-                            required: false
-                          - name: background
-                            label: Background Color
-                            widget: color
-                            required: false
-                          - name: text
-                            label: Text Color
-                            widget: color
-                            required: false
-                          - name: backgroundImage
-                            label: Background Image
-                            widget: image
-                            required: false
-                          - label: Background Overlay
-                            name: backgroundOverlay
-                            widget: object
-                            fields:
-                              - name: overlayColor
-                                label: Overlay Color
-                                widget: color
-                                required: false
-                              - name: overlayOpacity
-                                label: Overlay Opacity
-                                widget: number
-                                min: 0
-                                max: 1
-                                step: 0.1
-                                required: false
-                      - label: Dark Mode
-                        name: darkMode
-                        widget: object
-                        fields:
-                          - name: primary
-                            label: Primary Color
-                            widget: color
-                            required: false
-                          - name: secondary
-                            label: Secondary Color
-                            widget: color
-                            required: false
-                          - name: accent
-                            label: Accent Color
-                            widget: color
-                            required: false
-                          - name: background
-                            label: Background Color
-                            widget: color
-                            required: false
-                          - name: text
-                            label: Text Color
-                            widget: color
-                            required: false
-                          - name: backgroundImage
-                            label: Background Image
-                            widget: image
-                            required: false
-                          - label: Background Overlay
-                            name: backgroundOverlay
-                            widget: object
-                            fields:
-                              - name: overlayColor
-                                label: Overlay Color
-                                widget: color
-                                required: false
-                              - name: overlayOpacity
-                                label: Overlay Opacity
-                                widget: number
-                                min: 0
-                                max: 1
-                                step: 0.1
-                                required: false
-                  - label: Typography & Text Effects
-                    name: typography
-                    widget: object
-                    weight: 300
-                    fields:
-                      - label: Font Size
-                        name: fontSize
-                        widget: select
-                        options:
-                          - label: Small
-                            value: small
-                          - label: Normal
-                            value: normal
-                          - label: Large
-                            value: large
-                        default: normal
-                      - label: Font Weight
-                        name: fontWeight
-                        widget: select
-                        options:
-                          - label: Thin
-                            value: '100'
-                          - label: Light
-                            value: '300'
-                          - label: Regular
-                            value: '400'
-                          - label: Medium
-                            value: '500'
-                          - label: Bold
-                            value: '700'
-                          - label: Black
-                            value: '900'
-                        default: '400'
-                      - label: Line Height
-                        name: lineHeight
-                        widget: select
-                        options:
-                          - label: Tight
-                            value: tight
-                          - label: Normal
-                            value: normal
-                          - label: Relaxed
-                            value: relaxed
-                        default: normal
-                      - label: Text Alignments
-                        name: textAlign
-                        widget: select
-                        options:
-                          - label: Left
-                            value: left
-                          - label: Center
-                            value: center
-                          - label: Right
-                            value: right
-                          - label: Justify
-                            value: justify
-                        default: left
+              - label: Show In Nav
+                name: show_in_nav
+                widget: boolean
+                hint: Toggle to display this page in the main navigation menu.
+                required: false
+              - label: Show Children
+                name: show_children
+                widget: boolean
+                hint: Toggle to display child pages in the navigation drop-down.
+                required: false
+              - label: Page Weight
+                name: page_weight
+                widget: number
+                hint: Determines the page order in navigation; lower numbers appear first.
+                required: false
+          - label: Description
+            name: description
+            widget: string
+            hint: Provide a brief summary of the page's content.
+            required: false
+          - label: SEO
+            name: seo
+            widget: object
+            hint: Manage search engine optimization settings for this page.
+            required: false
+            fields:
+              - label: SEO Title
+                name: seo_title
+                widget: string
+                hint: A custom title for search engines (defaults to the page title if left blank).
+                required: false
+              - label: Keywords
+                name: keywords
+                widget: list
+                hint: Add keywords to improve search engine visibility; create one per list item.
+                required: false
+                field:
+                  label: Keyword
+                  name: keyword
+                  widget: string
+                  hint: A single keyword for SEO purposes.
+                  required: false
+              - label: Canonical URL
+                name: canonical
+                widget: string
+                hint: The preferred URL for this page to prevent duplicate content issues.
+                required: false
+          - label: Publication Information
+            name: publication
+            widget: object
+            hint: Information about when this page was published or updated.
+            required: false
+            fields:
+              - label: Publish Date
+                name: publish_date
+                widget: datetime
+                hint: The date and time when this page is or will be published.
+                required: false
+              - label: Last Updated
+                name: updated_date
+                widget: datetime
+                hint: The date and time when this page was last updated.
+                required: false
+          - label: Social / Open Graph
+            name: social
+            widget: object
+            hint: Settings for how this page is presented when shared on social media.
+            required: false
+            fields:
+              - label: OG Title
+                name: og_title
+                widget: string
+                hint: A custom title for Open Graph sharing (overrides the page title if provided).
+                required: false
+              - label: OG Description
+                name: og_description
+                widget: text
+                hint: A description that appears when the page is shared on social networks.
+                required: false
+              - label: OG Image
+                name: og_image
+                widget: image
+                hint: The image used when the page is shared on social platforms.
+                required: false
+              - label: Twitter Card Type
+                name: twitter_card
+                widget: select
+                options:
+                  - label: Summary
+                    value: summary
+                  - label: Summary with Large Image
+                    value: summary_large_image
+                default: summary
+                hint: Select the style of Twitter card to use when the page is shared.
+                required: false
+          - label: Tags
+            name: tags
+            widget: list
+            hint: Categorize this page with tags for better organization.
+            required: false
+            field:
+              label: Tag
+              name: tag
+              widget: string
+              hint: Enter a single tag or keyword for this page.
+              required: false

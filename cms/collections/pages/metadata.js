@@ -4,13 +4,7 @@ const Metadata = {
     widget: "object",
     required: false,
     fields: [
-        { 
-            label: "Description", 
-            name: "description", 
-            widget: "string",
-            hint: "Provide a brief summary of the page's content.",
-            required: false,
-        },
+
         {
             label: "Navigation",
             name: "navigation",
@@ -40,6 +34,13 @@ const Metadata = {
                     required: false,
                 },
             ],
+        },
+        { 
+            label: "Description", 
+            name: "description", 
+            widget: "string",
+            hint: "Provide a brief summary of the page's content.",
+            required: false,
         },
         {
             label: "SEO",

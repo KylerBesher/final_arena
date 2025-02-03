@@ -4,19 +4,14 @@ const styles = require('../styles');
 module.exports = createSection('richText', {
     label: 'Rich Text',
     stripFields: [],
+    addFields: [
+        styles.typography
+    ],
     fields: [
         {
             label: 'Content',
             name: 'content',
             widget: 'markdown',
-        },
-        {
-            label: 'Style',
-            name: 'style',
-            widget: 'object',
-            fields: [
-                styles.typography
-            ]
         },
     ],
 }); 
