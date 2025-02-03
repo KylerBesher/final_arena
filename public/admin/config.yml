@@ -151,8 +151,8 @@ collections:
               - label: Content
                 name: content
                 widget: markdown
-              - label: Metadata
-                name: metadata
+              - label: Classification
+                name: classification
                 widget: object
                 fields:
                   - name: id
@@ -364,6 +364,10 @@ collections:
                           - label: Large
                             value: large
                         default: normal
+                      - name: fontColor
+                        label: Font Color
+                        widget: color
+                        required: false
                       - label: Font Weight
                         name: fontWeight
                         widget: select
@@ -603,6 +607,10 @@ collections:
                   - label: Large
                     value: large
                 default: normal
+              - name: fontColor
+                label: Font Color
+                widget: color
+                required: false
               - label: Font Weight
                 name: fontWeight
                 widget: select
@@ -761,3 +769,12 @@ collections:
               widget: string
               hint: Enter a single tag or keyword for this page.
               required: false
+      - label: CSS Override
+        name: css
+        widget: code
+        weight: 400
+        default_language: css
+        allowed_languages:
+          - css
+        required: false
+        hint: This will override the default styles for this page.

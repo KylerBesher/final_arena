@@ -5,7 +5,8 @@ module.exports = createSection('richText', {
     label: 'Rich Text',
     stripFields: [],
     addFields: [
-        styles.typography
+        styles.typography,
+        styles.typography,
     ],
     fields: [
         {
@@ -14,4 +15,4 @@ module.exports = createSection('richText', {
             widget: 'markdown',
         },
     ],
-}); 
+});     

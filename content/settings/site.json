@@ -52,14 +52,13 @@
         "text": "#000000"
       },
       "darkMode": {
-        "primary": "#ff0000",
+        "primary": "#3600ff",
         "secondary": "#00ff00",
         "accent": "#0000ff",
         "background": "#000000",
         "text": "#ffffff"
       }
     }
-   
   },
   "layout": {
     "maxWidth": "1280px",

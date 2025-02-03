@@ -1,6 +1,6 @@
 const styles = require('./collections/pages/styles');
 const Metadata = require('./collections/pages/metadata');
-
+const classification = require('./collections/pages/sections/config/classification');
 /**
  * Creates a section configuration with common fields and validation
  * @param {string} type - The type identifier for the section
@@ -10,11 +10,10 @@ const Metadata = require('./collections/pages/metadata');
 function createSection(type, config) {
     const { addFields = [], stripFields = [], fields = [], ...restConfig } = config;
 
-    const styleFields = [
-        styles.appearance,
-        styles.layout
-    ].filter(field => !stripFields.includes(field)).concat(addFields);
-
+    const initialStyleFields = [styles.appearance, styles.layout]
+        .filter(field => !stripFields.includes(field))
+        .concat(addFields);
+    const styleFields = Array.from(new Map(initialStyleFields.map(field => [field.name, field])).values());
     
     return {
         name: type,
@@ -22,28 +21,7 @@ function createSection(type, config) {
         ...restConfig,
         fields: [
             ...fields,
-
-            {
-                label: 'Metadata',
-                name: 'metadata',
-                widget: 'object',
-                fields: [
-                    {name: 'id', label: 'ID', widget: 'string'},
-                    {
-                        name: 'classes',
-                        label: 'Classes',
-                        widget: 'list',
-                        field: {
-                            widget: 'string',
-                            label: 'Class',
-                            name: 'class',
-                            required: false,
-                        }
-                    },
-                    
-                ]
-                
-            },
+            classification,
             {
                 label: 'Style Override',
                 name: 'style',
@@ -84,6 +62,7 @@ function createCollection(name, config) {
                 ]
             },
             Metadata,
+            styles.css,
         ],
     };
 }

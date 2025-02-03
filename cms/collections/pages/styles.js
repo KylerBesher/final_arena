@@ -103,6 +103,7 @@ const typography = {
             { label: "Normal", value: "normal" },
             { label: "Large", value: "large" },
         ], "normal"),
+        {name: "fontColor", label: "Font Color", widget: "color", required: false},
         createSelectField("Font Weight", "fontWeight", [
             { label: "Thin", value: "100" },
             { label: "Light", value: "300" },
@@ -125,8 +126,21 @@ const typography = {
     ],
 };
 
+const css = {
+    label: "CSS Override",
+    name: "css",
+    widget: "code",
+    weight: 400,
+    default_language: "css",
+    allowed_languages: ["css"],
+    required: false,
+    hint: "This will override the default styles for this page.",
+};
+
+
 module.exports = {
     layout,
     appearance,
     typography,
+    css,
 };
