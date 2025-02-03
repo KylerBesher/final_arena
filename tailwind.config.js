@@ -107,6 +107,15 @@ module.exports = {
                     },
                 },
             }),
+            keyframes: {
+                loading: {
+                    '0%, 100%': { height: '10px' },
+                    '50%': { height: '40px' }
+                }
+            },
+            animation: {
+                loading: 'loading 1s ease-in-out infinite'
+            }
         },
     },
     plugins: [
