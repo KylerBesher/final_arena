@@ -19,11 +19,6 @@ module.exports = createCollection('pages', {
             name: 'title',
             widget: 'string',
         },
-        {
-            label: 'Path',
-            name: 'path',
-            widget: 'string',
-        },
     ],
     // Register available section types
     sectionTypes: [

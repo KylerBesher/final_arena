@@ -12,20 +12,20 @@ function createSection(type, config) {
 
     // Process fields to handle style object stripping
     const processedFields = fields.map(field => {
-        if (field.name === 'style' && field.widget === 'object') {
+        if(field.name === 'style' && field.widget === 'object') {
             const { fields: styleFields = [], ...styleRest } = field;
-            
-            if (!styleFields.some(field => field.name === styles.appearance.name)) {
+
+            if(!styleFields.some(field => field.name === styles.appearance.name)) {
                 styleFields.push(styles.appearance);
             }
-            if (!styleFields.some(field => field.name === styles.layout.name)) {
+            if(!styleFields.some(field => field.name === styles.layout.name)) {
                 styleFields.push(styles.layout);
             }
 
             // Get all style fields
             const allStyleFields = styleFields.map(f => {
                 // If it's layout or appearance, include by default
-                if (f.name === 'layout' || f.name === 'appearance') {
+                if(f.name === 'layout' || f.name === 'appearance') {
                     return f;
                 }
                 // For other fields, check if they should be stripped
@@ -41,7 +41,6 @@ function createSection(type, config) {
 
             return {
                 ...styleRest,
-                slug: '',
                 fields: sortedFields
             };
         }
@@ -69,8 +68,17 @@ function createCollection(name, config) {
         ...restConfig,
         fields: [
             ...(restConfig.fields || []),
-            
-        Metadata,
+            Metadata,
+            {
+                label: 'Styles',
+                name: 'styles',
+                widget: 'list',
+                types: [
+                    styles.layout,
+                    styles.appearance,
+                    styles.typography,
+                ]
+            },
             {
                 label: 'Sections',
                 name: 'sections',

@@ -1,0 +1,66 @@
+{
+    "folders": [
+        {
+            "name": "CMS",
+            "path": "."
+        }
+    ],
+    "settings": {
+        "editor.tabSize": 2,
+        "files.exclude": {
+            "**/.git": true,
+            "**/node_modules": true,
+            "**/.DS_Store": true,
+            "**/dist": true,
+            "**/next-env.d.ts": true,
+            "**/.next": true,
+            "**/.netlify": true,
+            "**/.eslintrc": true,
+            "**/.eslintrc.*": true,
+            "**/.prettierrc": true,
+            "**/.prettierrc.*": true,
+            "package-lock.json": true,
+            ".eslintcache": true,
+            "jsconfig.json": true,
+            "netlify.toml": true,
+            "renovate.json": true,
+            "README.md": true,
+            "postcss.config.js": true,
+            "tsconfig.node.json": true,
+            "tsconfig.workspace.json": true,
+            "utils.js": true,
+            "archive": true,
+
+            ".vscode": true,
+            
+            "**/lint*": true
+        },
+        "eslint.options": {
+            "extensions": [".js", ".jsx", ".json"]
+        },
+        "prettier.singleQuote": true,
+        "prettier.trailingComma": "all",
+        "workbench.colorCustomizations": {
+            "activityBar.background": "#053242",
+            "titleBar.activeBackground": "#07455D",
+            "titleBar.activeForeground": "#F5FCFE"
+        }
+    },
+    "extensions": {
+        "recommendations": ["dbaeumer.vscode-eslint", "esbenp.prettier-vscode", "eamodio.gitlens"]
+    },
+    "tasks": {
+        "version": "2.0.0",
+        "tasks": [
+            {
+                "label": "Start CMS",
+                "type": "shell",
+                "command": "npm start",
+                "group": "build",
+                "presentation": {
+                    "reveal": "always"
+                }
+            }
+        ]
+    }
+}
