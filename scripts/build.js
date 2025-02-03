@@ -14,9 +14,9 @@ function clearRequireCache() {
 // Import configurations
 function getConfigs() {
     clearRequireCache();
-    const baseConfig = require('./base');
-    const pagesConfig = require('./collections/pages');
-    const settingsConfig = require('./collections/settings');
+    const baseConfig = require('../cms/base');
+    const pagesConfig = require('../cms/collections/pages');
+    const settingsConfig = require('../cms/collections/settings');
     return { baseConfig, pagesConfig, settingsConfig };
 }
 

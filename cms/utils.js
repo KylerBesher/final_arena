@@ -1,4 +1,5 @@
 const styles = require('./collections/pages/styles');
+const Metadata = require('./collections/pages/metadata');
 
 /**
  * Creates a section configuration with common fields and validation
@@ -68,6 +69,8 @@ function createCollection(name, config) {
         ...restConfig,
         fields: [
             ...(restConfig.fields || []),
+            
+        Metadata,
             {
                 label: 'Sections',
                 name: 'sections',

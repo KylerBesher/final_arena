@@ -9,12 +9,15 @@
         "lint": "next lint",
 
 
-        "build:cms": "node scripts/build.js",
+        // Create CMS config yaml
+        "build:cms": "node cms/scripts/build.js",
         "watch:cms": "nodemon --watch cms --ext js --exec 'npm run build:cms'",
 
+        // Convert react to js
         "watch:cms-components": "nodemon --watch components --ext jsx --exec 'npm run build:cms-components'",
         "build:cms-components": "node scripts/build-cms-components.js",
         
+        // build CSS
         "build:css": "npx tailwindcss -i ./styles/globals.css -o ./public/styles/globals.css --minify",
         "watch:css": "nodemon --watch styles --ext css --exec 'npm run build:css'",
 
