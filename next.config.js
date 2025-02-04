@@ -2,7 +2,7 @@ const path = require('path');
 
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-    webpack: (config) => {
+    webpack: (config, { isServer, dev }) => {
         config.resolve.fallback = {
             ...config.resolve.fallback,
             fs: false,
@@ -14,9 +14,14 @@ const nextConfig = {
             ...config.resolve.alias,
             components: path.join(__dirname, 'components')
         };
+        // Enable source maps in development
+        if (!isServer && dev) {
+            config.devtool = 'source-map';
+        }
         return config;
     },
     reactStrictMode: true,
+    productionBrowserSourceMaps: true,
     // Ignore /admin route in Next.js routing
     rewrites: async () => {
         return {

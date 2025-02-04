@@ -10,7 +10,7 @@ const classification = require('./collections/pages/sections/config/identificati
 function createSection(type, config) {
     const { addFields = [], stripFields = [], fields = [], ...restConfig } = config;
 
-    const initialStyleFields = [styles.appearance, styles.layout]
+    const initialStyleFields = [styles.colors, styles.layout]
         .filter(field => !stripFields.includes(field))
         .concat(addFields);
     const styleFields = Array.from(new Map(initialStyleFields.map(field => [field.name, field])).values());
@@ -57,7 +57,7 @@ function createCollection(name, config) {
                 widget: 'list',
                 types: [
                     styles.layout,
-                    styles.appearance,
+                    styles.colors,
                     styles.typography,
                 ]
             },

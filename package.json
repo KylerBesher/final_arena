@@ -19,9 +19,14 @@
         "watch:css": "nodemon --watch styles --ext css --exec 'npm run build:css'",
 
 
-        "watch:all": "concurrently \"npm run watch:cms\" \"npm run watch:cms-components\" \"npm run watch:css\""
+        "watch:all": "concurrently \"npm run watch:cms\" \"npm run watch:cms-components\" \"npm run watch:css\"",
+
+        "dev:debug": "cross-env NODE_OPTIONS='--inspect' netlify dev",
+        "build:debug": "netlify build --debug",
+        "start:debug": "NODE_OPTIONS='--inspect' next start"
     },
     "dependencies": {
+        
         "@apollo/client": "^3.12.4",
         "@heroicons/react": "^2.2.0",
         "@netlify/blobs": "^8.1.0",

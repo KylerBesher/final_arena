@@ -1,3 +1,5 @@
+const styles = require('../../cms/collections/pages/styles');
+
 const settingsCollection = {
     name: 'static',
     label: 'Static',
@@ -45,38 +47,17 @@ const settingsCollection = {
                     label: 'Theme',
                     widget: 'object',
                     fields: [
-                        {
-                            name: 'colors',
-                            label: 'Theme',
-                            widget: 'object',
-                            fields: [
-                                {
-                                    name: 'lightMode',
-                                    label: 'Light Mode Colors',
-                                    widget: 'object',
-                                    fields: [
-                                        { name: 'primary', label: 'Primary Color', widget: 'color' },
-                                        { name: 'secondary', label: 'Secondary Color', widget: 'color' },
-                                        { name: 'accent', label: 'Accent Color', widget: 'color' },
-                                        { name: 'background', label: 'Background Color', widget: 'color' },
-                                        { name: 'text', label: 'Text Color', widget: 'color' }
-                                    ]
-                                },
-                                {
-                                    name: 'darkMode',
-                                    label: 'Dark Mode Colors',
-                                    widget: 'object',
-                                    fields: [
-                                        { name: 'primary', label: 'Primary Color', widget: 'color' },
-                                        { name: 'secondary', label: 'Secondary Color', widget: 'color' },
-                                        { name: 'accent', label: 'Accent Color', widget: 'color' },
-                                        { name: 'background', label: 'Background Color', widget: 'color' },
-                                        { name: 'text', label: 'Text Color', widget: 'color' }
-                                    ]
-                                }
-                            ]
-                        },
+                        ...styles.all.filter(field => field.name !== 'css')
                     ]
+                },
+
+                {
+                    name: 'section_style',
+                    label: 'Section Style',
+                    widget: 'object',
+                    fields: [
+                        ...styles.all
+                    ],
                 },
                 {
                     name: 'seo',

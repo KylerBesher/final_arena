@@ -33,39 +33,19 @@ const FeatureItem = ({ feature, isDark }) => {
     );
 };
 
-const Features = ({ 
-    title, 
-    description, 
-    items = [], 
-    background = 'white', 
-    customBackground, 
-    padding = 'default', 
-    width = 'default' 
-}) => {
-    const bgStyle = getBackgroundStyle(background, customBackground);
-    const isDark = background?.includes('dark') || background?.includes('black');
-
-    if (!items || items.length === 0) {
-        return null;
-    }
-
+export function Features({ title, description, features }) {
     return (
-        <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
-                {(title || description) && (
-                    <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
-                    </div>
-                )}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-                    {items.map((item, index) => (
-                        <FeatureItem key={index} feature={item} isDark={isDark} />
-                    ))}
-                </div>
+        <div className="container mx-auto bg-red">
+            kyler was here
+            {title && <h2 className="text-3xl font-bold text-center mb-6">{title}</h2>}
+            {description && <p className="text-xl text-center mb-12">{description}</p>}
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+                {features?.map((feature, index) => (
+                    <FeatureItem key={index} feature={feature} />
+                ))}
             </div>
-        </section>
+        </div>
     );
-};
+}
 
 export default Features; 

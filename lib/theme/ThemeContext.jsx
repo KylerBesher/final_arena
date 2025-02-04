@@ -28,9 +28,9 @@ export function ThemeProvider({ children }) {
             root.style.setProperty(cssVar, value);
         });
 
-        setTimeout(() => {
-            setIsThemeLoaded(true);
-        }, 2000);
+        // setTimeout(() => {
+        setIsThemeLoaded(true);
+        // }, 2000);
     }, [isDarkMode, theme]);
 
     if (!isThemeLoaded) {

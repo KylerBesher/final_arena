@@ -1,19 +1,13 @@
 {
-  "branding": {
-    "name": "The Arena",
-    "tagline": "Level Up Your Gaming Experience",
-    "description": "Premium gaming gear and accessories for the modern player",
-    "logo": {
-      "main": "/images/logo.svg",
-      "dark": "/images/logo-dark.svg",
-      "favicon": "/images/favicon.ico",
-      "alt": "The Arena Logo"
-    },
-    "social": {
-      "twitter": "https://twitter.com/thearena",
-      "discord": "https://discord.gg/thearena",
-      "instagram": "https://instagram.com/thearena",
-      "twitch": "https://twitch.tv/thearena"
+  "contact": {
+    "email": "contact@yourcompany.com",
+    "phone": "+1 (555) 123-4567",
+    "address": {
+      "street": "123 Business Street",
+      "city": "San Francisco",
+      "state": "CA",
+      "zip": "94105",
+      "country": "United States"
     }
   },
   "strings": {
@@ -42,6 +36,9 @@
       "500_message": "Something went wrong on our end."
     }
   },
+  "css": {
+    "lang": "css"
+  },
   "theme": {
     "colors": {
       "lightMode": {
@@ -60,40 +57,71 @@
       }
     }
   },
-  "layout": {
-    "maxWidth": "1280px",
-    "spacing": {
-      "contentPadding": "1rem",
-      "sectionSpacing": "4rem",
-      "elementSpacing": "1.5rem"
+  "section_style": {
+    "colors": {
+      "lightMode": {
+        "primary": "#993434",
+        "secondary": "#2d2525",
+        "accent": "#573b3b",
+        "background": "#c98686",
+        "text": "#2c2222"
+      },
+      "darkMode": {
+        "primary": "#9a4b4b",
+        "secondary": "#493333",
+        "accent": "#2d1010",
+        "background": "#f29c9c",
+        "text": "#461919"
+      }
     },
-    "header": {
-      "height": "4rem",
-      "sticky": true,
-      "transparent": false
+    "layout": {
+      "maxWidth": "1280px",
+      "spacing": {
+        "contentPadding": "1rem",
+        "sectionSpacing": "4rem",
+        "elementSpacing": "1.5rem"
+      },
+      "width": "standard",
+      "flexDirection": "row",
+      "justifyContent": "start",
+      "header": {
+        "height": "4rem",
+        "sticky": true,
+        "transparent": false
+      },
+      "verticalSpacing": "medium",
+      "padding": "medium",
+      "footer": {
+        "columns": 4
+      },
+      "alignItems": "center"
     },
-    "footer": {
-      "columns": 4
+    "typography": {
+      "fontSize": "normal",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "textAlign": "left"
+    },
+    "css": {
+      "lang": "css"
     }
   },
-  "contact": {
-    "email": "contact@yourcompany.com",
-    "phone": "+1 (555) 123-4567",
-    "address": {
-      "street": "123 Business Street",
-      "city": "San Francisco",
-      "state": "CA",
-      "zip": "94105",
-      "country": "United States"
+  "branding": {
+    "name": "The Arena",
+    "tagline": "Level Up Your Gaming Experience",
+    "description": "Premium gaming gear and accessories for the modern player",
+    "logo": {
+      "main": "/images/logo.svg",
+      "dark": "/images/logo-dark.svg",
+      "favicon": "/images/favicon.ico",
+      "alt": "The Arena Logo"
+    },
+    "social": {
+      "twitter": "https://twitter.com/thearena",
+      "discord": "https://discord.gg/thearena",
+      "instagram": "https://instagram.com/thearena",
+      "twitch": "https://twitch.tv/thearena"
     }
-  },
-  "seo": {
-    "titleTemplate": "%s | Your Company Name",
-    "defaultTitle": "Your Company Name - Your Tagline",
-    "defaultDescription": "Default meta description for your site",
-    "defaultImage": "/images/og-image.jpg",
-    "twitterHandle": "@yourcompany",
-    "googleAnalyticsId": "UA-XXXXXXXXX-X"
   },
   "features": {
     "ecommerce": {
@@ -165,6 +193,14 @@
       "currency": "USD",
       "dateFormat": "MM/DD/YYYY"
     }
+  },
+  "seo": {
+    "titleTemplate": "%s | Your Company Name",
+    "defaultTitle": "Your Company Name - Your Tagline",
+    "defaultDescription": "Default meta description for your site",
+    "defaultImage": "/images/og-image.jpg",
+    "twitterHandle": "@yourcompany",
+    "googleAnalyticsId": "UA-XXXXXXXXX-X"
   },
   "integrations": {
     "mailchimp": {

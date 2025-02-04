@@ -81,9 +81,9 @@ const layout = {
     ],
 };
 
-const appearance = {
-    label: "Appearance",
-    name: "appearance",
+const colors = {
+    label: "Colors",
+    name: "colors",
     widget: "object",
     weight: 200,
     fields: [
@@ -140,7 +140,8 @@ const css = {
 
 module.exports = {
     layout,
-    appearance,
+    colors,
     typography,
     css,
+    all: [layout, colors, typography, css],
 };

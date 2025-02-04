@@ -5,6 +5,7 @@ import { SectionComponent } from '../../../components/sections';
 import { processMarkdown } from '../../../lib/markdown';
 import { SubNav } from '../../../components/SubNav';
 import { getNavigationItems } from '../../../lib/navigation.server';
+import SiteSettings from '../../../content/settings/site.json';
 
 export default async function Page({ params }) {
     try {
@@ -37,7 +38,7 @@ export default async function Page({ params }) {
                 {showSubNav && <SubNav items={currentNavItem.children} />}
                 <div>
                     {data.sections?.map((section, index) => (
-                        <SectionComponent key={index} section={section} />
+                        <SectionComponent key={index} section={section} siteStyles={SiteSettings.section_style} siteTheme={SiteSettings.theme}/>
                     ))}
                     {!data.sections && (
                         <div>
