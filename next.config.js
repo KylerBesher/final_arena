@@ -16,6 +16,22 @@ const nextConfig = {
         };
         return config;
     },
+    reactStrictMode: true,
+    // Ignore /admin route in Next.js routing
+    rewrites: async () => {
+        return {
+            beforeFiles: [
+                {
+                    source: '/admin',
+                    destination: '/admin/index.html',
+                },
+                {
+                    source: '/admin/:path*',
+                    destination: '/admin/:path*',
+                },
+            ],
+        };
+    },
 };
 
 module.exports = nextConfig;

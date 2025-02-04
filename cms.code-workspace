@@ -27,6 +27,8 @@
             "README.md": true,
             "postcss.config.js": true,
             "tsconfig.node.json": true,
+            "netlify": true,
+            ".gitignore": true,
             "tsconfig.workspace.json": true,
             "utils.js": true,
             "archive": true,

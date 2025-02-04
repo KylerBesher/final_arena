@@ -1,6 +1,6 @@
 const styles = require('./collections/pages/styles');
 const Metadata = require('./collections/pages/metadata');
-const classification = require('./collections/pages/sections/config/classification');
+const classification = require('./collections/pages/sections/config/identification');
 /**
  * Creates a section configuration with common fields and validation
  * @param {string} type - The type identifier for the section

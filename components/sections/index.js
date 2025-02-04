@@ -2,9 +2,9 @@ import { Hero } from './hero';
 import { TextWithImage } from './text-with-image';
 import { Stats } from './stats';
 import { Team } from './team';
-import { Features } from './features';
+import { Features as BaseFeatures } from './Features';
 import { CTA } from './cta';
-import { RichText } from './rich-text';
+import { RichText as BaseRichText } from './rich-text';
 import { TwoColumnText } from './two-column-text';
 import { FAQ } from './faq';
 import { Testimonials } from './testimonials';
@@ -13,16 +13,17 @@ import { Gallery } from './gallery';
 import { Video } from './video';
 import { Pricing } from './pricing';
 import { ContactForm } from './contact-form';
-import { Logos } from './logos';
+import { Logos as BaseLogos } from './Logos';
+import { withSectionStyles } from '../../lib/styles/withSectionStyles';
 
 const components = {
     hero: Hero,
     textWithImage: TextWithImage,
     stats: Stats,
     team: Team,
-    features: Features,
+    features: BaseFeatures,
     cta: CTA,
-    richText: RichText,
+    richText: BaseRichText,
     twoColumnText: TwoColumnText,
     faq: FAQ,
     testimonials: Testimonials,
@@ -31,7 +32,7 @@ const components = {
     video: Video,
     pricing: Pricing,
     contactForm: ContactForm,
-    logos: Logos
+    logos: BaseLogos
 };
 
 export function SectionComponent({ section }) {
@@ -45,14 +46,19 @@ export function SectionComponent({ section }) {
     return <Component {...section} />;
 }
 
+// Export styled versions of components
+export const RichText = withSectionStyles(BaseRichText);
+export const Features = withSectionStyles(BaseFeatures);
+export const Logos = withSectionStyles(BaseLogos);
+
 export {
     Hero,
     TextWithImage,
     Stats,
     Team,
-    Features,
+    BaseFeatures,
     CTA,
-    RichText,
+    BaseRichText,
     TwoColumnText,
     FAQ,
     Testimonials,
@@ -61,5 +67,5 @@ export {
     Video,
     Pricing,
     ContactForm,
-    Logos
+    BaseLogos
 };
