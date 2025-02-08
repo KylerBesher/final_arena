@@ -1,6 +1,7 @@
 'use client';
 
 import { RichText as BaseRichText } from './rich-text';
+import _ from 'lodash';
 // import { Hero } from './hero';
 // import { TextWithImage } from './text-with-image';
 // import { Stats } from './stats';
@@ -38,48 +39,83 @@ const components = {
     // logos: BaseLogos
 };
 
-export function SectionComponent({ section, pageStyles, siteStyles , siteTheme }) {
-    console.group('SectionComponent Render');
-    console.log('Section:', section);
-    console.log('Page Styles:', pageStyles);
-    console.log('Site Styles:', siteStyles);
-    console.log('Site Theme:', siteTheme);
-    
-    const { sectionStyles, isDarkMode } = useTheme();
-    console.log('Theme Styles:', sectionStyles);
+export function SectionComponent({ section, pageStyle, siteStyle }) {
+    console.group('Section Styles Debug');
     
     const Component = components[section.type];
-    
-    if (!Component) {
+    if(!Component) {
         console.warn('Missing section type:', section.type);
         console.groupEnd();
         return null;
     }
 
-    // Merge styles in order of specificity
-    const mergedStyles = [
-        ...(sectionStyles || []),      // Site-wide styles (lowest priority)
-        ...(pageStyles || []),         // Page-level styles
+    const finalStyle = siteStyle;
+    const overrideStyles = [     // Site-wide styles (lowest priority)
+        ...(pageStyle || []),         // Page-level styles
         ...(section.style || [])       // Section-specific styles (highest priority)
     ];
-    console.log('Merged Styles:', mergedStyles);
+    function mergeDeep(target, source) {
+        Object.keys(source).forEach(key => {
+            const sourceValue = source[key];
+            if (sourceValue === null || sourceValue === undefined) return;
+            if (Array.isArray(sourceValue)) {
+                if (!Array.isArray(target[key])) {
+                    target[key] = sourceValue;
+                } else {
+                    sourceValue.forEach((item, index) => {
+                        if (item === null || item === undefined) return;
+                        if (
+                            index in target[key] &&
+                            typeof target[key][index] === 'object' &&
+                            target[key][index] !== null &&
+                            typeof item === 'object'
+                        ) {
+                            mergeDeep(target[key][index], item);
+                        } else {
+                            target[key][index] = item;
+                        }
+                    });
+                }
+            } else if (typeof sourceValue === 'object') {
+                if (!target[key] || typeof target[key] !== 'object') {
+                    target[key] = sourceValue;
+                } else {
+                    mergeDeep(target[key], sourceValue);
+                }
+            } else {
+                target[key] = sourceValue;
+            }
+        });
+    }
 
-    const classes = processSectionStyles(mergedStyles);
+    overrideStyles.forEach(style => {
+        const { type, classification, ...rest } = style;
+        console.log('Merging style type:', type);
+        console.log('Merging style content:', rest);
+        mergeDeep(finalStyle[type], rest);
+    });
+    
+    console.log('Final Style Object:', finalStyle);
+    const classes = processSectionStyles(finalStyle);
     console.log('Processed Classes:', classes);
-    
+
     const combinedClasses = [
-        classes,
-        ...(section.classification?.classes || [])
+        // ' bg-[#1ee054]',  // This works,
+        ` ${classes.toString()}`,
+        
+        // ...(section.classification?.classes || []),
+        // 'bg-[#621EE0]'  // This works
     ].filter(Boolean).join(' ');
-    console.log('Final Classes:', combinedClasses);
     
+    console.log('Final Combined Classes:', combinedClasses);
     console.groupEnd();
-    
+
     return (
-        <section 
+        <section
             id={section.classification?.id}
             className={combinedClasses}
         >
+            <pre>{JSON.stringify(combinedClasses, null, 2)}</pre>
             <Component {...section} />
         </section>
     );

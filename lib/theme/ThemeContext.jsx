@@ -6,14 +6,37 @@ import siteConfig from '../../content/settings/site.json';
 
 const ThemeContext = createContext();
 
+function addLoadingAnimation() {
+  // Only run on client side
+  if (typeof window === 'undefined') return;
+
+  const existingStyle = document.getElementById('theme-loading-animation');
+  if (!existingStyle) {
+    const styleTag = document.createElement('style');
+    styleTag.id = 'theme-loading-animation';
+    styleTag.textContent = `
+      @keyframes loading {
+        0%, 100% { height: 10px; }
+        50% { height: 40px; }
+      }
+    `;
+    document.head.appendChild(styleTag);
+  }
+}
+
 export function ThemeProvider({ children }) {
     const { isDarkMode } = useDarkMode();
-    const { theme } = siteConfig;
+    const { style } = siteConfig;
     const [isThemeLoaded, setIsThemeLoaded] = useState(false);
+    const [isAdminRoute, setIsAdminRoute] = useState(false);
+
 
     useEffect(() => {
+        // Add loading animation only on client side
+        addLoadingAnimation();
+        
         const root = document.documentElement;
-        const colors = isDarkMode ? theme.colors.darkMode : theme.colors.lightMode;
+        const colors = isDarkMode ? style.colors.darkMode : style.colors.lightMode;
 
         // Apply dark mode class
         if (isDarkMode) {
@@ -31,7 +54,7 @@ export function ThemeProvider({ children }) {
         // setTimeout(() => {
         setIsThemeLoaded(true);
         // }, 2000);
-    }, [isDarkMode, theme]);
+    }, [isDarkMode, style]);
 
     if (!isThemeLoaded) {
         return (
@@ -87,21 +110,11 @@ export function ThemeProvider({ children }) {
     }
 
     return (
-        <ThemeContext.Provider value={{ theme, isDarkMode }}>
+        <ThemeContext.Provider value={{ style, isDarkMode }}>
             {children}
         </ThemeContext.Provider>
     );
 }
-
-// Add the keyframe animation as a style tag
-const styleTag = document.createElement('style');
-styleTag.textContent = `
-  @keyframes loading {
-    0%, 100% { height: 10px; }
-    50% { height: 40px; }
-  }
-`;
-document.head.appendChild(styleTag);
 
 export function useTheme() {
     const context = useContext(ThemeContext);

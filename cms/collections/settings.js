@@ -43,21 +43,12 @@ const settingsCollection = {
                     ]
                 },
                 {
-                    name: 'theme',
-                    label: 'Theme',
+                    name: 'style',
+                    label: 'Style',
                     widget: 'object',
                     fields: [
                         ...styles.all.filter(field => field.name !== 'css')
                     ]
-                },
-
-                {
-                    name: 'section_style',
-                    label: 'Section Style',
-                    widget: 'object',
-                    fields: [
-                        ...styles.all
-                    ],
                 },
                 {
                     name: 'seo',

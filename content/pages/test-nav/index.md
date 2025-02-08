@@ -15,11 +15,13 @@ sections:
         flexDirection: row
         justifyContent: start
         alignItems: stretch
-      - type: appearance
+      - type: colors
+        lightMode:
+          background: "#594154"
         darkMode:
-          background: "#ff0000"
+          background: ""
 style:
-  - type: appearance
+  - type: colors
     lightMode:
       primary: "#bb8686"
 metadata:

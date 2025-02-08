@@ -39,14 +39,14 @@
   "css": {
     "lang": "css"
   },
-  "theme": {
+  "style": {
     "colors": {
       "lightMode": {
-        "primary": "#ff1000",
-        "secondary": "#00ff00",
-        "accent": "#0000ff",
-        "background": "#ffffff",
-        "text": "#000000"
+        "primary": "#6e0b8b",
+        "secondary": "#8e44ad",
+        "accent": "#9b59b6",
+        "background": "#FFFFFF",
+        "text": "#4a148c"
       },
       "darkMode": {
         "primary": "#3600ff",
@@ -55,13 +55,27 @@
         "background": "#1f2937",
         "text": "#ffffff"
       }
+    },
+    "typography": {
+      "fontSize": "normal",
+      "fontWeight": "400",
+      "lineHeight": "normal",
+      "textAlign": "right"
+    },
+    "layout": {
+      "width": "standard",
+      "padding": "medium",
+      "verticalSpacing": "medium",
+      "flexDirection": "row-reverse",
+      "justifyContent": "space-between",
+      "alignItems": "start"
     }
   },
   "section_style": {
     "colors": {
       "lightMode": {
         "primary": "#993434",
-        "secondary": "#2d2525",
+        "secondary": "#1d1717",
         "accent": "#573b3b",
         "background": "#c98686",
         "text": "#2c2222"
@@ -81,7 +95,7 @@
         "sectionSpacing": "4rem",
         "elementSpacing": "1.5rem"
       },
-      "width": "standard",
+      "width": "full",
       "flexDirection": "row",
       "justifyContent": "start",
       "header": {

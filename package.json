@@ -7,26 +7,18 @@
         "build": "npm run build:cms-components && next build",
         "start": "next start",
         "lint": "next lint",
-
-
         "build:cms": "node scripts/build.js",
         "watch:cms": "nodemon --watch cms --ext js --exec 'npm run build:cms'",
-
         "watch:cms-components": "nodemon --watch components --ext jsx --exec 'npm run build:cms-components'",
         "build:cms-components": "node scripts/build-cms-components.js",
-        
-        "build:css": "npx tailwindcss -i ./styles/globals.css -o ./public/styles/globals.css --minify",
-        "watch:css": "nodemon --watch styles --ext css --exec 'npm run build:css'",
-
-
+        "build:css": "node scripts/generateTailwindSafelist.js && npx tailwindcss -i ./styles/globals.css -o ./public/styles/globals.css --minify",
+        "watch:css": "nodemon --watch styles --watch content --ext css,md,mdx,json --exec 'npm run build:css'",
         "watch:all": "concurrently \"npm run watch:cms\" \"npm run watch:cms-components\" \"npm run watch:css\"",
-
         "dev:debug": "cross-env NODE_OPTIONS='--inspect' netlify dev",
         "build:debug": "netlify build --debug",
         "start:debug": "NODE_OPTIONS='--inspect' next start"
     },
     "dependencies": {
-        
         "@apollo/client": "^3.12.4",
         "@heroicons/react": "^2.2.0",
         "@netlify/blobs": "^8.1.0",
@@ -41,6 +33,7 @@
         "bright": "^0.8.5",
         "decap-cms-app": "^3.6.0",
         "decap-cms-core": "^3.6.0",
+        "glob": "^11.0.1",
         "graphql": "^16.10.0",
         "graphql-request": "^7.1.2",
         "gray-matter": "^4.0.3",

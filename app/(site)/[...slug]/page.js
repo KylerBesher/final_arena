@@ -38,7 +38,7 @@ export default async function Page({ params }) {
                 {showSubNav && <SubNav items={currentNavItem.children} />}
                 <div>
                     {data.sections?.map((section, index) => (
-                        <SectionComponent key={index} section={section} siteStyles={SiteSettings.section_style} siteTheme={SiteSettings.theme}/>
+                        <SectionComponent key={index} section={section} pageStyle={data.style}  siteStyle={SiteSettings.style}/>
                     ))}
                     {!data.sections && (
                         <div>

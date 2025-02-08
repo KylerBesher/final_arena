@@ -22,6 +22,15 @@ export function DarkModeProvider({ children }) {
         }
     }, []);
 
+    useEffect(() => {
+        // Apply dark mode class to html element
+        if (isDarkMode) {
+            document.documentElement.classList.add('dark');
+        } else {
+            document.documentElement.classList.remove('dark');
+        }
+    }, [isDarkMode]);
+
     const toggleDarkMode = () => {
         setIsDarkMode(prev => {
             const newMode = !prev;
