@@ -1,5 +1,6 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 
 const CTA = ({
@@ -38,9 +39,7 @@ const CTA = ({
                     )}
                     <Link
                         href={href}
-                        className={
-                            'inline-block py-3 px-8 rounded-lg font-medium text-white bg-primary hover:bg-primary/90 transition-colors duration-200'
-                        }
+                        className="inline-block py-3 px-8 rounded-lg font-medium text-white bg-primary hover:bg-primary/90 transition-colors duration-200"
                     >
                         {buttonText}
                     </Link>

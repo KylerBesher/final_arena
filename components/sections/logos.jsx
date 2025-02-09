@@ -1,5 +1,6 @@
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 
 const LogoImage = ({ src, index }) => {
@@ -38,7 +39,7 @@ const Logos = ({
     const isDark = background?.includes('dark') || background?.includes('black');
 
     // Filter out empty or invalid logo URLs
-    const validLogos = logos.filter(logo => logo && typeof logo === 'string' && logo.trim() !== '');
+    const validLogos = logos.filter((logo) => logo && typeof logo === 'string' && logo.trim() !== '');
 
     if (!validLogos || validLogos.length === 0) {
         return null;

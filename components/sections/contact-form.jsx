@@ -1,6 +1,7 @@
 'use client';
 
 import React, { useState } from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 import debug from '../../lib/utils/debug';
 
@@ -26,7 +27,7 @@ const ContactForm = ({
     const bgStyle = getBackgroundStyle(background, customBackground);
     const isDark = background?.includes('dark') || background?.includes('black');
 
-    const handleSubmit = async e => {
+    const handleSubmit = async (e) => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus(null);
@@ -44,9 +45,9 @@ const ContactForm = ({
         }
     };
 
-    const handleChange = e => {
+    const handleChange = (e) => {
         const { name, value } = e.target;
-        setFormData(prev => ({ ...prev, [name]: value }));
+        setFormData((prev) => ({ ...prev, [name]: value }));
     };
 
     return (

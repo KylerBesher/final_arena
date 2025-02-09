@@ -1,8 +1,11 @@
-import React from 'react';
 import Link from 'next/link';
-import { DarkModeToggle } from './DarkModeToggle';
+import React from 'react';
+
+
 import siteConfig from '../content/settings/site.json';
 import { getNavigationItems } from '../lib/navigation.server';
+
+import { DarkModeToggle } from './DarkModeToggle';
 
 function NavItem({ item, isChild }) {
     if (item.children && item.children.length > 0) {
@@ -37,7 +40,7 @@ function NavItem({ item, isChild }) {
                     } z-50`}
                 >
                     <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
-                        {item.children.map(child => (
+                        {item.children.map((child) => (
                             <div key={child.href} className="relative group/child">
                                 <Link
                                     href={child.href}
@@ -63,7 +66,7 @@ function NavItem({ item, isChild }) {
                                 {child.children?.length > 0 && (
                                     <div className="absolute left-full top-0 hidden group-hover/child:block ml-0.5">
                                         <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
-                                            {child.children.map(grandchild => (
+                                            {child.children.map((grandchild) => (
                                                 <div
                                                     key={grandchild.href}
                                                     className="relative group/grandchild"
@@ -93,7 +96,7 @@ function NavItem({ item, isChild }) {
                                                         <div className="absolute left-full top-0 hidden group-hover/grandchild:block ml-0.5">
                                                             <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
                                                                 {grandchild.children.map(
-                                                                    greatGrandchild => (
+                                                                    (greatGrandchild) => (
                                                                         <Link
                                                                             key={
                                                                                 greatGrandchild.href
@@ -149,7 +152,7 @@ export async function Header() {
 
                     <div className="flex items-center space-x-4">
                         <nav className="hidden md:flex items-center space-x-4">
-                            {navItems.map(item => (
+                            {navItems.map((item) => (
                                 <NavItem key={item.href} item={item} />
                             ))}
                         </nav>

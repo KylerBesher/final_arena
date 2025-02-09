@@ -1,5 +1,6 @@
-import React from 'react';
 import Link from 'next/link';
+import React from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 
 const PricingPlan = ({ plan, isDark }) => {
@@ -40,9 +41,7 @@ const PricingPlan = ({ plan, isDark }) => {
             </ul>
             <Link
                 href={href}
-                className={
-                    'block w-full py-3 px-4 text-center rounded-lg font-medium text-white bg-primary hover:bg-primary/90 transition-colors duration-200'
-                }
+                className="block w-full py-3 px-4 text-center rounded-lg font-medium text-white bg-primary hover:bg-primary/90 transition-colors duration-200"
             >
                 {plan.buttonText || 'Get Started'}
             </Link>

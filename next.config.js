@@ -15,7 +15,7 @@ const nextConfig = {
             components: path.join(__dirname, 'components'),
         };
         // Enable source maps in development
-        if(!isServer && dev) {
+        if (!isServer && dev) {
             config.devtool = 'source-map';
         }
         return config;
@@ -39,6 +39,9 @@ const nextConfig = {
     },
     experimental: {
         appDir: true,
+    },
+    eslint: {
+        configFile: path.join(__dirname, 'config/eslint/.eslintrc.js'),
     },
 };
 

@@ -1,13 +1,13 @@
 'use client';
 
-import React, { useState } from 'react';
-import { PortableText } from '@portabletext/react';
 import { ChevronDownIcon } from '@heroicons/react/24/outline';
+import { PortableText } from '@portabletext/react';
+import React, { useState } from 'react';
 
 export function FAQ({ title, items }) {
     const [openIndex, setOpenIndex] = useState(null);
 
-    const toggleItem = index => {
+    const toggleItem = (index) => {
         setOpenIndex(openIndex === index ? null : index);
     };
 

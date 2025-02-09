@@ -1,8 +1,10 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
-import { useDarkMode } from './DarkModeContext';
+
 import siteConfig from '../../content/settings/site.json';
+
+import { useDarkMode } from './DarkModeContext';
 
 const ThemeContext = createContext();
 

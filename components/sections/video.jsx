@@ -1,4 +1,5 @@
 import React from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 
 const Video = ({
@@ -11,7 +12,7 @@ const Video = ({
     width = 'default',
 }) => {
     // Extract video ID from YouTube URL
-    const getYouTubeId = url => {
+    const getYouTubeId = (url) => {
         if (!url) return null;
         const match = url.match(
             /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/,

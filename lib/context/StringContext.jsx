@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext } from 'react';
+
 import siteConfig from '../../content/settings/site.json';
 import { replaceTemplateStrings } from '../constants';
 

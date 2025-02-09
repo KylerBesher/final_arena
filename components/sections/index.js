@@ -1,6 +1,5 @@
 'use client';
 
-import { RichText as BaseRichText } from './rich-text';
 // import { Hero } from './hero';
 // import { TextWithImage } from './text-with-image';
 // import { Stats } from './stats';
@@ -18,6 +17,8 @@ import { RichText as BaseRichText } from './rich-text';
 // import { Logos as BaseLogos } from './Logos';
 import { processSectionStyles } from '../../lib/styles/processSectionStyles';
 import debug from '../../lib/utils/debug';
+
+import { RichText as BaseRichText } from './rich-text';
 
 const components = {
     // hero: Hero,
@@ -55,7 +56,7 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
         ...(section.style || []), // Section-specific styles (highest priority)
     ];
     function mergeDeep(target, source) {
-        Object.keys(source).forEach(key => {
+        Object.keys(source).forEach((key) => {
             const sourceValue = source[key];
             if(sourceValue === null || sourceValue === undefined) return;
             if(Array.isArray(sourceValue)) {
@@ -88,7 +89,7 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
         });
     }
 
-    overrideStyles.forEach(style => {
+    overrideStyles.forEach((style) => {
         // eslint-disable-next-line no-unused-vars
         const { type, classification: _classification, ...rest } = style;
         debug.log('Merging style type:', type);

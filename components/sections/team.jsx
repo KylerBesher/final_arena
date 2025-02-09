@@ -1,4 +1,5 @@
 import Image from 'next/image';
+
 import { sectionStyles, getBackgroundStyle } from '../../lib/styles';
 
 const IMAGE_SIZE = 192; // 48rem = 192px

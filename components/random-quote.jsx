@@ -11,13 +11,17 @@ export function RandomQuote() {
     useEffect(() => {
         const fetchQuote = async () => {
             try {
-                const response = await fetch(randomQuoteUrl, { cache: 'no-store' });
+                const response = await fetch(randomQuoteUrl, {
+                    cache: 'no-store',
+                });
                 if (response) {
                     const data = await response.json();
                     setQuote(data);
                     setTime(new Date().toLocaleString());
                 }
-            } catch (error) {}
+            } catch (error) {
+                console.error('Error fetching quote:', error);
+            }
         };
         fetchQuote();
     }, []);
@@ -32,13 +36,15 @@ export function RandomQuote() {
                         </h3>
                         <p>
                             {' '}
-                            - {quote.playedBy} as {quote.character} in &ldquo;{quote.film}&rdquo; (
-                            {quote.year})
+                            - {quote.playedBy} as {quote.character} in &ldquo;
+                            {quote.film}&rdquo; ({quote.year})
                         </p>
                         <p className="pt-2.5 mt-2.5 border-t border-dashed text-secondary border-neutral-200">
                             <span className="text-sm italic">
                                 loaded at {time}.{' '}
-                                <a href={quote.dataSource}>Original data source.</a>
+                                <a href={quote.dataSource}>
+                                    Original data source.
+                                </a>
                             </span>
                         </p>
                     </>

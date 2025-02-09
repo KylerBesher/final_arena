@@ -1,6 +1,7 @@
 'use client';
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
+
 import siteConfig from '../../content/settings/site.json';
 
 const DarkModeContext = createContext();
@@ -32,7 +33,7 @@ export function DarkModeProvider({ children }) {
     }, [isDarkMode]);
 
     const toggleDarkMode = () => {
-        setIsDarkMode(prev => {
+        setIsDarkMode((prev) => {
             const newMode = !prev;
             localStorage.setItem('darkMode', String(newMode));
             return newMode;

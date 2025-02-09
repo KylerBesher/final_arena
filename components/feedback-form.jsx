@@ -1,13 +1,14 @@
 'use client';
 
 import { useState } from 'react';
+
 import { Card } from './card';
 
 export function FeedbackForm() {
     const [status, setStatus] = useState(null);
     const [error, setError] = useState(null);
 
-    const handleFormSubmit = async event => {
+    const handleFormSubmit = async (event) => {
         event.preventDefault();
         try {
             setStatus('pending');

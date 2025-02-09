@@ -1,8 +1,9 @@
 'use client';
 
-import React from 'react';
-import { useDarkMode } from '../lib/theme/DarkModeContext';
 import { SunIcon, MoonIcon } from '@heroicons/react/24/outline';
+import React from 'react';
+
+import { useDarkMode } from '../lib/theme/DarkModeContext';
 
 export function DarkModeToggle() {
     const { isDarkMode, toggleDarkMode } = useDarkMode();

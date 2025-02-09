@@ -1,5 +1,5 @@
-import React from 'react';
 import { PortableText } from '@portabletext/react';
+import React from 'react';
 
 export function TwoColumnText({ leftContent, rightContent, ratio = '50/50' }) {
     const ratioClasses = {

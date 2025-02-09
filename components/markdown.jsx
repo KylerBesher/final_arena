@@ -1,6 +1,7 @@
 'use client';
 
 import MarkdownToJsx from 'markdown-to-jsx';
+
 import { CodeBlock } from './code-block';
 
 export function Markdown({ content }) {

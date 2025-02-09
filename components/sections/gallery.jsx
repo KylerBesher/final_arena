@@ -1,5 +1,6 @@
-import React from 'react';
 import Image from 'next/image';
+import React from 'react';
+
 import { getBackgroundStyle } from '../../lib/styles';
 
 const GalleryImage = ({ src, index }) => {
@@ -39,7 +40,7 @@ const Gallery = ({
 
     // Filter out empty or invalid image URLs
     const validImages = images.filter(
-        image => image && typeof image === 'string' && image.trim() !== '',
+        (image) => image && typeof image === 'string' && image.trim() !== '',
     );
 
     if (!validImages || validImages.length === 0) {
