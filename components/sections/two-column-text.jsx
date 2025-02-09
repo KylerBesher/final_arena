@@ -28,4 +28,4 @@ export function TwoColumnText({ leftContent, rightContent, ratio = '50/50' }) {
             </div>
         </section>
     );
-} 
+}

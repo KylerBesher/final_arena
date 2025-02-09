@@ -1,11 +1,21 @@
 import React from 'react';
 import { getBackgroundStyle } from '../../lib/styles';
 
-const Video = ({ title, description, videoUrl, background = 'white', customBackground, padding = 'default', width = 'default' }) => {
+const Video = ({
+    title,
+    description,
+    videoUrl,
+    background = 'white',
+    customBackground,
+    padding = 'default',
+    width = 'default',
+}) => {
     // Extract video ID from YouTube URL
-    const getYouTubeId = (url) => {
+    const getYouTubeId = url => {
         if (!url) return null;
-        const match = url.match(/(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/);
+        const match = url.match(
+            /(?:youtu\.be\/|youtube\.com\/(?:embed\/|v\/|watch\?v=|watch\?.+&v=))([^&?]+)/,
+        );
         return match ? match[1] : null;
     };
 
@@ -15,11 +25,23 @@ const Video = ({ title, description, videoUrl, background = 'white', customBackg
 
     return (
         <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+            <div
+                className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}
+            >
                 {(title || description) && (
                     <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                        {title && (
+                            <h2
+                                className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+                            >
+                                {title}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                {description}
+                            </p>
+                        )}
                     </div>
                 )}
                 {videoId ? (
@@ -27,7 +49,7 @@ const Video = ({ title, description, videoUrl, background = 'white', customBackg
                         <iframe
                             className="absolute top-0 left-0 w-full h-full rounded-lg shadow-lg"
                             src={`https://www.youtube.com/embed/${videoId}`}
-                            title={title || "Video"}
+                            title={title || 'Video'}
                             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                             allowFullScreen
                         />
@@ -42,4 +64,4 @@ const Video = ({ title, description, videoUrl, background = 'white', customBackg
     );
 };
 
-export default Video; 
+export default Video;

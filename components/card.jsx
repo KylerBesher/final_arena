@@ -8,7 +8,10 @@ export function Card({ title, text, linkText, href, children }) {
                 {text && <p>{text}</p>}
                 {linkText && href && (
                     <div className="card-actions">
-                        <Link href={href} className="transition link text-neutral-900 hover:opacity-80">
+                        <Link
+                            href={href}
+                            className="transition link text-neutral-900 hover:opacity-80"
+                        >
                             {linkText}
                         </Link>
                     </div>

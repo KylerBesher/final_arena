@@ -7,34 +7,32 @@ import siteConfig from '../../content/settings/site.json';
 const ThemeContext = createContext();
 
 function addLoadingAnimation() {
-  // Only run on client side
-  if (typeof window === 'undefined') return;
+    // Only run on client side
+    if (typeof window === 'undefined') return;
 
-  const existingStyle = document.getElementById('theme-loading-animation');
-  if (!existingStyle) {
-    const styleTag = document.createElement('style');
-    styleTag.id = 'theme-loading-animation';
-    styleTag.textContent = `
+    const existingStyle = document.getElementById('theme-loading-animation');
+    if (!existingStyle) {
+        const styleTag = document.createElement('style');
+        styleTag.id = 'theme-loading-animation';
+        styleTag.textContent = `
       @keyframes loading {
         0%, 100% { height: 10px; }
         50% { height: 40px; }
       }
     `;
-    document.head.appendChild(styleTag);
-  }
+        document.head.appendChild(styleTag);
+    }
 }
 
 export function ThemeProvider({ children }) {
     const { isDarkMode } = useDarkMode();
     const { style } = siteConfig;
     const [isThemeLoaded, setIsThemeLoaded] = useState(false);
-    const [isAdminRoute, setIsAdminRoute] = useState(false);
-
 
     useEffect(() => {
         // Add loading animation only on client side
         addLoadingAnimation();
-        
+
         const root = document.documentElement;
         const colors = isDarkMode ? style.colors.darkMode : style.colors.lightMode;
 
@@ -58,30 +56,38 @@ export function ThemeProvider({ children }) {
 
     if (!isThemeLoaded) {
         return (
-            <div style={{
-                position: 'fixed',
-                inset: 0,
-                backgroundColor: isDarkMode ? '#1f2937' : 'rgba(255, 255, 255, 0.8)',
-                backdropFilter: 'blur(4px)'
-            }}>
-                <div style={{
-                    position: 'absolute',
-                    top: '50%',
-                    left: '50%',
-                    transform: 'translate(-50%, -50%)'
-                }}>
-                    <div style={{
-                        display: 'flex',
-                        flexDirection: 'column',
-                        alignItems: 'center',
-                        gap: '12px'
-                    }}>
-                        <div style={{
+            <div
+                style={{
+                    position: 'fixed',
+                    inset: 0,
+                    backgroundColor: isDarkMode ? '#1f2937' : 'rgba(255, 255, 255, 0.8)',
+                    backdropFilter: 'blur(4px)',
+                }}
+            >
+                <div
+                    style={{
+                        position: 'absolute',
+                        top: '50%',
+                        left: '50%',
+                        transform: 'translate(-50%, -50%)',
+                    }}
+                >
+                    <div
+                        style={{
                             display: 'flex',
-                            alignItems: 'flex-end',
-                            gap: '8px',
-                            height: '40px'
-                        }}>
+                            flexDirection: 'column',
+                            alignItems: 'center',
+                            gap: '12px',
+                        }}
+                    >
+                        <div
+                            style={{
+                                display: 'flex',
+                                alignItems: 'flex-end',
+                                gap: '8px',
+                                height: '40px',
+                            }}
+                        >
                             {[...Array(5)].map((_, i) => (
                                 <div
                                     key={i}
@@ -91,16 +97,18 @@ export function ThemeProvider({ children }) {
                                         animation: 'loading 1s ease-in-out infinite',
                                         animationDelay: `${i * 0.1}s`,
                                         borderRadius: '4px',
-                                        alignSelf: 'flex-end'
+                                        alignSelf: 'flex-end',
                                     }}
                                 />
                             ))}
                         </div>
-                        <span style={{
-                            fontSize: '14px',
-                            fontWeight: 500,
-                            color: isDarkMode ? '#d1d5db' : '#6B7280'
-                        }}>
+                        <span
+                            style={{
+                                fontSize: '14px',
+                                fontWeight: 500,
+                                color: isDarkMode ? '#d1d5db' : '#6B7280',
+                            }}
+                        >
                             Loading...
                         </span>
                     </div>
@@ -109,11 +117,7 @@ export function ThemeProvider({ children }) {
         );
     }
 
-    return (
-        <ThemeContext.Provider value={{ style, isDarkMode }}>
-            {children}
-        </ThemeContext.Provider>
-    );
+    return <ThemeContext.Provider value={{ style, isDarkMode }}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
@@ -122,4 +126,4 @@ export function useTheme() {
         throw new Error('useTheme must be used within a ThemeProvider');
     }
     return context;
-} 
+}

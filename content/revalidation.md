@@ -2,6 +2,7 @@
 title: Revalidation
 description: Learn about Next.js revalidation on Netlify
 ---
+
 # On-demand Revalidation
 
 Next.js 13.4+ has built-in support for [on-demand revalidation](https://nextjs.org/docs/app/building-your-application/data-fetching/revalidating#on-demand-revalidation) of static pages.
@@ -25,4 +26,4 @@ Click the button below to trigger revalidation of this page:
 
 ## Implementation
 
-The revalidation endpoint is implemented as a [Route Handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) and deployed as a Netlify Function. 
+The revalidation endpoint is implemented as a [Route Handler](https://nextjs.org/docs/app/building-your-application/routing/route-handlers) and deployed as a Netlify Function.

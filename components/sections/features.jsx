@@ -1,23 +1,28 @@
 import React from 'react';
 import Link from 'next/link';
-import { getBackgroundStyle } from '../../lib/styles';
 
 const FeatureItem = ({ feature, isDark }) => {
     const Content = (
         <>
             {feature.icon && (
-                <div className={`w-12 h-12 mb-4 rounded-lg flex items-center justify-center ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}>
-                    <i className={`fas fa-${feature.icon} text-xl ${isDark ? 'text-gray-300' : 'text-gray-700'}`} />
+                <div
+                    className={`w-12 h-12 mb-4 rounded-lg flex items-center justify-center ${isDark ? 'bg-gray-800' : 'bg-gray-100'}`}
+                >
+                    <i
+                        className={`fas fa-${feature.icon} text-xl ${isDark ? 'text-gray-300' : 'text-gray-700'}`}
+                    />
                 </div>
             )}
-            <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>{feature.title}</h3>
+            <h3 className={`text-xl font-bold mb-2 ${isDark ? 'text-white' : 'text-gray-900'}`}>
+                {feature.title}
+            </h3>
             <p className={`${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{feature.description}</p>
         </>
     );
 
     if (feature.url) {
         return (
-            <Link 
+            <Link
                 href={feature.url}
                 className={`block p-6 rounded-lg transition-colors duration-200 ${isDark ? 'hover:bg-gray-800' : 'hover:bg-gray-50'}`}
             >
@@ -26,11 +31,7 @@ const FeatureItem = ({ feature, isDark }) => {
         );
     }
 
-    return (
-        <div className="p-6">
-            {Content}
-        </div>
-    );
+    return <div className="p-6">{Content}</div>;
 };
 
 export function Features({ title, description, features }) {
@@ -48,4 +49,4 @@ export function Features({ title, description, features }) {
     );
 }
 
-export default Features; 
+export default Features;

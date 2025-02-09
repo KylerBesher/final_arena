@@ -13,9 +13,9 @@ const identification = {
                 label: 'Class',
                 name: 'class',
                 required: false,
-            }
+            },
         },
-    ]
-}
+    ],
+};
 
 module.exports = identification;

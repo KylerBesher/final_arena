@@ -1,6 +1,6 @@
 export function Hero({ title, subtitle, backgroundImage }) {
     return (
-        <section 
+        <section
             className="relative py-24 bg-cover bg-center"
             style={{ backgroundImage: `url(${backgroundImage})` }}
         >
@@ -11,4 +11,4 @@ export function Hero({ title, subtitle, backgroundImage }) {
             </div>
         </section>
     );
-} 
+}

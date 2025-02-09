@@ -1,19 +1,18 @@
 module.exports = {
-    extends: ['next/core-web-vitals', 'eslint:recommended'],
-    env: {
-        es6: true,
-    },
+    extends: ['next/core-web-vitals', 'prettier'],
     rules: {
         indent: ['error', 4],
-        'react/jsx-indent': ['error', 4],
-        'react/jsx-indent-props': ['error', 4],
-        'no-unused-vars': ['warn'],
+        semi: ['error', 'always'],
+        quotes: ['error', 'single'],
+        'comma-dangle': ['error', 'always-multiline'],
+        'no-unused-vars': 'error',
+        'no-console': ['warn', { allow: ['warn', 'error'] }],
+        'react/prop-types': 'off', // Since you're using TypeScript
+        'react/react-in-jsx-scope': 'off', // Not needed in Next.js
     },
-    parserOptions: {
-        ecmaVersion: 2020,
-        sourceType: 'module',
-        ecmaFeatures: {
-            jsx: true,
+    settings: {
+        react: {
+            version: 'detect',
         },
     },
 };

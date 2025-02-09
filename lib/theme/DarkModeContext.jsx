@@ -52,4 +52,4 @@ export function useDarkMode() {
         throw new Error('useDarkMode must be used within a DarkModeProvider');
     }
     return context;
-} 
+}

@@ -16,9 +16,9 @@ const config = {
         filename: 'cms-components.js',
         library: {
             name: 'cms-components',
-            type: 'umd'
+            type: 'umd',
         },
-        globalObject: 'this'
+        globalObject: 'this',
     },
     module: {
         rules: [
@@ -28,33 +28,36 @@ const config = {
                 use: {
                     loader: 'babel-loader',
                     options: {
-                        presets: ['@babel/preset-react']
-                    }
-                }
-            }
-        ]
+                        presets: ['@babel/preset-react'],
+                    },
+                },
+            },
+        ],
     },
     resolve: {
         extensions: ['.js', '.jsx'],
         alias: {
-            components: path.resolve(__dirname, '../components')
-        }
+            components: path.resolve(__dirname, '../components'),
+        },
     },
     externals: {
         react: 'React',
-        'react-dom': 'ReactDOM'
-    }
+        'react-dom': 'ReactDOM',
+    },
 };
 
 webpack(config, (err, stats) => {
     if (err || stats.hasErrors()) {
-        console.error(err || stats.toString({
-            colors: true,
-            modules: false,
-            children: false,
-            chunks: false,
-            chunkModules: false
-        }));
+        console.error(
+            err ||
+                stats.toString({
+                    colors: true,
+                    modules: false,
+                    children: false,
+                    chunks: false,
+                    chunkModules: false,
+                }),
+        );
         process.exit(1);
     }
     console.log('CMS components built successfully!');

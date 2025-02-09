@@ -2,21 +2,22 @@
 
 import React, { useState } from 'react';
 import { getBackgroundStyle } from '../../lib/styles';
+import debug from '../../lib/utils/debug';
 
 const defaultFields = [
     { label: 'name', type: 'text', placeholder: 'Your Name', required: true },
     { label: 'email', type: 'email', placeholder: 'Your Email', required: true },
-    { label: 'message', type: 'textarea', placeholder: 'Your Message', required: true }
+    { label: 'message', type: 'textarea', placeholder: 'Your Message', required: true },
 ];
 
-const ContactForm = ({ 
-    title, 
-    description, 
+const ContactForm = ({
+    title,
+    description,
     fields = defaultFields,
-    background = 'white', 
-    customBackground, 
-    padding = 'default', 
-    width = 'narrow' 
+    background = 'white',
+    customBackground,
+    padding = 'default',
+    width = 'narrow',
 }) => {
     const [formData, setFormData] = useState({});
     const [isSubmitting, setIsSubmitting] = useState(false);
@@ -25,36 +26,48 @@ const ContactForm = ({
     const bgStyle = getBackgroundStyle(background, customBackground);
     const isDark = background?.includes('dark') || background?.includes('black');
 
-    const handleSubmit = async (e) => {
+    const handleSubmit = async e => {
         e.preventDefault();
         setIsSubmitting(true);
         setSubmitStatus(null);
 
         try {
             // Here you would typically send the form data to your backend
-            console.log('Form submitted:', formData);
+            debug.log('Form submitted:', formData);
             setSubmitStatus('success');
             setFormData({});
         } catch (error) {
-            console.error('Form submission error:', error);
+            debug.error('Form submission error:', error);
             setSubmitStatus('error');
         } finally {
             setIsSubmitting(false);
         }
     };
 
-    const handleChange = (e) => {
+    const handleChange = e => {
         const { name, value } = e.target;
         setFormData(prev => ({ ...prev, [name]: value }));
     };
 
     return (
         <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+            <div
+                className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}
+            >
                 {(title || description) && (
                     <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                        {title && (
+                            <h2
+                                className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+                            >
+                                {title}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                {description}
+                            </p>
+                        )}
                     </div>
                 )}
                 <div className={`max-w-2xl mx-auto ${isDark ? 'text-white' : 'text-gray-900'}`}>
@@ -120,4 +133,4 @@ const ContactForm = ({
     );
 };
 
-export default ContactForm; 
+export default ContactForm;

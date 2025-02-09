@@ -19,9 +19,7 @@ export function Timeline({ title, items }) {
                                 <p className="text-sm font-medium text-gray-500 mb-1">
                                     {item.date}
                                 </p>
-                                <h3 className="text-xl font-semibold mb-2">
-                                    {item.title}
-                                </h3>
+                                <h3 className="text-xl font-semibold mb-2">{item.title}</h3>
                                 <div className="prose prose-sm">
                                     <PortableText value={item.description} />
                                 </div>
@@ -32,4 +30,4 @@ export function Timeline({ title, items }) {
             </div>
         </section>
     );
-} 
+}

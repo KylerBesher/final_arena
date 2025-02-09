@@ -37,14 +37,14 @@
             
             "**/lint*": true
         },
-        "eslint.options": {
-            "extensions": [".js", ".jsx", ".json"]
-        },
-        "prettier.singleQuote": true,
+        // "eslint.options": {
+        //     "extensions": [".js", ".jsx", ".json"]
+        // },
+        // "prettier.singleQuote": true,
         "prettier.trailingComma": "all",
         "workbench.colorCustomizations": {
-            "activityBar.background": "#053242",
-            "titleBar.activeBackground": "#07455D",
+            "activityBar.background": "#333",
+            "titleBar.activeBackground": "#cd2c2c",
             "titleBar.activeForeground": "#F5FCFE"
         }
     },

@@ -1,233 +1,229 @@
 {
-  "contact": {
-    "email": "contact@yourcompany.com",
-    "phone": "+1 (555) 123-4567",
-    "address": {
-      "street": "123 Business Street",
-      "city": "San Francisco",
-      "state": "CA",
-      "zip": "94105",
-      "country": "United States"
-    }
-  },
-  "strings": {
-    "site": {
-      "name": "The Arena",
-      "title_template": "%s | The Arena",
-      "default_title": "The Arena - Level Up Your Gaming Experience",
-      "default_description": "Your premier destination for tabletop gaming, card games, and miniature wargaming"
+    "contact": {
+        "email": "contact@yourcompany.com",
+        "phone": "+1 (555) 123-4567",
+        "address": {
+            "street": "123 Business Street",
+            "city": "San Francisco",
+            "state": "CA",
+            "zip": "94105",
+            "country": "United States"
+        }
     },
-    "nav": {
-      "menu_label": "Main Menu",
-      "skip_to_content": "Skip to content"
-    },
-    "footer": {
-      "copyright": "© {{year}} The Arena. All rights reserved."
-    },
-    "cta": {
-      "default_button": "Learn More",
-      "contact_button": "Contact Us",
-      "events_button": "View Events"
-    },
-    "error": {
-      "404_title": "Page Not Found",
-      "404_message": "The page you're looking for doesn't exist.",
-      "500_title": "Server Error",
-      "500_message": "Something went wrong on our end."
-    }
-  },
-  "css": {
-    "lang": "css"
-  },
-  "style": {
-    "colors": {
-      "lightMode": {
-        "primary": "#6e0b8b",
-        "secondary": "#8e44ad",
-        "accent": "#9b59b6",
-        "background": "#FFFFFF",
-        "text": "#4a148c"
-      },
-      "darkMode": {
-        "primary": "#3600ff",
-        "secondary": "#00ff00",
-        "accent": "#0000ff",
-        "background": "#1f2937",
-        "text": "#ffffff"
-      }
-    },
-    "typography": {
-      "fontSize": "normal",
-      "fontWeight": "400",
-      "lineHeight": "normal",
-      "textAlign": "right"
-    },
-    "layout": {
-      "width": "standard",
-      "padding": "medium",
-      "verticalSpacing": "medium",
-      "flexDirection": "row-reverse",
-      "justifyContent": "space-between",
-      "alignItems": "start"
-    }
-  },
-  "section_style": {
-    "colors": {
-      "lightMode": {
-        "primary": "#993434",
-        "secondary": "#1d1717",
-        "accent": "#573b3b",
-        "background": "#c98686",
-        "text": "#2c2222"
-      },
-      "darkMode": {
-        "primary": "#9a4b4b",
-        "secondary": "#493333",
-        "accent": "#2d1010",
-        "background": "#f29c9c",
-        "text": "#461919"
-      }
-    },
-    "layout": {
-      "maxWidth": "1280px",
-      "spacing": {
-        "contentPadding": "1rem",
-        "sectionSpacing": "4rem",
-        "elementSpacing": "1.5rem"
-      },
-      "width": "full",
-      "flexDirection": "row",
-      "justifyContent": "start",
-      "header": {
-        "height": "4rem",
-        "sticky": true,
-        "transparent": false
-      },
-      "verticalSpacing": "medium",
-      "padding": "medium",
-      "footer": {
-        "columns": 4
-      },
-      "alignItems": "center"
-    },
-    "typography": {
-      "fontSize": "normal",
-      "fontWeight": "400",
-      "lineHeight": "normal",
-      "textAlign": "left"
+    "strings": {
+        "site": {
+            "name": "The Arena",
+            "title_template": "%s | The Arena",
+            "default_title": "The Arena - Level Up Your Gaming Experience",
+            "default_description": "Your premier destination for tabletop gaming, card games, and miniature wargaming"
+        },
+        "nav": {
+            "menu_label": "Main Menu",
+            "skip_to_content": "Skip to content"
+        },
+        "footer": {
+            "copyright": "© {{year}} The Arena. All rights reserved."
+        },
+        "cta": {
+            "default_button": "Learn More",
+            "contact_button": "Contact Us",
+            "events_button": "View Events"
+        },
+        "error": {
+            "404_title": "Page Not Found",
+            "404_message": "The page you're looking for doesn't exist.",
+            "500_title": "Server Error",
+            "500_message": "Something went wrong on our end."
+        }
     },
     "css": {
-      "lang": "css"
+        "lang": "css"
+    },
+    "style": {
+        "colors": {
+            "lightMode": {
+                "primary": "#6e0b8b",
+                "secondary": "#8e44ad",
+                "accent": "#9b59b6",
+                "background": "#FFFFFF",
+                "text": "#4a148c"
+            },
+            "darkMode": {
+                "primary": "#3600ff",
+                "secondary": "#00ff00",
+                "accent": "#0000ff",
+                "background": "#1f2937",
+                "text": "#ffffff"
+            }
+        },
+        "typography": {
+            "fontSize": "normal",
+            "fontWeight": "400",
+            "lineHeight": "normal",
+            "textAlign": "right"
+        },
+        "layout": {
+            "width": "standard",
+            "padding": "medium",
+            "verticalSpacing": "medium",
+            "flexDirection": "row-reverse",
+            "justifyContent": "space-between",
+            "alignItems": "start"
+        }
+    },
+    "section_style": {
+        "colors": {
+            "lightMode": {
+                "primary": "#993434",
+                "secondary": "#1d1717",
+                "accent": "#573b3b",
+                "background": "#c98686",
+                "text": "#2c2222"
+            },
+            "darkMode": {
+                "primary": "#9a4b4b",
+                "secondary": "#493333",
+                "accent": "#2d1010",
+                "background": "#f29c9c",
+                "text": "#461919"
+            }
+        },
+        "layout": {
+            "maxWidth": "1280px",
+            "spacing": {
+                "contentPadding": "1rem",
+                "sectionSpacing": "4rem",
+                "elementSpacing": "1.5rem"
+            },
+            "width": "full",
+            "flexDirection": "row",
+            "justifyContent": "start",
+            "header": {
+                "height": "4rem",
+                "sticky": true,
+                "transparent": false
+            },
+            "verticalSpacing": "medium",
+            "padding": "medium",
+            "footer": {
+                "columns": 4
+            },
+            "alignItems": "center"
+        },
+        "typography": {
+            "fontSize": "normal",
+            "fontWeight": "400",
+            "lineHeight": "normal",
+            "textAlign": "left"
+        },
+        "css": {
+            "lang": "css"
+        }
+    },
+    "branding": {
+        "name": "The Arena",
+        "tagline": "Level Up Your Gaming Experience",
+        "description": "Premium gaming gear and accessories for the modern player",
+        "logo": {
+            "main": "/images/logo.svg",
+            "dark": "/images/logo-dark.svg",
+            "favicon": "/images/favicon.ico",
+            "alt": "The Arena Logo"
+        },
+        "social": {
+            "twitter": "https://twitter.com/thearena",
+            "discord": "https://discord.gg/thearena",
+            "instagram": "https://instagram.com/thearena",
+            "twitch": "https://twitch.tv/thearena"
+        }
+    },
+    "features": {
+        "ecommerce": {
+            "enabled": true,
+            "cart": true,
+            "wishlist": true,
+            "compareProducts": true,
+            "reviews": true,
+            "quickView": true
+        },
+        "blog": {
+            "enabled": true,
+            "categories": true,
+            "tags": true,
+            "authors": true,
+            "relatedPosts": true,
+            "searchByTag": true
+        },
+        "media": {
+            "videoPlayer": true,
+            "audioPlayer": false,
+            "lightbox": true,
+            "carousel": true
+        },
+        "auth": {
+            "enabled": true,
+            "socialLogin": true,
+            "passwordReset": true,
+            "emailVerification": true,
+            "twoFactorAuth": false
+        },
+        "search": true,
+        "social": {
+            "sharing": true,
+            "followButtons": true,
+            "embedSocialFeeds": false
+        },
+        "forms": {
+            "recaptcha": true,
+            "fileUploads": true,
+            "autoSave": true,
+            "analytics": true
+        },
+        "performance": {
+            "lazyLoading": true,
+            "imageOptimization": true,
+            "caching": true,
+            "preloading": true
+        },
+        "comments": false,
+        "navigation": {
+            "megaMenu": true,
+            "stickyHeader": true,
+            "breadcrumbs": true,
+            "backToTop": true,
+            "mobileMenu": "drawer"
+        },
+        "cookieConsent": true,
+        "newsletter": true,
+        "darkMode": true,
+        "localization": {
+            "enabled": true,
+            "languages": ["en", "es", "fr"],
+            "defaultLanguage": "en",
+            "currency": "USD",
+            "dateFormat": "MM/DD/YYYY"
+        }
+    },
+    "seo": {
+        "titleTemplate": "%s | Your Company Name",
+        "defaultTitle": "Your Company Name - Your Tagline",
+        "defaultDescription": "Default meta description for your site",
+        "defaultImage": "/images/og-image.jpg",
+        "twitterHandle": "@yourcompany",
+        "googleAnalyticsId": "UA-XXXXXXXXX-X"
+    },
+    "integrations": {
+        "mailchimp": {
+            "enabled": false,
+            "audienceId": "YOUR_AUDIENCE_ID"
+        },
+        "intercom": {
+            "enabled": false,
+            "appId": "YOUR_APP_ID"
+        },
+        "crisp": {
+            "enabled": false,
+            "websiteId": "YOUR_WEBSITE_ID"
+        }
     }
-  },
-  "branding": {
-    "name": "The Arena",
-    "tagline": "Level Up Your Gaming Experience",
-    "description": "Premium gaming gear and accessories for the modern player",
-    "logo": {
-      "main": "/images/logo.svg",
-      "dark": "/images/logo-dark.svg",
-      "favicon": "/images/favicon.ico",
-      "alt": "The Arena Logo"
-    },
-    "social": {
-      "twitter": "https://twitter.com/thearena",
-      "discord": "https://discord.gg/thearena",
-      "instagram": "https://instagram.com/thearena",
-      "twitch": "https://twitch.tv/thearena"
-    }
-  },
-  "features": {
-    "ecommerce": {
-      "enabled": true,
-      "cart": true,
-      "wishlist": true,
-      "compareProducts": true,
-      "reviews": true,
-      "quickView": true
-    },
-    "blog": {
-      "enabled": true,
-      "categories": true,
-      "tags": true,
-      "authors": true,
-      "relatedPosts": true,
-      "searchByTag": true
-    },
-    "media": {
-      "videoPlayer": true,
-      "audioPlayer": false,
-      "lightbox": true,
-      "carousel": true
-    },
-    "auth": {
-      "enabled": true,
-      "socialLogin": true,
-      "passwordReset": true,
-      "emailVerification": true,
-      "twoFactorAuth": false
-    },
-    "search": true,
-    "social": {
-      "sharing": true,
-      "followButtons": true,
-      "embedSocialFeeds": false
-    },
-    "forms": {
-      "recaptcha": true,
-      "fileUploads": true,
-      "autoSave": true,
-      "analytics": true
-    },
-    "performance": {
-      "lazyLoading": true,
-      "imageOptimization": true,
-      "caching": true,
-      "preloading": true
-    },
-    "comments": false,
-    "navigation": {
-      "megaMenu": true,
-      "stickyHeader": true,
-      "breadcrumbs": true,
-      "backToTop": true,
-      "mobileMenu": "drawer"
-    },
-    "cookieConsent": true,
-    "newsletter": true,
-    "darkMode": true,
-    "localization": {
-      "enabled": true,
-      "languages": [
-        "en",
-        "es",
-        "fr"
-      ],
-      "defaultLanguage": "en",
-      "currency": "USD",
-      "dateFormat": "MM/DD/YYYY"
-    }
-  },
-  "seo": {
-    "titleTemplate": "%s | Your Company Name",
-    "defaultTitle": "Your Company Name - Your Tagline",
-    "defaultDescription": "Default meta description for your site",
-    "defaultImage": "/images/og-image.jpg",
-    "twitterHandle": "@yourcompany",
-    "googleAnalyticsId": "UA-XXXXXXXXX-X"
-  },
-  "integrations": {
-    "mailchimp": {
-      "enabled": false,
-      "audienceId": "YOUR_AUDIENCE_ID"
-    },
-    "intercom": {
-      "enabled": false,
-      "appId": "YOUR_APP_ID"
-    },
-    "crisp": {
-      "enabled": false,
-      "websiteId": "YOUR_WEBSITE_ID"
-    }
-  }
 }

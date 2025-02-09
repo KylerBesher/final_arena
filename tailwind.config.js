@@ -302,9 +302,10 @@ module.exports = {
             },
             backgroundImage: {
                 'gradient-radial': 'radial-gradient(var(--tw-gradient-stops))',
-                'gradient-conic': 'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
+                'gradient-conic':
+                    'conic-gradient(from 180deg at 50% 50%, var(--tw-gradient-stops))',
             },
-            typography: (theme) => ({
+            typography: theme => ({
                 DEFAULT: {
                     css: {
                         color: theme('colors.text'),
@@ -359,20 +360,17 @@ module.exports = {
             keyframes: {
                 loading: {
                     '0%, 100%': { height: '10px' },
-                    '50%': { height: '40px' }
-                }
+                    '50%': { height: '40px' },
+                },
             },
             animation: {
-                loading: 'loading 1s ease-in-out infinite'
+                loading: 'loading 1s ease-in-out infinite',
             },
             backgroundColor: {
                 'section-light': 'var(--section-bg-light)',
                 'section-dark': 'var(--section-bg-dark)',
-            }
+            },
         },
     },
-    plugins: [
-        require('@tailwindcss/typography'),
-        require('./lib/theme/tailwind-theme'),
-    ],
+    plugins: [require('@tailwindcss/typography'), require('./lib/theme/tailwind-theme')],
 };

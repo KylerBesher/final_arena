@@ -1,4 +1,9 @@
-import { uniqueNamesGenerator, adjectives, animals, NumberDictionary } from 'unique-names-generator';
+import {
+    uniqueNamesGenerator,
+    adjectives,
+    animals,
+    NumberDictionary,
+} from 'unique-names-generator';
 
 /*
 Get the actual size of a resource downloaded by the browser (e.g. an image) in bytes.
@@ -27,11 +32,11 @@ export function randomInt(min, max) {
 const uniqueNamesConfig = {
     dictionaries: [adjectives, animals],
     separator: '-',
-    length: 2
+    length: 2,
 };
 
 export function uniqueName() {
-    return uniqueNamesGenerator(uniqueNamesConfig) + "-" + randomInt(100, 999);
+    return uniqueNamesGenerator(uniqueNamesConfig) + '-' + randomInt(100, 999);
 }
 
-export const uploadDisabled = process.env.NEXT_PUBLIC_DISABLE_UPLOADS?.toLowerCase() === "true";
+export const uploadDisabled = process.env.NEXT_PUBLIC_DISABLE_UPLOADS?.toLowerCase() === 'true';

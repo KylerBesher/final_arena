@@ -8,9 +8,9 @@ import siteConfig from '../content/settings/site.json';
 export const metadata = {
     title: {
         template: siteConfig.strings.site.title_template,
-        default: siteConfig.strings.site.default_title
+        default: siteConfig.strings.site.default_title,
     },
-    description: siteConfig.strings.site.default_description
+    description: siteConfig.strings.site.default_description,
 };
 
 export default function RootLayout({ children }) {

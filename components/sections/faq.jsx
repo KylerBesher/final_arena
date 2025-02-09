@@ -7,7 +7,7 @@ import { ChevronDownIcon } from '@heroicons/react/24/outline';
 export function FAQ({ title, items }) {
     const [openIndex, setOpenIndex] = useState(null);
 
-    const toggleItem = (index) => {
+    const toggleItem = index => {
         setOpenIndex(openIndex === index ? null : index);
     };
 
@@ -17,10 +17,7 @@ export function FAQ({ title, items }) {
                 <h2 className="text-3xl font-bold text-center mb-8">{title}</h2>
                 <div className="max-w-3xl mx-auto space-y-4">
                     {items.map((item, index) => (
-                        <div
-                            key={index}
-                            className="border rounded-lg overflow-hidden"
-                        >
+                        <div key={index} className="border rounded-lg overflow-hidden">
                             <button
                                 className="w-full flex justify-between items-center p-4 text-left hover:bg-gray-50"
                                 onClick={() => toggleItem(index)}
@@ -43,4 +40,4 @@ export function FAQ({ title, items }) {
             </div>
         </section>
     );
-} 
+}

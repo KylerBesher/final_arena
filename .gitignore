@@ -38,3 +38,8 @@ yarn-error.log*
 
 # Local Netlify folder
 .netlify
+
+# IDE - VSCode
+.vscode/*
+!.vscode/settings.json
+!.vscode/extensions.json

@@ -23,7 +23,7 @@ const resolvers = {
             const pagesDirectory = path.join(process.cwd(), 'content/pages');
             const filenames = fs.readdirSync(pagesDirectory);
 
-            return filenames.map((filename) => {
+            return filenames.map(filename => {
                 const filePath = path.join(pagesDirectory, filename);
                 const fileContent = fs.readFileSync(filePath, 'utf8');
                 const { data, content } = matter(fileContent);
@@ -47,4 +47,4 @@ export const config = {
     },
 };
 
-export default apolloServer.createHandler({ path: '/api/graphql' }); 
+export default apolloServer.createHandler({ path: '/api/graphql' });

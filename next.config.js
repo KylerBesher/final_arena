@@ -12,10 +12,10 @@ const nextConfig = {
         // Add path aliases
         config.resolve.alias = {
             ...config.resolve.alias,
-            components: path.join(__dirname, 'components')
+            components: path.join(__dirname, 'components'),
         };
         // Enable source maps in development
-        if (!isServer && dev) {
+        if(!isServer && dev) {
             config.devtool = 'source-map';
         }
         return config;
@@ -37,7 +37,9 @@ const nextConfig = {
             ],
         };
     },
+    experimental: {
+        appDir: true,
+    },
 };
 
 module.exports = nextConfig;
-

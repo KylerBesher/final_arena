@@ -13,8 +13,10 @@ function createSection(type, config) {
     const initialStyleFields = [styles.colors, styles.layout]
         .filter(field => !stripFields.includes(field))
         .concat(addFields);
-    const styleFields = Array.from(new Map(initialStyleFields.map(field => [field.name, field])).values());
-    
+    const styleFields = Array.from(
+        new Map(initialStyleFields.map(field => [field.name, field])).values(),
+    );
+
     return {
         name: type,
         type,
@@ -26,7 +28,7 @@ function createSection(type, config) {
                 label: 'Style Override',
                 name: 'style',
                 widget: 'list',
-                types: styleFields
+                types: styleFields,
             },
         ],
     };
@@ -55,11 +57,7 @@ function createCollection(name, config) {
                 label: 'Style Override',
                 name: 'style',
                 widget: 'list',
-                types: [
-                    styles.layout,
-                    styles.colors,
-                    styles.typography,
-                ]
+                types: [styles.layout, styles.colors, styles.typography],
             },
             Metadata,
             styles.css,
@@ -70,4 +68,4 @@ function createCollection(name, config) {
 module.exports = {
     createSection,
     createCollection,
-}; 
+};

@@ -29,7 +29,7 @@ function buildConfig() {
             settingsConfig,
             pagesConfig,
             // Add more collections here
-        ]
+        ],
     };
 
     // Ensure output directory exists
@@ -42,17 +42,13 @@ function buildConfig() {
     const yamlStr = yaml.dump(config, {
         indent: 2,
         lineWidth: -1, // Prevent line wrapping
-        noRefs: true,  // Prevent aliases
+        noRefs: true, // Prevent aliases
     });
 
-    fs.writeFileSync(
-        path.join(outputDir, 'config.yml'),
-        yamlStr,
-        'utf8'
-    );
+    fs.writeFileSync(path.join(outputDir, 'config.yml'), yamlStr, 'utf8');
 
     console.log('CMS config generated successfully!');
 }
 
 // Run the build
-buildConfig(); 
+buildConfig();

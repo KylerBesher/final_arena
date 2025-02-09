@@ -12,10 +12,10 @@ export function RichText({ content }) {
 }
 
 // export function RichText({ content, classification }){
- 
+
 //     return (
 //         <div className="container mx-auto">
-//             <div 
+//             <div
 //                 id={classification?.id}
 //                 className={classification?.classes?.join(' ') || ''}
 //             >
@@ -23,4 +23,4 @@ export function RichText({ content }) {
 //             </div>
 //         </div>
 //     );
-// }   
+// }

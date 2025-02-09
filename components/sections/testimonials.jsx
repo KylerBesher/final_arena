@@ -13,7 +13,9 @@ export function Testimonials({ title, items }) {
                             className="bg-white rounded-lg shadow-lg p-6 flex flex-col"
                         >
                             <div className="flex-grow">
-                                <p className="text-gray-600 italic mb-4">&ldquo;{testimonial.quote}&rdquo;</p>
+                                <p className="text-gray-600 italic mb-4">
+                                    &ldquo;{testimonial.quote}&rdquo;
+                                </p>
                             </div>
                             <div className="flex items-center mt-4">
                                 {testimonial.image && (
@@ -38,4 +40,4 @@ export function Testimonials({ title, items }) {
             </div>
         </section>
     );
-} 
+}

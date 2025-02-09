@@ -4,7 +4,7 @@ const rewrite = async (request, context) => {
 };
 
 export const config = {
-    path: '/edge'
+    path: '/edge',
 };
 
 export default rewrite;

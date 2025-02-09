@@ -16,7 +16,9 @@ export default async function Page({ params }) {
         }
 
         // Handle array of slug parts for nested routes
-        const slugPath = Array.isArray(resolvedParams.slug) ? resolvedParams.slug.join('/') : resolvedParams.slug;
+        const slugPath = Array.isArray(resolvedParams.slug)
+            ? resolvedParams.slug.join('/')
+            : resolvedParams.slug;
 
         // Don't try to handle image requests at all
         if (slugPath.includes('images/')) {
@@ -24,7 +26,7 @@ export default async function Page({ params }) {
         }
 
         const filePath = path.join(process.cwd(), 'content/pages', slugPath, 'index.md');
-        
+
         const fileContent = await fs.readFile(filePath, 'utf8');
         const { data, content } = processMarkdown(fileContent);
 
@@ -38,7 +40,12 @@ export default async function Page({ params }) {
                 {showSubNav && <SubNav items={currentNavItem.children} />}
                 <div>
                     {data.sections?.map((section, index) => (
-                        <SectionComponent key={index} section={section} pageStyle={data.style}  siteStyle={SiteSettings.style}/>
+                        <SectionComponent
+                            key={index}
+                            section={section}
+                            pageStyle={data.style}
+                            siteStyle={SiteSettings.style}
+                        />
                     ))}
                     {!data.sections && (
                         <div>
@@ -53,4 +60,4 @@ export default async function Page({ params }) {
         console.error('Error loading page:', error);
         notFound();
     }
-} 
+}

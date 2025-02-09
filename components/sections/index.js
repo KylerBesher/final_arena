@@ -1,7 +1,6 @@
 'use client';
 
 import { RichText as BaseRichText } from './rich-text';
-import _ from 'lodash';
 // import { Hero } from './hero';
 // import { TextWithImage } from './text-with-image';
 // import { Stats } from './stats';
@@ -18,7 +17,7 @@ import _ from 'lodash';
 // import { ContactForm } from './contact-form';
 // import { Logos as BaseLogos } from './Logos';
 import { processSectionStyles } from '../../lib/styles/processSectionStyles';
-import { useTheme } from '../../lib/theme/ThemeContext';
+import debug from '../../lib/utils/debug';
 
 const components = {
     // hero: Hero,
@@ -40,31 +39,32 @@ const components = {
 };
 
 export function SectionComponent({ section, pageStyle, siteStyle }) {
-    console.group('Section Styles Debug');
-    
+    debug.group('Section Styles Debug');
+
     const Component = components[section.type];
     if(!Component) {
-        console.warn('Missing section type:', section.type);
-        console.groupEnd();
+        debug.warn('Missing section type:', section.type);
+        debug.groupEnd();
         return null;
     }
 
     const finalStyle = siteStyle;
-    const overrideStyles = [     // Site-wide styles (lowest priority)
-        ...(pageStyle || []),         // Page-level styles
-        ...(section.style || [])       // Section-specific styles (highest priority)
+    const overrideStyles = [
+        // Site-wide styles (lowest priority)
+        ...(pageStyle || []), // Page-level styles
+        ...(section.style || []), // Section-specific styles (highest priority)
     ];
     function mergeDeep(target, source) {
         Object.keys(source).forEach(key => {
             const sourceValue = source[key];
-            if (sourceValue === null || sourceValue === undefined) return;
-            if (Array.isArray(sourceValue)) {
-                if (!Array.isArray(target[key])) {
+            if(sourceValue === null || sourceValue === undefined) return;
+            if(Array.isArray(sourceValue)) {
+                if(!Array.isArray(target[key])) {
                     target[key] = sourceValue;
                 } else {
                     sourceValue.forEach((item, index) => {
-                        if (item === null || item === undefined) return;
-                        if (
+                        if(item === null || item === undefined) return;
+                        if(
                             index in target[key] &&
                             typeof target[key][index] === 'object' &&
                             target[key][index] !== null &&
@@ -76,8 +76,8 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
                         }
                     });
                 }
-            } else if (typeof sourceValue === 'object') {
-                if (!target[key] || typeof target[key] !== 'object') {
+            } else if(typeof sourceValue === 'object') {
+                if(!target[key] || typeof target[key] !== 'object') {
                     target[key] = sourceValue;
                 } else {
                     mergeDeep(target[key], sourceValue);
@@ -89,32 +89,32 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
     }
 
     overrideStyles.forEach(style => {
-        const { type, classification, ...rest } = style;
-        console.log('Merging style type:', type);
-        console.log('Merging style content:', rest);
+        // eslint-disable-next-line no-unused-vars
+        const { type, classification: _classification, ...rest } = style;
+        debug.log('Merging style type:', type);
+        debug.log('Merging style content:', rest);
         mergeDeep(finalStyle[type], rest);
     });
-    
-    console.log('Final Style Object:', finalStyle);
+
+    debug.log('Final Style Object:', finalStyle);
     const classes = processSectionStyles(finalStyle);
-    console.log('Processed Classes:', classes);
+    debug.log('Processed Classes:', classes);
 
     const combinedClasses = [
         // ' bg-[#1ee054]',  // This works,
         ` ${classes.toString()}`,
-        
+
         // ...(section.classification?.classes || []),
         // 'bg-[#621EE0]'  // This works
-    ].filter(Boolean).join(' ');
-    
-    console.log('Final Combined Classes:', combinedClasses);
-    console.groupEnd();
+    ]
+        .filter(Boolean)
+        .join(' ');
+
+    debug.log('Final Combined Classes:', combinedClasses);
+    debug.groupEnd();
 
     return (
-        <section
-            id={section.classification?.id}
-            className={combinedClasses}
-        >
+        <section id={section.classification?.id} className={combinedClasses}>
             <pre>{JSON.stringify(combinedClasses, null, 2)}</pre>
             <Component {...section} />
         </section>
@@ -128,18 +128,17 @@ export {
     // BaseLogos
 };
 
-export {
-    // Hero,
-    // TextWithImage,
-    // Stats,
-    // Team,
-    // CTA,
-    // TwoColumnText,
-    // FAQ,
-    // Testimonials,
-    // Timeline,
-    // Gallery,
-    // Video,
-    // Pricing,
-    // ContactForm,
-};
+export // Hero,
+// TextWithImage,
+// Stats,
+// Team,
+// CTA,
+// TwoColumnText,
+// FAQ,
+// Testimonials,
+// Timeline,
+// Gallery,
+// Video,
+// Pricing,
+// ContactForm,
+{ };

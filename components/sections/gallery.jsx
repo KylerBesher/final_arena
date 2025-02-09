@@ -25,12 +25,22 @@ const GalleryImage = ({ src, index }) => {
     );
 };
 
-const Gallery = ({ title, description, images = [], background = 'white', customBackground, padding = 'default', width = 'default' }) => {
+const Gallery = ({
+    title,
+    description,
+    images = [],
+    background = 'white',
+    customBackground,
+    padding = 'default',
+    width = 'default',
+}) => {
     const bgStyle = getBackgroundStyle(background, customBackground);
     const isDark = background?.includes('dark') || background?.includes('black');
 
     // Filter out empty or invalid image URLs
-    const validImages = images.filter(image => image && typeof image === 'string' && image.trim() !== '');
+    const validImages = images.filter(
+        image => image && typeof image === 'string' && image.trim() !== '',
+    );
 
     if (!validImages || validImages.length === 0) {
         return null;
@@ -38,11 +48,23 @@ const Gallery = ({ title, description, images = [], background = 'white', custom
 
     return (
         <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+            <div
+                className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}
+            >
                 {(title || description) && (
                     <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                        {title && (
+                            <h2
+                                className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+                            >
+                                {title}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                {description}
+                            </p>
+                        )}
                     </div>
                 )}
                 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
@@ -57,4 +79,4 @@ const Gallery = ({ title, description, images = [], background = 'white', custom
     );
 };
 
-export default Gallery; 
+export default Gallery;

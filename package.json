@@ -7,6 +7,10 @@
         "build": "npm run build:cms-components && next build",
         "start": "next start",
         "lint": "next lint",
+        "lint:fix": "next lint --fix",
+        "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\"",
+        "check-format": "prettier --check \"**/*.{js,jsx,ts,tsx,json,md}\"",
+        "validate": "npm run lint && npm run check-format",
         "build:cms": "node scripts/build.js",
         "watch:cms": "nodemon --watch cms --ext js --exec 'npm run build:cms'",
         "watch:cms-components": "nodemon --watch components --ext jsx --exec 'npm run build:cms-components'",
@@ -16,7 +20,10 @@
         "watch:all": "concurrently \"npm run watch:cms\" \"npm run watch:cms-components\" \"npm run watch:css\"",
         "dev:debug": "cross-env NODE_OPTIONS='--inspect' netlify dev",
         "build:debug": "netlify build --debug",
-        "start:debug": "NODE_OPTIONS='--inspect' next start"
+        "start:debug": "NODE_OPTIONS='--inspect' next start",
+        "lint:debug": "next lint --debug",
+        "format:debug": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\" --debug-check",
+        "lint:list-files": "next lint --print-config ./pages/index.js"
     },
     "dependencies": {
         "@apollo/client": "^3.12.4",
@@ -53,6 +60,8 @@
         "@babel/preset-react": "^7.26.3",
         "@tailwindcss/typography": "^0.5.16",
         "@types/node": "^22.12.0",
+        "@typescript-eslint/eslint-plugin": "^8.23.0",
+        "@typescript-eslint/parser": "^8.23.0",
         "autoprefixer": "^10.4.20",
         "babel-loader": "^9.2.1",
         "chokidar": "^3.6.0",
@@ -67,5 +76,14 @@
         "prettier": "^3.4.2",
         "tailwindcss": "^3.4.17",
         "typescript": "^5.7.3"
+    },
+    "lint-staged": {
+        "*.{js,jsx,ts,tsx}": [
+            "eslint --fix",
+            "prettier --write"
+        ],
+        "*.{json,md}": [
+            "prettier --write"
+        ]
     }
 }

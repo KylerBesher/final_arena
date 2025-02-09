@@ -25,7 +25,15 @@ const LogoImage = ({ src, index }) => {
     );
 };
 
-const Logos = ({ title, description, logos = [], background = 'white', customBackground, padding = 'default', width = 'default' }) => {
+const Logos = ({
+    title,
+    description,
+    logos = [],
+    background = 'white',
+    customBackground,
+    padding = 'default',
+    width = 'default',
+}) => {
     const bgStyle = getBackgroundStyle(background, customBackground);
     const isDark = background?.includes('dark') || background?.includes('black');
 
@@ -38,11 +46,23 @@ const Logos = ({ title, description, logos = [], background = 'white', customBac
 
     return (
         <section className={`${bgStyle} ${padding ? `p-${padding}` : ''}`}>
-            <div className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}>
+            <div
+                className={`container mx-auto ${width === 'narrow' ? 'max-w-3xl' : width === 'default' ? 'max-w-5xl' : 'max-w-full'}`}
+            >
                 {(title || description) && (
                     <div className="text-center mb-12">
-                        {title && <h2 className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}>{title}</h2>}
-                        {description && <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>{description}</p>}
+                        {title && (
+                            <h2
+                                className={`text-3xl font-bold mb-4 ${isDark ? 'text-white' : 'text-gray-900'}`}
+                            >
+                                {title}
+                            </h2>
+                        )}
+                        {description && (
+                            <p className={`text-xl ${isDark ? 'text-gray-300' : 'text-gray-600'}`}>
+                                {description}
+                            </p>
+                        )}
                     </div>
                 )}
                 <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center justify-items-center">
@@ -57,4 +77,4 @@ const Logos = ({ title, description, logos = [], background = 'white', customBac
     );
 };
 
-export default Logos; 
+export default Logos;

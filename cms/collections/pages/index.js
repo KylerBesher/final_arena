@@ -10,7 +10,7 @@ module.exports = createCollection('pages', {
     preview_component: 'PagePreview',
     nested: {
         depth: 100,
-        summary: '{{title}}'
+        summary: '{{title}}',
     },
     meta: { path: { widget: 'string', label: 'Path', index_file: 'index' } },
     fields: [
@@ -25,4 +25,4 @@ module.exports = createCollection('pages', {
         richText,
         // Add other section types here
     ],
-}); 
+});

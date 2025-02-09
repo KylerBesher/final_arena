@@ -11,15 +11,11 @@ export function StringProvider({ children }) {
         ...siteConfig.strings,
         // Add any dynamic strings or computed values here
         copyright: replaceTemplateStrings(siteConfig.strings.footer.copyright, {
-            year: new Date().getFullYear()
-        })
+            year: new Date().getFullYear(),
+        }),
     };
 
-    return (
-        <StringContext.Provider value={strings}>
-            {children}
-        </StringContext.Provider>
-    );
+    return <StringContext.Provider value={strings}>{children}</StringContext.Provider>;
 }
 
 export function useStrings() {
@@ -28,4 +24,4 @@ export function useStrings() {
         throw new Error('useStrings must be used within a StringProvider');
     }
     return context;
-} 
+}
