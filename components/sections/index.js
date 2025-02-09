@@ -43,7 +43,7 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
     debug.group('Section Styles Debug');
 
     const Component = components[section.type];
-    if(!Component) {
+    if (!Component) {
         debug.warn('Missing section type:', section.type);
         debug.groupEnd();
         return null;
@@ -58,14 +58,14 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
     function mergeDeep(target, source) {
         Object.keys(source).forEach((key) => {
             const sourceValue = source[key];
-            if(sourceValue === null || sourceValue === undefined) return;
-            if(Array.isArray(sourceValue)) {
-                if(!Array.isArray(target[key])) {
+            if (sourceValue === null || sourceValue === undefined) return;
+            if (Array.isArray(sourceValue)) {
+                if (!Array.isArray(target[key])) {
                     target[key] = sourceValue;
                 } else {
                     sourceValue.forEach((item, index) => {
-                        if(item === null || item === undefined) return;
-                        if(
+                        if (item === null || item === undefined) return;
+                        if (
                             index in target[key] &&
                             typeof target[key][index] === 'object' &&
                             target[key][index] !== null &&
@@ -77,8 +77,8 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
                         }
                     });
                 }
-            } else if(typeof sourceValue === 'object') {
-                if(!target[key] || typeof target[key] !== 'object') {
+            } else if (typeof sourceValue === 'object') {
+                if (!target[key] || typeof target[key] !== 'object') {
                     target[key] = sourceValue;
                 } else {
                     mergeDeep(target[key], sourceValue);
@@ -116,7 +116,6 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
 
     return (
         <section id={section.classification?.id} className={combinedClasses}>
-            <pre>{JSON.stringify(combinedClasses, null, 2)}</pre>
             <Component {...section} />
         </section>
     );
@@ -142,4 +141,4 @@ export // Hero,
 // Video,
 // Pricing,
 // ContactForm,
-{ };
+ {};

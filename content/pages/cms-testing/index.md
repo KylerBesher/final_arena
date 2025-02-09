@@ -25,20 +25,4 @@ sections:
           - [Navigation & Metadata Testing](/cms-testing/navigation)
 
           Select a category to learn more about how the CMS works.
-      classification:
-          id: cms-testing-intro
-          classes: prose prose-lg max-w-prose mx-auto
-      style:
-          layout:
-              width: standard
-              padding: medium
-              verticalSpacing: medium
-              flexDirection: column
-              justifyContent: center
-              alignItems: center
-          typography:
-              fontSize: normal
-              fontWeight: 400
-              lineHeight: normal
-              textAlign: left
 ---
