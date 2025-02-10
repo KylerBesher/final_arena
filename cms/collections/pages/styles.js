@@ -1,3 +1,5 @@
+const _ = require('lodash');
+
 const createSelectField = (label, name, options, defaultValue) => ({
     label,
     name,
@@ -7,18 +9,43 @@ const createSelectField = (label, name, options, defaultValue) => ({
 });
 
 const colorFields = [
-    { name: 'primary', label: 'Primary Color', widget: 'color', required: false },
-    { name: 'secondary', label: 'Secondary Color', widget: 'color', required: false },
+    {
+        name: 'primary',
+        label: 'Primary Color',
+        widget: 'color',
+        required: false,
+    },
+    {
+        name: 'secondary',
+        label: 'Secondary Color',
+        widget: 'color',
+        required: false,
+    },
     { name: 'accent', label: 'Accent Color', widget: 'color', required: false },
-    { name: 'background', label: 'Background Color', widget: 'color', required: false },
+    {
+        name: 'background',
+        label: 'Background Color',
+        widget: 'color',
+        required: false,
+    },
     { name: 'text', label: 'Text Color', widget: 'color', required: false },
-    { name: 'backgroundImage', label: 'Background Image', widget: 'image', required: false },
+    {
+        name: 'backgroundImage',
+        label: 'Background Image',
+        widget: 'image',
+        required: false,
+    },
     {
         label: 'Background Overlay',
         name: 'backgroundOverlay',
         widget: 'object',
         fields: [
-            { name: 'overlayColor', label: 'Overlay Color', widget: 'color', required: false },
+            {
+                name: 'overlayColor',
+                label: 'Overlay Color',
+                widget: 'color',
+                required: false,
+            },
             {
                 name: 'overlayOpacity',
                 label: 'Overlay Opacity',
@@ -56,7 +83,7 @@ const layout = {
                 { label: 'Standard Width', value: 'standard' },
                 { label: 'Narrow Width', value: 'narrow' },
             ],
-            layoutDefaults.width,
+            layoutDefaults.width
         ),
         createSelectField(
             'Padding',
@@ -67,7 +94,7 @@ const layout = {
                 { label: 'Medium', value: 'medium' },
                 { label: 'Large', value: 'large' },
             ],
-            layoutDefaults.padding,
+            layoutDefaults.padding
         ),
         createSelectField(
             'Vertical Spacing',
@@ -78,7 +105,7 @@ const layout = {
                 { label: 'Medium', value: 'medium' },
                 { label: 'Large', value: 'large' },
             ],
-            layoutDefaults.verticalSpacing,
+            layoutDefaults.verticalSpacing
         ),
         createSelectField(
             'Flex Direction',
@@ -89,7 +116,7 @@ const layout = {
                 { label: 'Row Reverse', value: 'row-reverse' },
                 { label: 'Column Reverse', value: 'column-reverse' },
             ],
-            layoutDefaults.flexDirection,
+            layoutDefaults.flexDirection
         ),
         createSelectField(
             'Justify Content',
@@ -102,7 +129,7 @@ const layout = {
                 { label: 'Space Around', value: 'space-around' },
                 { label: 'Space Evenly', value: 'space-evenly' },
             ],
-            layoutDefaults.justifyContent,
+            layoutDefaults.justifyContent
         ),
         createSelectField(
             'Align Items',
@@ -114,7 +141,7 @@ const layout = {
                 { label: 'End', value: 'end' },
                 { label: 'Baseline', value: 'baseline' },
             ],
-            layoutDefaults.alignItems,
+            layoutDefaults.alignItems
         ),
     ],
 };
@@ -125,8 +152,18 @@ const colors = {
     widget: 'object',
     weight: 200,
     fields: [
-        { label: 'Light Mode', name: 'lightMode', widget: 'object', fields: colorFields },
-        { label: 'Dark Mode', name: 'darkMode', widget: 'object', fields: colorFields },
+        {
+            label: 'Light Mode',
+            name: 'lightMode',
+            widget: 'object',
+            fields: colorFields,
+        },
+        {
+            label: 'Dark Mode',
+            name: 'darkMode',
+            widget: 'object',
+            fields: colorFields,
+        },
     ],
 };
 
@@ -144,9 +181,14 @@ const typography = {
                 { label: 'Normal', value: 'normal' },
                 { label: 'Large', value: 'large' },
             ],
-            'normal',
+            'normal'
         ),
-        { name: 'fontColor', label: 'Font Color', widget: 'color', required: false },
+        {
+            name: 'fontColor',
+            label: 'Font Color',
+            widget: 'color',
+            required: false,
+        },
         createSelectField(
             'Font Weight',
             'fontWeight',
@@ -158,7 +200,7 @@ const typography = {
                 { label: 'Bold', value: '700' },
                 { label: 'Black', value: '900' },
             ],
-            '400',
+            '400'
         ),
         createSelectField(
             'Line Height',
@@ -168,7 +210,7 @@ const typography = {
                 { label: 'Normal', value: 'normal' },
                 { label: 'Relaxed', value: 'relaxed' },
             ],
-            'normal',
+            'normal'
         ),
         createSelectField(
             'Text Alignments',
@@ -179,9 +221,15 @@ const typography = {
                 { label: 'Right', value: 'right' },
                 { label: 'Justify', value: 'justify' },
             ],
-            'left',
+            'left'
         ),
     ],
+};
+
+const nav = {
+    ..._.cloneDeep(colors),
+    label: 'Navigation',
+    name: 'nav',
 };
 
 const css = {
@@ -200,5 +248,6 @@ module.exports = {
     colors,
     typography,
     css,
+    nav,
     all: [layout, colors, typography, css],
 };

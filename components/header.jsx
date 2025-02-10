@@ -1,25 +1,51 @@
-import Link from 'next/link';
-import React from 'react';
+'use client';
 
+import { Menu, Transition } from '@headlessui/react';
+import Link from 'next/link';
+import { useRouter } from 'next/navigation';
+import React, { Fragment, useState, useRef, useEffect } from 'react';
 
 import siteConfig from '../content/settings/site.json';
-import { getNavigationItems } from '../lib/navigation.server';
+import { useDarkMode } from '../lib/theme/DarkModeContext';
+import navData from '../public/nav.json';
 
 import { DarkModeToggle } from './DarkModeToggle';
 
-function NavItem({ item, isChild }) {
-    if (item.children && item.children.length > 0) {
-        return (
-            <div className="relative group">
-                <Link
-                    href={item.href}
-                    className={`text-text hover:text-primary transition-colors inline-flex items-center justify-between ${
-                        isChild ? 'w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800' : ''
-                    }`}
-                >
-                    {item.title}
+function NavMenu({ item, isSubmenu = false, level = 0 }) {
+    const [isOpen, setIsOpen] = useState(false);
+    const [shouldReverseMenu, setShouldReverseMenu] = useState(false);
+    const menuRef = useRef(null);
+    const router = useRouter();
+    const { isDarkMode } = useDarkMode();
+    const { navigation } = siteConfig;
+    const colors = isDarkMode
+        ? navigation.colors.darkMode
+        : navigation.colors.lightMode;
+
+    useEffect(() => {
+        if (isSubmenu && menuRef.current) {
+            const rect = menuRef.current.getBoundingClientRect();
+            const windowWidth = window.innerWidth;
+            if (rect.right + navigation.dropdowns.width > windowWidth) {
+                setShouldReverseMenu(true);
+            }
+        }
+    }, [isSubmenu, navigation.dropdowns.width]);
+
+    const handleClick = (e) => {
+        if (item.href) {
+            e.preventDefault();
+            router.push(item.href);
+        }
+    };
+
+    const buttonContent = (
+        <>
+            {shouldReverseMenu &&
+                isSubmenu &&
+                navigation.dropdowns.appearance.indicators !== 'none' && (
                     <svg
-                        className="w-4 h-4 ml-1"
+                        className="w-4 h-4 mr-2"
                         fill="none"
                         stroke="currentColor"
                         viewBox="0 0 24 24"
@@ -28,138 +54,177 @@ function NavItem({ item, isChild }) {
                             strokeLinecap="round"
                             strokeLinejoin="round"
                             strokeWidth={2}
-                            d={isChild ? 'M9 5l7 7-7 7' : 'M19 9l-7 7-7-7'}
+                            d="M15 19l-7-7 7-7"
                         />
                     </svg>
-                </Link>
-                <div
-                    className={`${
-                        isChild
-                            ? 'absolute left-full top-0 hidden group-hover:block ml-0.5'
-                            : 'absolute left-0 hidden pt-2 group-hover:block'
-                    } z-50`}
-                >
-                    <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
-                        {item.children.map((child) => (
-                            <div key={child.href} className="relative group/child">
-                                <Link
-                                    href={child.href}
-                                    className="block w-full px-4 py-2 text-text hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center justify-between"
-                                >
-                                    {child.title}
-                                    {child.children?.length > 0 && (
-                                        <svg
-                                            className="w-4 h-4 ml-1"
-                                            fill="none"
-                                            stroke="currentColor"
-                                            viewBox="0 0 24 24"
-                                        >
-                                            <path
-                                                strokeLinecap="round"
-                                                strokeLinejoin="round"
-                                                strokeWidth={2}
-                                                d="M9 5l7 7-7 7"
-                                            />
-                                        </svg>
-                                    )}
-                                </Link>
-                                {child.children?.length > 0 && (
-                                    <div className="absolute left-full top-0 hidden group-hover/child:block ml-0.5">
-                                        <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
-                                            {child.children.map((grandchild) => (
-                                                <div
-                                                    key={grandchild.href}
-                                                    className="relative group/grandchild"
-                                                >
-                                                    <Link
-                                                        href={grandchild.href}
-                                                        className="block w-full px-4 py-2 text-text hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors inline-flex items-center justify-between"
-                                                    >
-                                                        {grandchild.title}
-                                                        {grandchild.children?.length > 0 && (
-                                                            <svg
-                                                                className="w-4 h-4 ml-1"
-                                                                fill="none"
-                                                                stroke="currentColor"
-                                                                viewBox="0 0 24 24"
-                                                            >
-                                                                <path
-                                                                    strokeLinecap="round"
-                                                                    strokeLinejoin="round"
-                                                                    strokeWidth={2}
-                                                                    d="M9 5l7 7-7 7"
-                                                                />
-                                                            </svg>
-                                                        )}
-                                                    </Link>
-                                                    {grandchild.children?.length > 0 && (
-                                                        <div className="absolute left-full top-0 hidden group-hover/grandchild:block ml-0.5">
-                                                            <div className="bg-background border border-gray-200 dark:border-gray-800 rounded-md shadow-lg min-w-[200px]">
-                                                                {grandchild.children.map(
-                                                                    (greatGrandchild) => (
-                                                                        <Link
-                                                                            key={
-                                                                                greatGrandchild.href
-                                                                            }
-                                                                            href={
-                                                                                greatGrandchild.href
-                                                                            }
-                                                                            className="block w-full px-4 py-2 text-text hover:text-primary hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
-                                                                        >
-                                                                            {greatGrandchild.title}
-                                                                        </Link>
-                                                                    ),
-                                                                )}
-                                                            </div>
-                                                        </div>
-                                                    )}
-                                                </div>
-                                            ))}
-                                        </div>
-                                    </div>
-                                )}
-                            </div>
-                        ))}
-                    </div>
-                </div>
-            </div>
+                )}
+            {item.title}
+            {!shouldReverseMenu &&
+                item.children &&
+                navigation.dropdowns.appearance.indicators !== 'none' && (
+                    <svg
+                        className="w-4 h-4 ml-2"
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d={isSubmenu ? 'M9 5l7 7-7 7' : 'M19 9l-7 7-7-7'}
+                        />
+                    </svg>
+                )}
+        </>
+    );
+
+    if (!item.children) {
+        return (
+            <Link
+                href={item.href}
+                style={{
+                    color: colors.nav.text,
+                    padding: `${navigation.dropdowns.spacing.itemPadding}px`,
+                }}
+                className="inline-flex w-full items-center justify-between transition-colors"
+            >
+                {buttonContent}
+            </Link>
         );
     }
 
     return (
-        <Link
-            href={item.href}
-            className={`text-text hover:text-primary transition-colors ${
-                isChild ? 'block w-full px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-800' : ''
-            }`}
+        <Menu
+            as="div"
+            className={`relative ${isSubmenu ? 'w-full' : 'inline-block'}`}
+            onMouseEnter={() => setIsOpen(true)}
+            onMouseLeave={() => setIsOpen(false)}
+            ref={menuRef}
         >
-            {item.title}
-        </Link>
+            <Menu.Button
+                onClick={handleClick}
+                style={{
+                    color: colors.nav.text,
+                    padding: `${navigation.dropdowns.spacing.itemPadding}px`,
+                }}
+                className={`
+                    inline-flex w-full items-center justify-between transition-colors
+                    ${item.href ? 'cursor-pointer' : ''}
+                `}
+            >
+                {buttonContent}
+            </Menu.Button>
+
+            <Transition
+                show={isOpen}
+                as={Fragment}
+                enter={`transition duration-${navigation.animation.transitions.duration}`}
+                enterFrom="transform opacity-0 scale-95"
+                enterTo="transform opacity-100 scale-100"
+                leave={`transition duration-${navigation.animation.transitions.duration}`}
+                leaveFrom="transform opacity-100 scale-100"
+                leaveTo="transform opacity-0 scale-95"
+            >
+                <Menu.Items
+                    static
+                    style={{
+                        width: `${navigation.dropdowns.width}px`,
+                        backgroundColor: colors.dropdown.background,
+                        borderRadius: `${navigation.dropdowns.appearance.borderRadius}px`,
+                        borderColor: colors.dropdown.border,
+                        boxShadow:
+                            navigation.dropdowns.appearance.shadow !== 'none'
+                                ? `var(--shadow-${navigation.dropdowns.appearance.shadow})`
+                                : 'none',
+                    }}
+                    className={`
+                        absolute z-50 border focus:outline-none
+                        ${
+                            isSubmenu
+                                ? shouldReverseMenu
+                                    ? 'right-full top-0'
+                                    : 'left-full top-0'
+                                : 'left-0 top-full'
+                        }
+                        ${shouldReverseMenu ? 'origin-right' : 'origin-left'}
+                    `}
+                >
+                    <div
+                        style={{
+                            padding: `${navigation.dropdowns.spacing.itemPadding}px`,
+                        }}
+                    >
+                        {item.children.map((child, index) => (
+                            <Menu.Item key={child.href}>
+                                {({ active }) => (
+                                    <div
+                                        className={
+                                            navigation.dropdowns.appearance
+                                                .dividers &&
+                                            index !== item.children.length - 1
+                                                ? `border-b border-${colors.dropdown.divider}`
+                                                : ''
+                                        }
+                                    >
+                                        <NavMenu
+                                            item={child}
+                                            isSubmenu
+                                            level={level + 1}
+                                        />
+                                    </div>
+                                )}
+                            </Menu.Item>
+                        ))}
+                    </div>
+                </Menu.Items>
+            </Transition>
+        </Menu>
     );
 }
 
-export async function Header() {
-    const { features } = siteConfig;
-    const navItems = await getNavigationItems();
+function NavItem({ item }) {
+    return <NavMenu item={item} />;
+}
+
+export function Header() {
+    const { isDarkMode } = useDarkMode();
+    const { navigation } = siteConfig;
+    const colors = isDarkMode
+        ? navigation.colors.darkMode
+        : navigation.colors.lightMode;
 
     return (
-        <header className="fixed top-0 left-0 right-0 z-50 bg-background/80 backdrop-blur-sm border-b border-gray-200 dark:border-gray-800 bg-[var(--color-primary)] ">
-            <div className="container mx-auto px-4">
-                <div className="flex items-center justify-between h-16">
-                    <Link href="/" className="text-text font-bold text-xl">
+        <header
+            style={{
+                height: `${navigation.layout.height}px`,
+                backgroundColor: colors.nav.background,
+                position: navigation.layout.position,
+            }}
+            className="w-full transition-colors duration-200"
+        >
+            <div
+                style={{
+                    maxWidth: `${navigation.layout.maxWidth}px`,
+                    padding: `0 ${navigation.layout.containerPadding}px`,
+                }}
+                className="mx-auto h-full"
+            >
+                <div className="flex items-center justify-between h-full">
+                    <Link
+                        href="/"
+                        className="font-bold text-xl"
+                        style={{ color: colors.nav.text }}
+                    >
                         {siteConfig.branding.name}
                     </Link>
-
                     <div className="flex items-center space-x-4">
                         <nav className="hidden md:flex items-center space-x-4">
-                            {navItems.map((item) => (
+                            {navData.map((item) => (
                                 <NavItem key={item.href} item={item} />
                             ))}
                         </nav>
-
-                        <div className="flex items-center">
-                            {features.darkMode && <DarkModeToggle />}
-                        </div>
+                        <DarkModeToggle />
                     </div>
                 </div>
             </div>

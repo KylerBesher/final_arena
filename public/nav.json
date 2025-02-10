@@ -1,0 +1,85 @@
+[
+  {
+    "title": "CMS Testing Suite",
+    "href": "/cms-testing",
+    "order": 999,
+    "children": [
+      {
+        "title": "Content Sections Testing",
+        "href": "/cms-testing/navigation",
+        "order": 999
+      },
+      {
+        "title": "Content Sections Testing",
+        "href": "/cms-testing/sections",
+        "order": 999
+      },
+      {
+        "title": "Layout",
+        "href": "/cms-testing/layout",
+        "order": 999
+      },
+      {
+        "title": "Theme & Styles Testing",
+        "href": "/cms-testing/themes-styles",
+        "order": 999
+      }
+    ]
+  },
+  {
+    "title": "Gaming Communities",
+    "href": "/community",
+    "order": 999,
+    "children": [
+      {
+        "title": "Board Games",
+        "href": "/community/board-games",
+        "order": 999
+      },
+      {
+        "title": "Disney Lorcana",
+        "href": "/community/lorcana",
+        "order": 999
+      },
+      {
+        "title": "Dungeons & Dragons",
+        "href": "/community/dnd",
+        "order": 999
+      },
+      {
+        "title": "Dungeons & Dragons",
+        "href": "/community/dungeons-and-dragons",
+        "order": 999
+      },
+      {
+        "title": "Magic: The Gathering",
+        "href": "/community/magic-the-gathering",
+        "order": 999,
+        "children": [
+          {
+            "title": "MTG Events",
+            "href": "/community/magic-the-gathering/events",
+            "order": 999,
+            "children": [
+              {
+                "title": "Tournament Structure",
+                "href": "/community/magic-the-gathering/events/tournaments",
+                "order": 999
+              }
+            ]
+          }
+        ]
+      },
+      {
+        "title": "Miniature Gaming",
+        "href": "/community/miniature-gaming",
+        "order": 999
+      },
+      {
+        "title": "Warhammer",
+        "href": "/community/warhammer",
+        "order": 999
+      }
+    ]
+  }
+]

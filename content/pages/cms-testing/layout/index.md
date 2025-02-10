@@ -1,16 +1,16 @@
 ---
 title: Layout
 metadata:
-  title: Layout
-  description: Test and review the theme settings and styles applied in the CMS.
-  slug: themes-styles
-  navigation:
-    show_in_nav: true
-    show_children: false
-    page_weight: 20
+    title: Layout updates
+    description: Test and review the theme settings and styles applied in the CMS.
+    slug: themes-styles
+    navigation:
+        show_in_nav: true
+        show_children: false
+        page_weight: 20
 seo:
-  title: Theme & Styles Testing | CMS Testing Suite
-  description: Examine how themes, colors, and styles are applied across the CMS.
+    title: Theme & Styles Testing | CMS Testing Suite
+    description: Examine how themes, colors, and styles are applied across the CMS.
 ---
 
 # Theme & Styles Testing
@@ -30,11 +30,11 @@ When the theme updates, the following CSS variables may be applied:
 
 ```css
 :root {
-  --color-primary: #00FF9D;
-  --color-secondary: #4F46E5;
-  --color-accent: #FF3D6E;
-  --color-background: #FFFFFF;
-  --color-text: #0A0A0A;
+    --color-primary: #00ff9d;
+    --color-secondary: #4f46e5;
+    --color-accent: #ff3d6e;
+    --color-background: #ffffff;
+    --color-text: #0a0a0a;
 }
 ```
 
@@ -42,12 +42,12 @@ And in dark mode:
 
 ```css
 :root {
-  --color-primary: #00FF9D;
-  --color-secondary: #6366F1;
-  --color-accent: #FF4E7E;
-  --color-background: #0A0A0A;
-  --color-text: #FFFFFF;
+    --color-primary: #00ff9d;
+    --color-secondary: #6366f1;
+    --color-accent: #ff4e7e;
+    --color-background: #0a0a0a;
+    --color-text: #ffffff;
 }
 ```
 
-Use developer tools to inspect these values on a rendered page. 
+Use developer tools to inspect these values on a rendered page.
