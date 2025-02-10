@@ -10,25 +10,7 @@ import { useDarkMode } from '../lib/theme/DarkModeContext';
 import navData from '../public/nav.json';
 
 import { DarkModeToggle } from './DarkModeToggle';
-
-function HamburgerIcon({ isOpen }) {
-    return (
-        <div className="w-6 h-6 flex flex-col justify-around md:hidden">
-            <span
-                className={`block h-0.5 w-full bg-current transform transition-all duration-300 ease-out
-                ${isOpen ? 'rotate-45 translate-y-2.5' : ''}`}
-            />
-            <span
-                className={`block h-0.5 w-full bg-current transition-all duration-300 ease-out
-                ${isOpen ? 'opacity-0' : ''}`}
-            />
-            <span
-                className={`block h-0.5 w-full bg-current transform transition-all duration-300 ease-out
-                ${isOpen ? '-rotate-45 -translate-y-2.5' : ''}`}
-            />
-        </div>
-    );
-}
+import { HamburgerMenu } from './HamburgerMenu';
 
 function MobileMenuItem({ item, colors, level = 0, onNavigate }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -106,7 +88,7 @@ function MobileMenuItem({ item, colors, level = 0, onNavigate }) {
     );
 }
 
-function MobileMenu({ isOpen, colors, onClose }) {
+function MobileMenu({ isOpen, colors, onClose, settings }) {
     return (
         <Transition
             show={isOpen}
@@ -142,11 +124,11 @@ function MobileMenu({ isOpen, colors, onClose }) {
     );
 }
 
-function NavMenu({ item, isSubmenu = false, level = 0 }) {
-    const [isOpen, setIsOpen] = useState(false);
+function NavMenu({ item, level = 0 }) {
+    const [isHovered, setIsHovered] = useState(false);
     const [shouldReverseMenu, setShouldReverseMenu] = useState(false);
+    const timeoutRef = useRef(null);
     const menuRef = useRef(null);
-    const router = useRouter();
     const { isDarkMode } = useDarkMode();
     const { navigation } = siteConfig;
     const colors = isDarkMode
@@ -154,168 +136,162 @@ function NavMenu({ item, isSubmenu = false, level = 0 }) {
         : navigation.colors.lightMode;
 
     useEffect(() => {
-        if (isSubmenu && menuRef.current) {
-            const rect = menuRef.current.getBoundingClientRect();
-            const windowWidth = window.innerWidth;
-            if (rect.right + navigation.dropdowns.width > windowWidth) {
-                setShouldReverseMenu(true);
-            }
-        }
-    }, [isSubmenu, navigation.dropdowns.width]);
+        if (level !== 0 && menuRef.current) {
+            const checkCollision = () => {
+                const rect = menuRef.current.getBoundingClientRect();
+                const windowWidth = window.innerWidth;
+                setShouldReverseMenu(rect.right + 50 > windowWidth);
+            };
 
-    const handleClick = (e) => {
-        if (item.href) {
-            e.preventDefault();
-            router.push(item.href);
+            checkCollision();
+            window.addEventListener('resize', checkCollision);
+            return () => window.removeEventListener('resize', checkCollision);
         }
+    }, [level, isHovered]);
+
+    const handleMouseEnter = () => {
+        if (timeoutRef.current) {
+            clearTimeout(timeoutRef.current);
+        }
+        setIsHovered(true);
     };
 
-    const buttonContent = (
-        <>
-            {shouldReverseMenu &&
-                isSubmenu &&
-                navigation.dropdowns.appearance.indicators !== 'none' && (
-                    <svg
-                        className="w-4 h-4 mr-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d="M15 19l-7-7 7-7"
-                        />
-                    </svg>
-                )}
-            {item.title}
-            {!shouldReverseMenu &&
-                item.children &&
-                navigation.dropdowns.appearance.indicators !== 'none' && (
-                    <svg
-                        className="w-4 h-4 ml-2"
-                        fill="none"
-                        stroke="currentColor"
-                        viewBox="0 0 24 24"
-                    >
-                        <path
-                            strokeLinecap="round"
-                            strokeLinejoin="round"
-                            strokeWidth={2}
-                            d={isSubmenu ? 'M9 5l7 7-7 7' : 'M19 9l-7 7-7-7'}
-                        />
-                    </svg>
-                )}
-        </>
+    const handleMouseLeave = () => {
+        timeoutRef.current = setTimeout(() => {
+            setIsHovered(false);
+        }, 100);
+    };
+
+    useEffect(
+        () => () => {
+            if (timeoutRef.current) {
+                clearTimeout(timeoutRef.current);
+            }
+        },
+        []
     );
 
     if (!item.children) {
         return (
             <Link
                 href={item.href}
-                style={{
-                    color: colors.nav.text,
-                    padding: `${navigation.dropdowns.spacing.itemPadding}px`,
-                }}
-                className="inline-flex w-full items-center justify-between transition-colors"
+                className="block px-4 py-2 text-sm hover:opacity-80 transition-opacity"
+                style={{ color: colors.nav.text }}
             >
-                {buttonContent}
+                {item.title}
             </Link>
         );
     }
 
     return (
-        <Menu
-            as="div"
-            className={`relative ${isSubmenu ? 'w-full' : 'inline-block'}`}
-            onMouseEnter={() => setIsOpen(true)}
-            onMouseLeave={() => setIsOpen(false)}
-            ref={menuRef}
+        <div
+            className="relative"
+            onMouseEnter={handleMouseEnter}
+            onMouseLeave={handleMouseLeave}
         >
-            <Menu.Button
-                onClick={handleClick}
-                style={{
-                    color: colors.nav.text,
-                    padding: `${navigation.dropdowns.spacing.itemPadding}px`,
-                }}
-                className={`
-                    inline-flex w-full items-center justify-between transition-colors
-                    ${item.href ? 'cursor-pointer' : ''}
-                `}
-            >
-                {buttonContent}
-            </Menu.Button>
-
-            <Transition
-                show={isOpen}
-                as="div"
-                enter={`transition duration-${navigation.animation.transitions.duration}`}
-                enterFrom="transform opacity-0 scale-95"
-                enterTo="transform opacity-100 scale-100"
-                leave={`transition duration-${navigation.animation.transitions.duration}`}
-                leaveFrom="transform opacity-100 scale-100"
-                leaveTo="transform opacity-0 scale-95"
-            >
-                <Menu.Items
-                    static
-                    style={{
-                        width: `${navigation.dropdowns.width}px`,
-                        backgroundColor: colors.dropdown.background,
-                        borderRadius: `${navigation.dropdowns.appearance.borderRadius}px`,
-                        borderColor: colors.dropdown.border,
-                        boxShadow:
-                            navigation.dropdowns.appearance.shadow !== 'none'
-                                ? `var(--shadow-${navigation.dropdowns.appearance.shadow})`
-                                : 'none',
-                    }}
-                    className={`
-                        absolute z-50 border focus:outline-none
-                        ${
-                            isSubmenu
-                                ? shouldReverseMenu
-                                    ? 'right-full top-0'
-                                    : 'left-full top-0'
-                                : 'left-0 top-full'
-                        }
-                        ${shouldReverseMenu ? 'origin-right' : 'origin-left'}
-                    `}
+            {level === 0 ? (
+                <Link
+                    href={item.href || '#'}
+                    className="inline-flex items-center hover:opacity-80 transition-opacity cursor-pointer"
+                    style={{ color: colors.nav.text }}
                 >
-                    <div
-                        style={{
-                            padding: `${navigation.dropdowns.spacing.itemPadding}px`,
-                        }}
+                    <span>{item.title}</span>
+                    <svg
+                        className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${isHovered ? 'rotate-180' : ''}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
                     >
-                        {item.children.map((child, index) => (
-                            <Menu.Item key={child.href}>
-                                {({ active }) => (
-                                    <div
-                                        className={
-                                            navigation.dropdowns.appearance
-                                                .dividers &&
-                                            index !== item.children.length - 1
-                                                ? `border-b border-${colors.dropdown.divider}`
-                                                : ''
-                                        }
-                                    >
-                                        <NavMenu
-                                            item={child}
-                                            isSubmenu
-                                            level={level + 1}
-                                        />
-                                    </div>
-                                )}
-                            </Menu.Item>
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                        />
+                    </svg>
+                </Link>
+            ) : (
+                <Link
+                    href={item.href || '#'}
+                    className="flex items-center justify-between w-full px-4 py-2 text-sm hover:opacity-80 transition-opacity cursor-pointer"
+                    style={{ color: colors.nav.text }}
+                >
+                    <span>{item.title}</span>
+                    <svg
+                        className={`w-4 h-4 ml-1 transform transition-transform duration-200 ${shouldReverseMenu ? 'rotate-90' : '-rotate-90'}`}
+                        fill="none"
+                        stroke="currentColor"
+                        viewBox="0 0 24 24"
+                    >
+                        <path
+                            strokeLinecap="round"
+                            strokeLinejoin="round"
+                            strokeWidth={2}
+                            d="M19 9l-7 7-7-7"
+                        />
+                    </svg>
+                </Link>
+            )}
+
+            {isHovered && (
+                <div
+                    ref={menuRef}
+                    className={`
+                        absolute rounded-md shadow-lg bg-white dark:bg-gray-800 z-50
+                        ${
+                            level === 0
+                                ? 'left-0 top-full mt-0'
+                                : shouldReverseMenu
+                                  ? 'right-full top-0 mr-0'
+                                  : 'left-full top-0 ml-0'
+                        }
+                    `}
+                    style={{
+                        backgroundColor: colors.dropdown.background,
+                        width: '12rem',
+                        padding: '0.5rem 0',
+                        marginTop: level === 0 ? '0.5rem' : '0',
+                    }}
+                >
+                    {level === 0 && (
+                        <div className="absolute h-2 -top-2 left-0 right-0" />
+                    )}
+                    {level !== 0 && (
+                        <div
+                            className={`absolute w-2 ${shouldReverseMenu ? '-right-2' : '-left-2'} top-0 bottom-0`}
+                        />
+                    )}
+                    <div className="py-1">
+                        {item.children.map((child) => (
+                            <NavMenu
+                                key={child.href}
+                                item={child}
+                                level={level + 1}
+                            />
                         ))}
                     </div>
-                </Menu.Items>
-            </Transition>
-        </Menu>
+                </div>
+            )}
+        </div>
     );
 }
 
 function NavItem({ item }) {
-    return <NavMenu item={item} />;
+    const { isDarkMode } = useDarkMode();
+    const { navigation } = siteConfig;
+    const colors = isDarkMode
+        ? navigation.colors.darkMode
+        : navigation.colors.lightMode;
+
+    return (
+        <Link
+            href={item.href}
+            className="hover:opacity-80 transition-opacity"
+            style={{ color: colors.nav.text }}
+        >
+            {item.title}
+        </Link>
+    );
 }
 
 export function Header() {
@@ -326,6 +302,7 @@ export function Header() {
         ? navigation.colors.darkMode
         : navigation.colors.lightMode;
 
+    // Use navData directly instead of navigation.items
     const closeMobileMenu = () => {
         setIsMobileMenuOpen(false);
     };
@@ -340,11 +317,10 @@ export function Header() {
                 className="fixed top-0 left-0 right-0 w-full transition-colors duration-200 z-50"
             >
                 <div
+                    className="mx-auto h-full px-6 md:px-8"
                     style={{
                         maxWidth: `${navigation.layout.maxWidth}px`,
-                        padding: `0 ${navigation.layout.containerPadding}px`,
                     }}
-                    className="mx-auto h-full"
                 >
                     <div className="flex items-center justify-between h-full">
                         <Link
@@ -357,7 +333,7 @@ export function Header() {
                         <div className="flex items-center space-x-4">
                             <nav className="hidden md:flex items-center space-x-4">
                                 {navData.map((item) => (
-                                    <NavItem key={item.href} item={item} />
+                                    <NavMenu key={item.href} item={item} />
                                 ))}
                             </nav>
                             <div className="flex items-center space-x-4">
@@ -366,22 +342,36 @@ export function Header() {
                                     onClick={() =>
                                         setIsMobileMenuOpen(!isMobileMenuOpen)
                                     }
-                                    className="md:hidden"
+                                    className="relative w-6 h-6 flex flex-col justify-between md:hidden"
                                     style={{ color: colors.nav.text }}
+                                    aria-label={
+                                        isMobileMenuOpen
+                                            ? 'Close menu'
+                                            : 'Open menu'
+                                    }
                                 >
-                                    <HamburgerIcon isOpen={isMobileMenuOpen} />
+                                    <div className="mr-2">
+                                        <HamburgerMenu
+                                            isOpen={isMobileMenuOpen}
+                                            style={
+                                                navigation.mobile?.hamburger ||
+                                                'spin'
+                                            }
+                                        />
+                                    </div>
                                 </button>
                             </div>
                         </div>
                     </div>
                 </div>
             </header>
+            <div style={{ height: `${navigation.layout.height}px` }} />
             <MobileMenu
                 isOpen={isMobileMenuOpen}
                 colors={colors}
                 onClose={closeMobileMenu}
+                settings={navigation.mobile}
             />
-            <div style={{ height: `${navigation.layout.height}px` }} />
         </>
     );
 }

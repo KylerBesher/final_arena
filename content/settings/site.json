@@ -74,75 +74,44 @@
   "navigation": {
     "style": {
       "type": "standard",
-      "position": "sticky",
+      "position": "fixed",
       "height": "90",
       "dropdownStyle": "slide",
-      "mobileMenuStyle": "push",
-      "maxWidth": "400",
-      "subMenus": {
-        "1": {
-          "background": "bg-green-800",
-          "hoverBackground": "hover:bg-green-700",
-          "borderColor": "border-gray-600",
-          "itemDivider": true,
-          "itemIndent": "px-6"
-        },
-        "2": {
-          "background": "bg-green-700",
-          "hoverBackground": "hover:bg-green-600",
-          "borderColor": "border-gray-500",
-          "itemDivider": true,
-          "itemIndent": "px-8"
-        },
-        "default": {
-          "background": "bg-green-900",
-          "hoverBackground": "hover:bg-green-800",
-          "borderColor": "border-gray-700",
-          "itemDivider": false,
-          "itemSpacing": "py-3",
-          "itemIndent": "px-4"
-        }
-      }
+      "mobileMenuStyle": "overlay",
+      "maxWidth": "1200",
+      "containerPadding": "24"
     },
     "colors": {
       "lightMode": {
-        "background": "#1a472a",
-        "text": "#ffffff",
-        "highlight": "#4ade80",
-        "highlightText": "#0f172a",
         "nav": {
-          "background": "#ff0000",
-          "text": "#ffffff",
-          "textHover": "#ffe000",
-          "border": "#d2d0d0"
+          "background": "#ffffff",
+          "text": "#1a1a1a",
+          "textHover": "#2563eb",
+          "border": "#e5e7eb"
         },
         "dropdown": {
-          "background": "#00ff3f",
-          "backgroundHover": "#e5a2a2",
-          "text": "#835959",
-          "textHover": "#3e2828",
-          "border": "#ce8383",
-          "divider": "#000000"
+          "background": "#ffffff",
+          "backgroundHover": "#f3f4f6",
+          "text": "#1a1a1a",
+          "textHover": "#2563eb",
+          "border": "#e5e7eb",
+          "divider": "#e5e7eb"
         }
       },
       "darkMode": {
-        "background": "#0f1f14",
-        "text": "#4ade80",
-        "highlight": "#22c55e",
-        "highlightText": "#f8fafc",
         "nav": {
-          "background": "#010201",
-          "text": "#ae7a7a",
-          "textHover": "#5e2121",
-          "border": "#c01c1c"
+          "background": "#111827",
+          "text": "#f3f4f6",
+          "textHover": "#60a5fa",
+          "border": "#374151"
         },
         "dropdown": {
-          "background": "#1f1717",
-          "backgroundHover": "#8e1717",
-          "text": "#2a1818",
-          "textHover": "#aa5353",
-          "border": "#240f0f",
-          "divider": "#8a4444"
+          "background": "#1f2937",
+          "backgroundHover": "#374151",
+          "text": "#f3f4f6",
+          "textHover": "#60a5fa",
+          "border": "#374151",
+          "divider": "#374151"
         }
       }
     },
@@ -161,13 +130,13 @@
     },
     "layout": {
       "type": "standard",
-      "position": "sticky",
+      "position": "fixed",
       "height": 76,
       "maxWidth": 750,
       "containerPadding": 0
     },
     "dropdowns": {
-      "width": 500,
+      "width": 300,
       "alignment": "left",
       "spacing": {
         "itemPadding": 10,
@@ -201,6 +170,19 @@
       "mobileMenu": {
         "type": "overlay",
         "position": "top"
+      }
+    },
+    "mobile": {
+      "hamburger": "slide",
+      "type": "slide-left",
+      "width": 300,
+      "animation": {
+        "duration": 300,
+        "timing": "ease-in-out"
+      },
+      "backdrop": {
+        "blur": true,
+        "opacity": 0.5
       }
     }
   },
@@ -255,7 +237,7 @@
   },
   "branding": {
     "name": "The Arena",
-    "tagline": "Level Up Your Gaming Experience",
+    "tagline": "Level Up Your Gaming Experience ",
     "description": "Premium gaming gear and accessories for the modern player",
     "logo": {
       "main": "/images/logo.svg",
