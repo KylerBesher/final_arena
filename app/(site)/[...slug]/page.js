@@ -27,19 +27,30 @@ export default async function Page({ params }) {
             return null;
         }
 
-        const filePath = path.join(process.cwd(), 'content/pages', slugPath, 'index.md');
+        const filePath = path.join(
+            process.cwd(),
+            'content/pages',
+            slugPath,
+            'index.md'
+        );
 
         const fileContent = await fs.readFile(filePath, 'utf8');
         const { data, content } = processMarkdown(fileContent);
 
         // Get navigation items to find current page's children
         const navItems = await getNavigationItems();
-        const currentNavItem = navItems.find((item) => item.href === `/${resolvedParams.slug[0]}`);
-        const showSubNav = resolvedParams.slug.length === 1 && currentNavItem?.children?.length > 0;
+        const currentNavItem = navItems.find(
+            (item) => item.href === `/${resolvedParams.slug[0]}`
+        );
+        const showSubNav =
+            resolvedParams.slug.length === 1 &&
+            currentNavItem?.children?.length > 0;
 
         return (
             <>
-                {showSubNav && <SubNav items={currentNavItem.children} />}
+                {showSubNav && false && (
+                    <SubNav items={currentNavItem.children} />
+                )}
                 <div>
                     {data.sections?.map((section, index) => (
                         <SectionComponent
