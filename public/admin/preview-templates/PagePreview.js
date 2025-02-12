@@ -77,7 +77,6 @@ const PagePreview = createClass({
                 sections.map((section, index) => {
                     if (section.type === 'richText') {
                         const RichText = window.cms['cms-components'];
-                        const processStyles = window.cms['cms-utils']; // Should work the same way
 
                         // Transform the style array into the expected format
                         const styleObject = {};
@@ -88,8 +87,11 @@ const PagePreview = createClass({
                             });
                         }
 
+                        // Access the function correctly
                         const processedStyles =
-                            processStyles?.(styleObject) || '';
+                            window.cms['cms-utils']?.processSectionStyles?.(
+                                styleObject
+                            ) || '';
 
                         return h(
                             'div',

@@ -13,15 +13,14 @@ const config = {
     mode: 'production',
     entry: {
         'cms-components': './components/sections/rich-text.jsx',
-        'cms-utils': './lib/styles/cms-utils.js',
+        'cms-utils': './lib/styles/processSectionStyles.js',
     },
     output: {
         path: outputPath,
         filename: '[name].js',
         library: {
-            name: ['window', 'cms', '[name]'],
+            name: ['cms', '[name]'],
             type: 'umd',
-            export: 'default',
         },
         globalObject: 'window',
     },

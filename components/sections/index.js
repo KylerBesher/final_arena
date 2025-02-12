@@ -18,7 +18,7 @@
 import { processSectionStyles } from '../../lib/styles/processSectionStyles';
 import debug from '../../lib/utils/debug';
 
-import { RichText as BaseRichText } from './rich-text';
+import RichText from './rich-text';
 
 const components = {
     // hero: Hero,
@@ -27,7 +27,7 @@ const components = {
     // team: Team,
     // features: BaseFeatures,
     // cta: CTA,
-    richText: BaseRichText,
+    richText: RichText,
     // twoColumnText: TwoColumnText,
     // faq: FAQ,
     // testimonials: Testimonials,
@@ -41,6 +41,11 @@ const components = {
 
 export function SectionComponent({ section, pageStyle, siteStyle }) {
     debug.group('Section Styles Debug');
+    console.log('Section Styles Debug');
+    console.log('section', section);
+    console.log('pageStyle', pageStyle);
+    console.log('siteStyle', siteStyle);
+    console.log('components', components);
 
     const Component = components[section.type];
     if (!Component) {
@@ -123,7 +128,7 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
 
 // Export base versions for admin preview
 export {
-    BaseRichText,
+    RichText,
     // BaseFeatures,
     // BaseLogos
 };
