@@ -1,125 +1,114 @@
 ---
-title: Layout
+title: Layout & Spacing
 metadata:
-    title: Layout updates
-    description: Test and review the theme settings and styles applied in the CMS.
-    slug: themes-styles
+    title: Layout & Spacing Examples
+    description: Examples of different layout widths, padding, and spacing configurations.
+    slug: layout-spacing
     navigation:
         show_in_nav: true
         show_children: false
         page_weight: 20
 seo:
-    title: Theme & Styles Testing | CMS Testing Suite
-    description: Examine how themes, colors, and styles are applied across the CMS.
+    title: Layout & Spacing Examples | CMS Testing Suite
+    description: Explore different layout configurations available in the CMS.
 sections:
     - type: richText
       content: >
-          # Theme & Styles Testing
+          # Layout Width & Spacing Examples
 
-          This page is dedicated to testing how themes and style settings are implemented within the CMS.
-
-          ## What to Test
-
-          - **Color Schemes:** Verify that the correct colors are applied based on CMS settings and dark mode activation.
-          - **CSS Variables:** Check that CSS variables (e.g., `--color-primary`) correctly reflect the theme colors.
-          - **Responsive Layouts:** Ensure style overrides for padding, margins, and widths work as expected.
-          - **Theme Switching:** Test toggling between light and dark modes.
+          This page demonstrates the various layout configurations available in the CMS.
+      style:
+          - type: layout
+            width: full
+            padding: none
+          - type: colors
+            lightMode:
+                background: '#111827'
+                text: '#ffffff'
+            darkMode:
+                background: '#030712'
+                text: '#ffffff'
 
     - type: richText
       content: >
-          ## Container Widths
+          ## Full Width, No Padding
 
-          The CMS supports different container width configurations:
-
-          ```json
-          {
-              "layout": {
-                  "maxWidth": 1280,
-                  "contentWidth": 768,
-                  "sidebarWidth": 280
-              }
-          }
-          ```
-
-          ### Testing Container Layouts
-
-          - **Full Width:** Content spans the entire container width
-          - **Content Width:** Text and main content areas
-          - **Sidebar Width:** Navigation and supplementary content
-          - **Responsive Behavior:** How widths adapt on different screen sizes
+          This section extends to the full width of the screen with no padding.
+          Notice how the text reaches the edges of the viewport.
       style:
+          - type: layout
+            width: full
+            padding: none
           - type: colors
             lightMode:
-                background: '#f5f5f5'
+                background: '#3b82f6'
+                text: '#ffffff'
             darkMode:
-                background: '#1a1a1a'
+                background: '#1d4ed8'
+                text: '#ffffff'
 
     - type: richText
       content: >
-          ## Typography Settings
+          ## Container Width, Medium Padding
 
-          Typography can be configured globally:
-
-          ```json
-          {
-              "typography": {
-                  "fontFamily": {
-                      "sans": "Inter, system-ui, sans-serif",
-                      "serif": "Merriweather, Georgia, serif",
-                      "mono": "JetBrains Mono, monospace"
-                  },
-                  "fontSize": {
-                      "base": "16px",
-                      "scale": 1.25
-                  }
-              }
-          }
-          ```
-
-          ### Typography Testing Points
-
-          - Font loading and fallbacks
-          - Heading size hierarchy
-          - Line heights and spacing
-          - Responsive font scaling
+          This section uses the default container width with medium padding.
+          It provides a comfortable reading experience for longer content.
       style:
+          - type: layout
+            width: container
+            padding: medium
           - type: colors
             lightMode:
-                background: '#e6f7ff'
+                background: '#22c55e'
+                text: '#ffffff'
             darkMode:
-                background: '#003a66'
+                background: '#15803d'
+                text: '#ffffff'
 
     - type: richText
       content: >
-          ## Dark Mode Variables
+          ## Narrow Width, Large Padding
 
-          When the theme updates, these CSS variables are applied:
-
-          ```css
-          :root {
-              --color-primary: #00ff9d;
-              --color-secondary: #4f46e5;
-              --color-accent: #ff3d6e;
-              --color-background: #ffffff;
-              --color-text: #0a0a0a;
-          }
-          ```
-
-          And in dark mode:
-
-          ```css
-          :root {
-              --color-primary: #00ff9d;
-              --color-secondary: #6366f1;
-              --color-accent: #ff4e7e;
-              --color-background: #0a0a0a;
-              --color-text: #ffffff;
-          }
-          ```
+          This section demonstrates a narrow width with large padding,
+          ideal for focused reading experiences like blog posts or articles.
       style:
+          - type: layout
+            width: narrow
+            padding: large
           - type: colors
             lightMode:
-                background: '#fff5e6'
+                background: '#eab308'
+                text: '#000000'
             darkMode:
-                background: '#663c00'
+                background: '#854d0e'
+                text: '#ffffff'
+
+    - type: richText
+      content: >
+          ## Custom Width & Spacing
+
+          This section shows how to use custom maximum widths and padding values.
+          You can fine-tune these settings in the CMS.
+
+          ```yaml
+          style:
+            - type: layout
+              width: custom
+              maxWidth: 800
+              padding: custom
+              paddingSize: 48
+          ```
+      style:
+          - type: layout
+            width: custom
+            maxWidth: 800
+            padding: custom
+            paddingSize: 48
+          - type: colors
+            lightMode:
+                background: '#ec4899'
+                text: '#ffffff'
+            darkMode:
+                background: '#9d174d'
+                text: '#ffffff'
 ---

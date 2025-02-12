@@ -1,6 +1,7 @@
-const webpack = require('webpack');
-const path = require('path');
 const fs = require('fs');
+const path = require('path');
+
+const webpack = require('webpack');
 
 // Ensure the output directory exists
 const outputPath = path.join(process.cwd(), 'public/admin/components');
@@ -10,15 +11,19 @@ if (!fs.existsSync(outputPath)) {
 
 const config = {
     mode: 'production',
-    entry: './components/sections/rich-text.jsx',
+    entry: {
+        'cms-components': './components/sections/rich-text.jsx',
+        'cms-utils': './lib/styles/cms-utils.js',
+    },
     output: {
         path: outputPath,
-        filename: 'cms-components.js',
+        filename: '[name].js',
         library: {
-            name: 'cms-components',
+            name: ['window', 'cms', '[name]'],
             type: 'umd',
+            export: 'default',
         },
-        globalObject: 'this',
+        globalObject: 'window',
     },
     module: {
         rules: [
@@ -38,6 +43,7 @@ const config = {
         extensions: ['.js', '.jsx'],
         alias: {
             components: path.resolve(__dirname, '../components'),
+            lib: path.resolve(__dirname, '../lib'),
         },
     },
     externals: {
@@ -56,7 +62,7 @@ webpack(config, (err, stats) => {
                     children: false,
                     chunks: false,
                     chunkModules: false,
-                }),
+                })
         );
         process.exit(1);
     }

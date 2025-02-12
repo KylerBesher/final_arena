@@ -26,7 +26,10 @@
             let head = doc.head;
             if (!head) {
                 head = doc.createElement('head');
-                doc.documentElement.insertBefore(head, doc.documentElement.firstChild);
+                doc.documentElement.insertBefore(
+                    head,
+                    doc.documentElement.firstChild
+                );
             }
             head.appendChild(link);
         }
@@ -44,7 +47,10 @@
             let head = doc.head;
             if (!head) {
                 head = doc.createElement('head');
-                doc.documentElement.insertBefore(head, doc.documentElement.firstChild);
+                doc.documentElement.insertBefore(
+                    head,
+                    doc.documentElement.firstChild
+                );
             }
             head.appendChild(link);
         }
@@ -53,15 +59,12 @@
 
 const PagePreview = createClass({
     render: function () {
-        // Get the entry data
         const entry = this.props.entry;
         const title = entry.getIn(['data', 'title']);
         const description = entry.getIn(['data', 'description']);
         const sections = entry.getIn(['data', 'sections'])?.toJS() || [];
 
-        // Debug what components are available
-        console.log('Available components:', window['cms-components']);
-        console.log('Sections:', sections);
+        console.log('Available on window.cms:', window.cms);
 
         return h(
             'div',
@@ -73,21 +76,39 @@ const PagePreview = createClass({
                 { className: 'sections' },
                 sections.map((section, index) => {
                     if (section.type === 'richText') {
-                        const RichText = window['cms-components'].RichText;
-                        console.log('RichText component:', RichText); // Debug log
-                        if (!RichText) {
-                            console.error('RichText component not found');
-                            return null;
+                        const RichText = window.cms['cms-components'];
+                        const processStyles = window.cms['cms-utils']; // Should work the same way
+
+                        // Transform the style array into the expected format
+                        const styleObject = {};
+                        if (Array.isArray(section.style)) {
+                            section.style.forEach((style) => {
+                                const { type, ...rest } = style;
+                                styleObject[type] = rest;
+                            });
                         }
-                        return h(RichText, {
-                            key: index,
-                            content: section.content || '',
-                            style: section.style || {},
-                        });
+
+                        const processedStyles =
+                            processStyles?.(styleObject) || '';
+
+                        return h(
+                            'div',
+                            {
+                                className: `rich-text-section ${processedStyles}`,
+                                key: index,
+                            },
+                            h(RichText, {
+                                content: section.content || '',
+                            })
+                        );
                     }
-                    return h('div', { key: index }, `${section.type} not implemented`);
-                }),
-            ),
+                    return h(
+                        'div',
+                        { key: index },
+                        `${section.type} not implemented`
+                    );
+                })
+            )
         );
     },
 });

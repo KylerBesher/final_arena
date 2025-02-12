@@ -1,30 +1,35 @@
 <!doctype html>
 <html>
-<head>
-  <meta charset="utf-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <meta name="robots" content="noindex" />
-  <title>Content Manager</title>
-  <!-- Add React dependencies -->
-  <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
-  <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
-  <!-- Include your site's styles -->
-  <link href="/styles/globals.css" rel="stylesheet">
-</head>
-<body>
-  <!-- Load your components first -->
-  <script src="/admin/components/cms-components.js"></script>
-  <script>
-    // Debug what components are available
-    console.log('CMS Components:', window['cms-components']);
-  </script>
-  
-  <!-- Include the script that builds the page and powers Decap CMS -->
-  <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
-  <!-- Then load your preview template -->
-  <script src="/admin/preview-templates/PagePreview.js"></script>
-  <script>
-    CMS.registerPreviewStyle("/styles/globals.css");
-  </script>
-</body>
+    <head>
+        <meta charset="utf-8" />
+        <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+        <meta name="robots" content="noindex" />
+        <title>Content Manager</title>
+        <!-- Add React dependencies -->
+        <script src="https://unpkg.com/react@16/umd/react.production.min.js"></script>
+        <script src="https://unpkg.com/react-dom@16/umd/react-dom.production.min.js"></script>
+        <!-- Include your site's styles -->
+        <link href="/styles/globals.css" rel="stylesheet" />
+    </head>
+    <body>
+        <!-- Load CMS components and utils first -->
+        <script src="/admin/components/cms-components.js"></script>
+        <script src="/admin/components/cms-utils.js"></script>
+
+        <script>
+            // Debug what components are available
+            console.log('index CMS Components:', window['cms-components']);
+            console.log('index CMS Utils:', window['cms']['cms-utils']);
+        </script>
+
+        <!-- Include the script that builds the page and powers Decap CMS -->
+        <script src="https://unpkg.com/decap-cms@^3.0.0/dist/decap-cms.js"></script>
+
+        <!-- Then load your preview template -->
+        <script src="/admin/preview-templates/PagePreview.js"></script>
+
+        <script>
+            CMS.registerPreviewStyle('/styles/globals.css');
+        </script>
+    </body>
 </html>
