@@ -5,7 +5,7 @@ import { notFound } from 'next/navigation';
 
 import { SubNav } from '../../../components/SubNav';
 import { SectionComponent } from '../../../components/sections';
-import SiteSettings from '../../../content/settings/site.json';
+import SiteSettings from '../../../public/admin/settings/site.json';
 import { processMarkdown } from '../../../lib/markdown';
 import { getNavigationItems } from '../../../lib/navigation.server';
 

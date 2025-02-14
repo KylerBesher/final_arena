@@ -2,7 +2,7 @@
 
 import React from 'react';
 
-import siteConfig from '../content/settings/site.json';
+import siteConfig from '../public/admin/settings/site.json';
 import { useDarkMode } from '../lib/theme/DarkModeContext';
 
 export function DarkModeToggle() {

@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import siteConfig from '../../content/settings/site.json';
+import siteConfig from '../../public/admin/settings/site.json';
 
 const DarkModeContext = createContext();
 
@@ -18,7 +18,9 @@ export function DarkModeProvider({ children }) {
         if (savedMode !== null) {
             setIsDarkMode(savedMode === 'true');
         } else {
-            const systemPrefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+            const systemPrefersDark = window.matchMedia(
+                '(prefers-color-scheme: dark)'
+            ).matches;
             setIsDarkMode(systemPrefersDark);
         }
     }, []);

@@ -15,7 +15,7 @@ function extractHexColors(content) {
 function generateSafelist() {
     // For the main site - keep the optimized list
     const colors = new Set();
-    const siteConfig = require('../content/settings/site.json');
+    const siteConfig = require('../public/admin/settings/site.json');
     const siteColors = [
         ...Object.values(siteConfig.section_style.colors.lightMode || {}),
         ...Object.values(siteConfig.section_style.colors.darkMode || {}),

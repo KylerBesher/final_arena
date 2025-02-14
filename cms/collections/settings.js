@@ -8,7 +8,7 @@ const settingsCollection = {
         {
             name: 'site',
             label: 'Site Settings',
-            file: 'content/settings/site.json',
+            file: 'public/admin/settings/site.json',
             fields: [
                 {
                     name: 'branding',

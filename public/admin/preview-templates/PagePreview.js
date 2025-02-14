@@ -66,14 +66,15 @@ const DarkModeToggle = createClass({
     },
 
     componentDidMount() {
-        // Check for saved preference
-        const savedMode = localStorage.getItem('preview-darkMode');
-        if (savedMode) {
-            this.setState({ isDark: savedMode === 'true' });
-            if (savedMode === 'true') {
-                document.documentElement.classList.add('dark');
-            }
-        }
+        fetch('/admin/settings/site.json')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Loaded site settings:', data);
+                this.setState({ siteSettings: data });
+            })
+            .catch((error) => {
+                console.error('Failed to load site settings:', error);
+            });
     },
 
     toggleDarkMode() {
@@ -113,31 +114,16 @@ const PagePreview = createClass({
             isDark: localStorage.getItem('preview-darkMode') === 'true',
         };
     },
-
-    async componentDidMount() {
-        try {
-            // Fetch site settings
-            const response = await fetch('/admin/settings/site. json');
-            const siteSettings = await response.json();
-
-            const iframe = document.getElementById('preview-pane');
-            if (!iframe) return;
-
-            const iframeDoc =
-                iframe.contentDocument || iframe.contentWindow.document;
-            if (!iframeDoc) return;
-
-            // Apply background colors from settings
-            if (iframeDoc.documentElement.classList.contains('dark')) {
-                iframeDoc.body.style.backgroundColor =
-                    siteSettings.style.colors.darkMode.background;
-            } else {
-                iframeDoc.body.style.backgroundColor =
-                    siteSettings.style.colors.lightMode.background;
-            }
-        } catch (error) {
-            console.error('Failed to load site settings:', error);
-        }
+    componentDidMount() {
+        fetch('/admin/settings/site.json')
+            .then((response) => response.json())
+            .then((data) => {
+                console.log('Loaded site settings:', data);
+                this.setState({ siteSettings: data });
+            })
+            .catch((error) => {
+                console.error('Failed to load site settings:', error);
+            });
     },
 
     toggleDarkMode() {
@@ -161,6 +147,7 @@ const PagePreview = createClass({
     },
 
     ensureColorStyles(classes) {
+        console.log('classes', classes);
         const iframe = document.getElementById('preview-pane');
         if (!iframe) return;
 
@@ -197,7 +184,6 @@ const PagePreview = createClass({
                             rule,
                             styleEl.sheet.cssRules.length
                         );
-                        console.log('Added dark mode rule:', rule);
                     } catch (e) {
                         console.error('Failed to add rule:', e, rule);
                     }
@@ -210,7 +196,6 @@ const PagePreview = createClass({
                             rule,
                             styleEl.sheet.cssRules.length
                         );
-                        console.log('Added rule:', rule);
                     } catch (e) {
                         console.error('Failed to add rule:', e, rule);
                     }
@@ -224,12 +209,23 @@ const PagePreview = createClass({
         const title = entry.getIn(['data', 'title']);
         const description = entry.getIn(['data', 'description']);
         const sections = entry.getIn(['data', 'sections'])?.toJS() || [];
+        console.log('from the render data', this);
+        console.log(
+            'lightMode Color',
+            this?.state?.siteSettings?.style?.colors?.lightMode?.background
+        );
+        console.log(
+            'darkMode Color',
+            this?.state?.siteSettings?.style?.colors?.darkMode?.background
+        );
 
-        console.log('Available on window.cms:', window.cms);
-
+        const classes = `preview-content bg-[${this?.state?.siteSettings?.style?.colors?.lightMode?.background?.toUpperCase()}] dark:bg-[${this?.state?.siteSettings?.style?.colors?.darkMode?.background?.toUpperCase()}]`;
+        this.ensureColorStyles(classes);
         return h(
             'div',
-            { className: 'preview-content' },
+            {
+                className: classes,
+            },
             h(
                 'button',
                 {

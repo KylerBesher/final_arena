@@ -5,8 +5,8 @@ import Link from 'next/link';
 import { useRouter } from 'next/navigation';
 import React, { Fragment, useState, useRef, useEffect } from 'react';
 
-import siteConfig from '../content/settings/site.json';
 import { useDarkMode } from '../lib/theme/DarkModeContext';
+import siteConfig from '../public/admin/settings/site.json';
 import navData from '../public/nav.json';
 
 import { DarkModeToggle } from './DarkModeToggle';

@@ -2,7 +2,7 @@
 
 import React, { createContext, useContext, useEffect, useState } from 'react';
 
-import siteConfig from '../../content/settings/site.json';
+import siteConfig from '../../public/admin/settings/site.json';
 
 import { useDarkMode } from './DarkModeContext';
 
@@ -36,7 +36,9 @@ export function ThemeProvider({ children }) {
         addLoadingAnimation();
 
         const root = document.documentElement;
-        const colors = isDarkMode ? style.colors.darkMode : style.colors.lightMode;
+        const colors = isDarkMode
+            ? style.colors.darkMode
+            : style.colors.lightMode;
 
         // Apply dark mode class
         if (isDarkMode) {
@@ -62,7 +64,9 @@ export function ThemeProvider({ children }) {
                 style={{
                     position: 'fixed',
                     inset: 0,
-                    backgroundColor: isDarkMode ? '#1f2937' : 'rgba(255, 255, 255, 0.8)',
+                    backgroundColor: isDarkMode
+                        ? '#1f2937'
+                        : 'rgba(255, 255, 255, 0.8)',
                     backdropFilter: 'blur(4px)',
                 }}
             >
@@ -94,9 +98,12 @@ export function ThemeProvider({ children }) {
                                 <div
                                     key={i}
                                     style={{
-                                        backgroundColor: isDarkMode ? '#22c55e' : 'green',
+                                        backgroundColor: isDarkMode
+                                            ? '#22c55e'
+                                            : 'green',
                                         width: '20px',
-                                        animation: 'loading 1s ease-in-out infinite',
+                                        animation:
+                                            'loading 1s ease-in-out infinite',
                                         animationDelay: `${i * 0.1}s`,
                                         borderRadius: '4px',
                                         alignSelf: 'flex-end',
@@ -119,7 +126,11 @@ export function ThemeProvider({ children }) {
         );
     }
 
-    return <ThemeContext.Provider value={{ style, isDarkMode }}>{children}</ThemeContext.Provider>;
+    return (
+        <ThemeContext.Provider value={{ style, isDarkMode }}>
+            {children}
+        </ThemeContext.Provider>
+    );
 }
 
 export function useTheme() {
