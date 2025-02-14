@@ -114,22 +114,29 @@ const PagePreview = createClass({
         };
     },
 
-    componentDidMount() {
-        // Check saved preference and apply on mount
-        if (this.state.isDark) {
-            document.documentElement.classList.add('dark');
-        }
+    async componentDidMount() {
+        try {
+            // Fetch site settings
+            const response = await fetch('/admin/settings/site. json');
+            const siteSettings = await response.json();
 
-        // Find the preview iframe and apply dark mode to it
-        const iframe = document.getElementById('preview-pane');
-        if (iframe) {
-            iframe.onload = () => {
-                const iframeDoc =
-                    iframe.contentDocument || iframe.contentWindow.document;
-                if (this.state.isDark) {
-                    iframeDoc.documentElement.classList.add('dark');
-                }
-            };
+            const iframe = document.getElementById('preview-pane');
+            if (!iframe) return;
+
+            const iframeDoc =
+                iframe.contentDocument || iframe.contentWindow.document;
+            if (!iframeDoc) return;
+
+            // Apply background colors from settings
+            if (iframeDoc.documentElement.classList.contains('dark')) {
+                iframeDoc.body.style.backgroundColor =
+                    siteSettings.style.colors.darkMode.background;
+            } else {
+                iframeDoc.body.style.backgroundColor =
+                    siteSettings.style.colors.lightMode.background;
+            }
+        } catch (error) {
+            console.error('Failed to load site settings:', error);
         }
     },
 

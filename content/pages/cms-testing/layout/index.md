@@ -44,7 +44,7 @@ sections:
                 background: '#3b82f6'
                 text: '#ffffff'
             darkMode:
-                background: '#1d4ed8'
+                background: '#a01dd8'
                 text: '#ffffff'
 
     - type: richText
