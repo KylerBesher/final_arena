@@ -14,13 +14,15 @@ seo:
 sections:
     - type: richText
       content: >
-          # Layout Width & Spacing Examples
+          # Layout Width Examples
 
-          This page demonstrates the various layout configurations available in the CMS.
+          This page demonstrates the two layout configurations available in the CMS.
       style:
           - type: layout
             width: full
-            padding: none
+            fullContent: true
+            padding:
+                type: none
           - type: colors
             lightMode:
                 background: '#111827'
@@ -31,32 +33,52 @@ sections:
 
     - type: richText
       content: >
-          ## Full Width, No Padding
+          ## Full Width Background, Contained Content
 
-          This section extends to the full width of the screen with no padding.
-          Notice how the text reaches the edges of the viewport.
+          This section extends the background to the full width of the screen,
+          but keeps the content in a readable container.
       style:
           - type: layout
             width: full
-            padding: none
+            padding:
+                type: none
           - type: colors
             lightMode:
                 background: '#3b82f6'
                 text: '#ffffff'
             darkMode:
-                background: '#a01dd8'
+                background: '#1d4ed8'
+                text: '#ffffff'
+    - type: richText
+      content: >
+          # Layout Width Examples
+
+          This page demonstrates the two layout configurations available in the CMS.
+      style:
+          - type: layout
+            # width: full
+            fullContent: true
+            padding:
+                type: none
+          - type: colors
+            lightMode:
+                background: '#111827'
+                text: '#ffffff'
+            darkMode:
+                background: '#030712'
                 text: '#ffffff'
 
     - type: richText
       content: >
-          ## Container Width, Medium Padding
+          ## Contained Width & Content
 
-          This section uses the default container width with medium padding.
-          It provides a comfortable reading experience for longer content.
+          This section stays within the content container.
+          Both the background and content respect the max-width.
       style:
           - type: layout
-            width: container
-            padding: medium
+            width: contained
+            padding:
+                type: none
           - type: colors
             lightMode:
                 background: '#22c55e'
@@ -67,14 +89,16 @@ sections:
 
     - type: richText
       content: >
-          ## Narrow Width, Large Padding
+          ## Full Width Everything
 
-          This section demonstrates a narrow width with large padding,
-          ideal for focused reading experiences like blog posts or articles.
+          This section demonstrates full width background AND content.
+          Text will extend edge to edge.
       style:
           - type: layout
-            width: narrow
-            padding: large
+            width: full
+            fullContent: true
+            padding:
+                type: none
           - type: colors
             lightMode:
                 background: '#eab308'
@@ -85,25 +109,15 @@ sections:
 
     - type: richText
       content: >
-          ## Custom Width & Spacing
+          ## Back to Standard Layout
 
-          This section shows how to use custom maximum widths and padding values.
-          You can fine-tune these settings in the CMS.
-
-          ```yaml
-          style:
-            - type: layout
-              width: custom
-              maxWidth: 800
-              padding: custom
-              paddingSize: 48
-          ```
+          And we're back to the default layout with contained content.
+          This creates a nice rhythm between different section styles.
       style:
           - type: layout
-            width: custom
-            maxWidth: 800
-            padding: custom
-            paddingSize: 48
+            width: contained
+            padding:
+                type: none
           - type: colors
             lightMode:
                 background: '#ec4899'

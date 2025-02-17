@@ -61,7 +61,7 @@ const colorFields = [
 
 // Define a defaults object for layout options
 const layoutDefaults = {
-    width: 'standard',
+    width: 'contained',
     padding: 'medium',
     verticalSpacing: 'medium',
     flexDirection: 'row',
@@ -80,22 +80,94 @@ const layout = {
             'width',
             [
                 { label: 'Full Width', value: 'full' },
-                { label: 'Standard Width', value: 'standard' },
-                { label: 'Narrow Width', value: 'narrow' },
+                { label: 'Contained', value: 'contained' },
             ],
             layoutDefaults.width
         ),
-        createSelectField(
-            'Padding',
-            'padding',
-            [
-                { label: 'None', value: 'none' },
-                { label: 'Small', value: 'small' },
-                { label: 'Medium', value: 'medium' },
-                { label: 'Large', value: 'large' },
+        {
+            label: 'Full Width Content',
+            name: 'fullContent',
+            widget: 'boolean',
+            default: false,
+            required: false,
+        },
+        {
+            label: 'Padding',
+            name: 'padding',
+            widget: 'object',
+            fields: [
+                createSelectField(
+                    'Type',
+                    'type',
+                    [
+                        { label: 'All Sides', value: 'all' },
+                        { label: 'Horizontal', value: 'horizontal' },
+                        { label: 'Vertical', value: 'vertical' },
+                        { label: 'Custom', value: 'custom' },
+                        { label: 'None', value: 'none' },
+                    ],
+                    'all'
+                ),
+                createSelectField(
+                    'Size',
+                    'size',
+                    [
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    'medium'
+                ),
+                {
+                    label: 'Top',
+                    name: 'top',
+                    widget: 'select',
+                    options: [
+                        { label: 'None', value: '0' },
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    required: false,
+                },
+                {
+                    label: 'Right',
+                    name: 'right',
+                    widget: 'select',
+                    options: [
+                        { label: 'None', value: '0' },
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    required: false,
+                },
+                {
+                    label: 'Bottom',
+                    name: 'bottom',
+                    widget: 'select',
+                    options: [
+                        { label: 'None', value: '0' },
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    required: false,
+                },
+                {
+                    label: 'Left',
+                    name: 'left',
+                    widget: 'select',
+                    options: [
+                        { label: 'None', value: '0' },
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    required: false,
+                },
             ],
-            layoutDefaults.padding
-        ),
+        },
         createSelectField(
             'Vertical Spacing',
             'verticalSpacing',

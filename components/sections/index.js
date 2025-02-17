@@ -120,9 +120,24 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
     debug.groupEnd();
 
     return (
-        <section id={section.classification?.id} className={combinedClasses}>
-            <Component {...section} />
-        </section>
+        <div>
+            {/* <div>all section classes: {JSON.stringify(combinedClasses)}</div> */}
+            <section
+                id={section.classification?.id}
+                className={combinedClasses}
+            >
+                <div
+                    className={
+                        section.style?.find((s) => s.type === 'layout')
+                            ?.fullContent
+                            ? ''
+                            : 'container max-w-5xl mx-auto'
+                    }
+                >
+                    <Component {...section} />
+                </div>
+            </section>
+        </div>
     );
 }
 
