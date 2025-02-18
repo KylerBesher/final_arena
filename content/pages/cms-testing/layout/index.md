@@ -21,6 +21,9 @@ sections:
           - type: layout
             width: full
             fullContent: true
+            margin:
+                type: bottom
+                size: large
           - type: colors
             lightMode:
                 background: '#111827'
@@ -38,6 +41,9 @@ sections:
       style:
           - type: layout
             width: full
+            margin:
+                type: both
+                size: medium
           - type: colors
             lightMode:
                 background: '#3b82f6'
@@ -45,6 +51,7 @@ sections:
             darkMode:
                 background: '#1d4ed8'
                 text: '#ffffff'
+
     - type: richText
       content: >
           # Layout Width Examples
@@ -71,6 +78,9 @@ sections:
       style:
           - type: layout
             width: contained
+            margin:
+                type: both
+                size: large
           - type: colors
             lightMode:
                 background: '#22c55e'
@@ -89,6 +99,9 @@ sections:
           - type: layout
             width: full
             fullContent: true
+            margin:
+                type: both
+                size: medium
           - type: colors
             lightMode:
                 background: '#eab308'
@@ -106,6 +119,9 @@ sections:
       style:
           - type: layout
             width: contained
+            margin:
+                type: top
+                size: large
           - type: colors
             lightMode:
                 background: '#ec4899'

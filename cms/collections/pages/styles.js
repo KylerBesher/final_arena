@@ -215,6 +215,34 @@ const layout = {
             ],
             layoutDefaults.alignItems
         ),
+        {
+            label: 'Margin',
+            name: 'margin',
+            widget: 'object',
+            fields: [
+                createSelectField(
+                    'Type',
+                    'type',
+                    [
+                        { label: 'None', value: 'none' },
+                        { label: 'Top', value: 'top' },
+                        { label: 'Bottom', value: 'bottom' },
+                        { label: 'Both', value: 'both' },
+                    ],
+                    'none'
+                ),
+                createSelectField(
+                    'Size',
+                    'size',
+                    [
+                        { label: 'Small', value: 'small' },
+                        { label: 'Medium', value: 'medium' },
+                        { label: 'Large', value: 'large' },
+                    ],
+                    'medium'
+                ),
+            ],
+        },
     ],
 };
 
