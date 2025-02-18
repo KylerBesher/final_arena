@@ -1,4 +1,6 @@
 const { createCollection } = require('../../utils');
+
+const hero = require('./sections/hero');
 const richText = require('./sections/rich-text');
 
 // Import other section types here
@@ -23,6 +25,7 @@ module.exports = createCollection('pages', {
     // Register available section types
     sectionTypes: [
         richText,
+        hero,
         // Add other section types here
     ],
 });

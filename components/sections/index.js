@@ -1,58 +1,29 @@
 'use client';
 
-// import { Hero } from './hero';
-// import { TextWithImage } from './text-with-image';
-// import { Stats } from './stats';
-// import { Team } from './team';
-// import { Features as BaseFeatures } from './Features';
-// import { CTA } from './cta';
-// import { TwoColumnText } from './two-column-text';
-// import { FAQ } from './faq';
-// import { Testimonials } from './testimonials';
-// import { Timeline } from './timeline';
-// import { Gallery } from './gallery';
-// import { Video } from './video';
-// import { Pricing } from './pricing';
-// import { ContactForm } from './contact-form';
-// import { Logos as BaseLogos } from './Logos';
 import { processSectionStyles } from '../../lib/styles/processSectionStyles';
 import debug from '../../lib/utils/debug';
 
+import { Hero } from './hero';
 import RichText from './rich-text';
 
 const components = {
-    // hero: Hero,
-    // textWithImage: TextWithImage,
-    // stats: Stats,
-    // team: Team,
-    // features: BaseFeatures,
-    // cta: CTA,
     richText: RichText,
-    // twoColumnText: TwoColumnText,
-    // faq: FAQ,
-    // testimonials: Testimonials,
-    // timeline: Timeline,
-    // gallery: Gallery,
-    // video: Video,
-    // pricing: Pricing,
-    // contactForm: ContactForm,
-    // logos: BaseLogos
 };
 
 export function SectionComponent({ section, pageStyle, siteStyle }) {
     debug.group('Section Styles Debug');
-    console.log('Section Styles Debug');
-    console.log('section', section);
-    console.log('pageStyle', pageStyle);
-    console.log('siteStyle', siteStyle);
-    console.log('components', components);
 
-    const Component = components[section.type];
-    if (!Component) {
-        debug.warn('Missing section type:', section.type);
-        debug.groupEnd();
-        return null;
-    }
+    const Component = (() => {
+        switch (section.type) {
+            case 'richText':
+                return RichText;
+            case 'hero':
+                return Hero;
+            default:
+                console.warn(`Unknown section type: ${section.type}`);
+                return () => null;
+        }
+    })();
 
     const finalStyle = siteStyle;
     const overrideStyles = [
@@ -97,34 +68,34 @@ export function SectionComponent({ section, pageStyle, siteStyle }) {
     overrideStyles.forEach((style) => {
         // eslint-disable-next-line no-unused-vars
         const { type, classification: _classification, ...rest } = style;
-        debug.log('Merging style type:', type);
-        debug.log('Merging style content:', rest);
+        // debug.log('Merging style type:', type);
+        // debug.log('Merging style content:', rest);
         mergeDeep(finalStyle[type], rest);
     });
-
-    debug.log('Final Style Object:', finalStyle);
     const classes = processSectionStyles(finalStyle);
-    debug.log('Processed Classes:', classes);
 
-    const combinedClasses = [
-        // ' bg-[#1ee054]',  // This works,
-        ` ${classes.toString()}`,
-
-        // ...(section.classification?.classes || []),
-        // 'bg-[#621EE0]'  // This works
-    ]
+    const combinedClasses = [` ${classes.toString()}`]
         .filter(Boolean)
         .join(' ');
 
     debug.log('Final Combined Classes:', combinedClasses);
     debug.groupEnd();
 
+    // Special case for hero - don't wrap it in container
+    // if (section.type === 'hero') {
+    //     return (
+    //         <section id={section.classification?.id}>
+    //             <Component {...section} />
+    //         </section>
+    //     );
+    // }
+
+    // Normal section wrapper for other components
     return (
         <div>
-            {/* <div>all section classes: {JSON.stringify(combinedClasses)}</div> */}
             <section
                 id={section.classification?.id}
-                className={combinedClasses}
+                className={section.type === 'hero' ? '' : combinedClasses}
             >
                 <div
                     className={

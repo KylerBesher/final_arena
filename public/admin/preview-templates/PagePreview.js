@@ -108,6 +108,60 @@ const DarkModeToggle = createClass({
     },
 });
 
+// Add Hero preview component
+const Hero = createClass({
+    render() {
+        const { title, subtitle, backgroundImage } = this.props;
+        return h(
+            'div',
+            {
+                className: 'relative min-h-[60vh] flex items-center',
+            },
+            [
+                // Background Image
+                h('div', {
+                    className: 'absolute inset-0 bg-cover bg-center z-0',
+                    style: { backgroundImage: `url(${backgroundImage})` },
+                }),
+                // Overlay
+                h('div', {
+                    className: 'absolute inset-0 bg-black/50 z-10',
+                }),
+                // Content
+                h(
+                    'div',
+                    { className: 'relative z-20 w-full' },
+                    h(
+                        'div',
+                        {
+                            className:
+                                'container mx-auto px-4 text-center text-white',
+                        },
+                        [
+                            h(
+                                'h1',
+                                {
+                                    className:
+                                        'text-5xl md:text-6xl font-bold mb-6',
+                                },
+                                title
+                            ),
+                            h(
+                                'p',
+                                {
+                                    className:
+                                        'text-xl md:text-2xl max-w-3xl mx-auto',
+                                },
+                                subtitle
+                            ),
+                        ]
+                    )
+                ),
+            ]
+        );
+    },
+});
+
 const PagePreview = createClass({
     getInitialState() {
         return {
@@ -242,38 +296,43 @@ const PagePreview = createClass({
                 'div',
                 { className: 'sections' },
                 sections.map((section, index) => {
-                    if (section.type === 'richText') {
-                        const RichText = window.cms['cms-components'].default;
-                        const processStyles = window.cms['cms-utils'].default;
+                    const RichText = window.cms['cms-components'].default;
+                    const processStyles = window.cms['cms-utils'].default;
 
-                        const styleObject = {};
-                        if (Array.isArray(section.style)) {
-                            section.style.forEach((style) => {
-                                const { type, ...rest } = style;
-                                styleObject[type] = rest;
-                            });
-                        }
-
-                        const processedStyles =
-                            processStyles?.(styleObject) || '';
-                        // Add dynamic styles for any new colors
-                        this.ensureColorStyles(processedStyles);
-
-                        return h(
-                            'div',
-                            {
-                                className: `rich-text-section ${processedStyles}`,
-                                key: index,
-                            },
-                            h(RichText, {
-                                content: section.content || '',
-                            })
-                        );
+                    const styleObject = {};
+                    if (Array.isArray(section.style)) {
+                        section.style.forEach((style) => {
+                            const { type, ...rest } = style;
+                            styleObject[type] = rest;
+                        });
                     }
-                    return h(
+
+                    const processedStyles = processStyles?.(styleObject) || '';
+                    this.ensureColorStyles(processedStyles);
+
+                    let component = h(
                         'div',
                         { key: index },
                         `${section.type} not implemented`
+                    );
+
+                    // Add hero to the switch
+                    if (section.type === 'richText') {
+                        component = RichText;
+                    } else if (section.type === 'hero') {
+                        component = Hero;
+                    }
+
+                    return h(
+                        'div',
+                        {
+                            className: `rich-text-section ${processedStyles}`,
+                            key: index,
+                        },
+                        h(component, {
+                            ...section,
+                            content: section.content || '',
+                        })
                     );
                 })
             )

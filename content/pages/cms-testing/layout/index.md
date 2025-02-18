@@ -12,9 +12,31 @@ seo:
     title: Layout & Spacing Examples | CMS Testing Suite
     description: Explore different layout configurations available in the CMS.
 sections:
+    - type: hero
+      title: 'Welcome to Our Site'
+      subtitle: 'A modern platform for building amazing websites'
+      backgroundImage: '/images/mountains.jpg'
+      style:
+          - type: layout
+            width: full
+            fullContent: true
+            padding:
+                type: all
+                size: none
+            margin:
+                type: bottom
+                size: large
+          - type: colors
+            lightMode:
+                background: '#111827'
+                text: '#ffffff'
+            darkMode:
+                background: '#030712'
+                text: '#ffffff'
+
     - type: richText
       content: >
-          # Layout Width Examples
+          # Layout Width Examples2
 
           This page demonstrates the two layout configurations available in the CMS.
       style:

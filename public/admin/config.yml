@@ -329,24 +329,96 @@ collections:
                     options:
                       - label: Full Width
                         value: full
-                      - label: Standard Width
-                        value: standard
-                      - label: Narrow Width
-                        value: narrow
-                    default: standard
+                      - label: Contained
+                        value: contained
+                    default: contained
+                  - label: Full Width Content
+                    name: fullContent
+                    widget: boolean
+                    default: false
+                    required: false
                   - label: Padding
                     name: padding
-                    widget: select
-                    options:
-                      - label: None
-                        value: none
-                      - label: Small
-                        value: small
-                      - label: Medium
-                        value: medium
-                      - label: Large
-                        value: large
-                    default: medium
+                    widget: object
+                    fields:
+                      - label: Type
+                        name: type
+                        widget: select
+                        options:
+                          - label: All Sides
+                            value: all
+                          - label: Horizontal
+                            value: horizontal
+                          - label: Vertical
+                            value: vertical
+                          - label: Custom
+                            value: custom
+                          - label: None
+                            value: none
+                        default: all
+                      - label: Size
+                        name: size
+                        widget: select
+                        options:
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        default: medium
+                      - label: Top
+                        name: top
+                        widget: select
+                        options:
+                          - label: None
+                            value: '0'
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        required: false
+                      - label: Right
+                        name: right
+                        widget: select
+                        options:
+                          - label: None
+                            value: '0'
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        required: false
+                      - label: Bottom
+                        name: bottom
+                        widget: select
+                        options:
+                          - label: None
+                            value: '0'
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        required: false
+                      - label: Left
+                        name: left
+                        widget: select
+                        options:
+                          - label: None
+                            value: '0'
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        required: false
                   - label: Vertical Spacing
                     name: verticalSpacing
                     widget: select
@@ -405,6 +477,34 @@ collections:
                       - label: Baseline
                         value: baseline
                     default: stretch
+                  - label: Margin
+                    name: margin
+                    widget: object
+                    fields:
+                      - label: Type
+                        name: type
+                        widget: select
+                        options:
+                          - label: None
+                            value: none
+                          - label: Top
+                            value: top
+                          - label: Bottom
+                            value: bottom
+                          - label: Both
+                            value: both
+                        default: none
+                      - label: Size
+                        name: size
+                        widget: select
+                        options:
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        default: medium
               - label: Colors
                 name: colors
                 widget: object
@@ -720,24 +820,96 @@ collections:
                         options:
                           - label: Full Width
                             value: full
-                          - label: Standard Width
-                            value: standard
-                          - label: Narrow Width
-                            value: narrow
-                        default: standard
+                          - label: Contained
+                            value: contained
+                        default: contained
+                      - label: Full Width Content
+                        name: fullContent
+                        widget: boolean
+                        default: false
+                        required: false
                       - label: Padding
                         name: padding
-                        widget: select
-                        options:
-                          - label: None
-                            value: none
-                          - label: Small
-                            value: small
-                          - label: Medium
-                            value: medium
-                          - label: Large
-                            value: large
-                        default: medium
+                        widget: object
+                        fields:
+                          - label: Type
+                            name: type
+                            widget: select
+                            options:
+                              - label: All Sides
+                                value: all
+                              - label: Horizontal
+                                value: horizontal
+                              - label: Vertical
+                                value: vertical
+                              - label: Custom
+                                value: custom
+                              - label: None
+                                value: none
+                            default: all
+                          - label: Size
+                            name: size
+                            widget: select
+                            options:
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            default: medium
+                          - label: Top
+                            name: top
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Right
+                            name: right
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Bottom
+                            name: bottom
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Left
+                            name: left
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
                       - label: Vertical Spacing
                         name: verticalSpacing
                         widget: select
@@ -796,6 +968,34 @@ collections:
                           - label: Baseline
                             value: baseline
                         default: stretch
+                      - label: Margin
+                        name: margin
+                        widget: object
+                        fields:
+                          - label: Type
+                            name: type
+                            widget: select
+                            options:
+                              - label: None
+                                value: none
+                              - label: Top
+                                value: top
+                              - label: Bottom
+                                value: bottom
+                              - label: Both
+                                value: both
+                            default: none
+                          - label: Size
+                            name: size
+                            widget: select
+                            options:
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            default: medium
                   - label: Typography & Text Effects
                     name: typography
                     widget: object
@@ -857,6 +1057,332 @@ collections:
                           - label: Justify
                             value: justify
                         default: left
+          - name: hero
+            type: hero
+            label: Hero
+            fields:
+              - label: Title
+                name: title
+                widget: string
+                required: true
+              - label: Subtitle
+                name: subtitle
+                widget: text
+                required: false
+              - label: Background Image
+                name: backgroundImage
+                widget: image
+                required: true
+              - label: Minimum Height
+                name: minHeight
+                widget: select
+                options:
+                  - label: Small (40vh)
+                    value: min-h-[40vh]
+                  - label: Medium (60vh)
+                    value: min-h-[60vh]
+                  - label: Large (80vh)
+                    value: min-h-[80vh]
+                  - label: Full (100vh)
+                    value: min-h-screen
+                default: min-h-[60vh]
+              - label: Classification
+                name: classification
+                widget: object
+                fields:
+                  - name: id
+                    label: ID
+                    widget: string
+                  - name: classes
+                    label: Classes
+                    widget: list
+                    field:
+                      widget: string
+                      label: Class
+                      name: class
+                      required: false
+              - label: Style Override
+                name: style
+                widget: list
+                types:
+                  - label: Colors
+                    name: colors
+                    widget: object
+                    weight: 200
+                    fields:
+                      - label: Light Mode
+                        name: lightMode
+                        widget: object
+                        fields:
+                          - name: primary
+                            label: Primary Color
+                            widget: color
+                            required: false
+                          - name: secondary
+                            label: Secondary Color
+                            widget: color
+                            required: false
+                          - name: accent
+                            label: Accent Color
+                            widget: color
+                            required: false
+                          - name: background
+                            label: Background Color
+                            widget: color
+                            required: false
+                          - name: text
+                            label: Text Color
+                            widget: color
+                            required: false
+                          - name: backgroundImage
+                            label: Background Image
+                            widget: image
+                            required: false
+                          - label: Background Overlay
+                            name: backgroundOverlay
+                            widget: object
+                            fields:
+                              - name: overlayColor
+                                label: Overlay Color
+                                widget: color
+                                required: false
+                              - name: overlayOpacity
+                                label: Overlay Opacity
+                                widget: number
+                                min: 0
+                                max: 1
+                                step: 0.1
+                                required: false
+                      - label: Dark Mode
+                        name: darkMode
+                        widget: object
+                        fields:
+                          - name: primary
+                            label: Primary Color
+                            widget: color
+                            required: false
+                          - name: secondary
+                            label: Secondary Color
+                            widget: color
+                            required: false
+                          - name: accent
+                            label: Accent Color
+                            widget: color
+                            required: false
+                          - name: background
+                            label: Background Color
+                            widget: color
+                            required: false
+                          - name: text
+                            label: Text Color
+                            widget: color
+                            required: false
+                          - name: backgroundImage
+                            label: Background Image
+                            widget: image
+                            required: false
+                          - label: Background Overlay
+                            name: backgroundOverlay
+                            widget: object
+                            fields:
+                              - name: overlayColor
+                                label: Overlay Color
+                                widget: color
+                                required: false
+                              - name: overlayOpacity
+                                label: Overlay Opacity
+                                widget: number
+                                min: 0
+                                max: 1
+                                step: 0.1
+                                required: false
+                  - label: Layout
+                    name: layout
+                    widget: object
+                    weight: 100
+                    fields:
+                      - label: Width
+                        name: width
+                        widget: select
+                        options:
+                          - label: Full Width
+                            value: full
+                          - label: Contained
+                            value: contained
+                        default: contained
+                      - label: Full Width Content
+                        name: fullContent
+                        widget: boolean
+                        default: false
+                        required: false
+                      - label: Padding
+                        name: padding
+                        widget: object
+                        fields:
+                          - label: Type
+                            name: type
+                            widget: select
+                            options:
+                              - label: All Sides
+                                value: all
+                              - label: Horizontal
+                                value: horizontal
+                              - label: Vertical
+                                value: vertical
+                              - label: Custom
+                                value: custom
+                              - label: None
+                                value: none
+                            default: all
+                          - label: Size
+                            name: size
+                            widget: select
+                            options:
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            default: medium
+                          - label: Top
+                            name: top
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Right
+                            name: right
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Bottom
+                            name: bottom
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                          - label: Left
+                            name: left
+                            widget: select
+                            options:
+                              - label: None
+                                value: '0'
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            required: false
+                      - label: Vertical Spacing
+                        name: verticalSpacing
+                        widget: select
+                        options:
+                          - label: None
+                            value: none
+                          - label: Small
+                            value: small
+                          - label: Medium
+                            value: medium
+                          - label: Large
+                            value: large
+                        default: medium
+                      - label: Flex Direction
+                        name: flexDirection
+                        widget: select
+                        options:
+                          - label: Row
+                            value: row
+                          - label: Column
+                            value: column
+                          - label: Row Reverse
+                            value: row-reverse
+                          - label: Column Reverse
+                            value: column-reverse
+                        default: row
+                      - label: Justify Content
+                        name: justifyContent
+                        widget: select
+                        options:
+                          - label: Start
+                            value: start
+                          - label: Center
+                            value: center
+                          - label: End
+                            value: end
+                          - label: Space Between
+                            value: space-between
+                          - label: Space Around
+                            value: space-around
+                          - label: Space Evenly
+                            value: space-evenly
+                        default: start
+                      - label: Align Items
+                        name: alignItems
+                        widget: select
+                        options:
+                          - label: Stretch
+                            value: stretch
+                          - label: Center
+                            value: center
+                          - label: Start
+                            value: start
+                          - label: End
+                            value: end
+                          - label: Baseline
+                            value: baseline
+                        default: stretch
+                      - label: Margin
+                        name: margin
+                        widget: object
+                        fields:
+                          - label: Type
+                            name: type
+                            widget: select
+                            options:
+                              - label: None
+                                value: none
+                              - label: Top
+                                value: top
+                              - label: Bottom
+                                value: bottom
+                              - label: Both
+                                value: both
+                            default: none
+                          - label: Size
+                            name: size
+                            widget: select
+                            options:
+                              - label: Small
+                                value: small
+                              - label: Medium
+                                value: medium
+                              - label: Large
+                                value: large
+                            default: medium
       - label: Style Override
         name: style
         widget: list
@@ -872,24 +1398,96 @@ collections:
                 options:
                   - label: Full Width
                     value: full
-                  - label: Standard Width
-                    value: standard
-                  - label: Narrow Width
-                    value: narrow
-                default: standard
+                  - label: Contained
+                    value: contained
+                default: contained
+              - label: Full Width Content
+                name: fullContent
+                widget: boolean
+                default: false
+                required: false
               - label: Padding
                 name: padding
-                widget: select
-                options:
-                  - label: None
-                    value: none
-                  - label: Small
-                    value: small
-                  - label: Medium
-                    value: medium
-                  - label: Large
-                    value: large
-                default: medium
+                widget: object
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    options:
+                      - label: All Sides
+                        value: all
+                      - label: Horizontal
+                        value: horizontal
+                      - label: Vertical
+                        value: vertical
+                      - label: Custom
+                        value: custom
+                      - label: None
+                        value: none
+                    default: all
+                  - label: Size
+                    name: size
+                    widget: select
+                    options:
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    default: medium
+                  - label: Top
+                    name: top
+                    widget: select
+                    options:
+                      - label: None
+                        value: '0'
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    required: false
+                  - label: Right
+                    name: right
+                    widget: select
+                    options:
+                      - label: None
+                        value: '0'
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    required: false
+                  - label: Bottom
+                    name: bottom
+                    widget: select
+                    options:
+                      - label: None
+                        value: '0'
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    required: false
+                  - label: Left
+                    name: left
+                    widget: select
+                    options:
+                      - label: None
+                        value: '0'
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    required: false
               - label: Vertical Spacing
                 name: verticalSpacing
                 widget: select
@@ -948,6 +1546,34 @@ collections:
                   - label: Baseline
                     value: baseline
                 default: stretch
+              - label: Margin
+                name: margin
+                widget: object
+                fields:
+                  - label: Type
+                    name: type
+                    widget: select
+                    options:
+                      - label: None
+                        value: none
+                      - label: Top
+                        value: top
+                      - label: Bottom
+                        value: bottom
+                      - label: Both
+                        value: both
+                    default: none
+                  - label: Size
+                    name: size
+                    widget: select
+                    options:
+                      - label: Small
+                        value: small
+                      - label: Medium
+                        value: medium
+                      - label: Large
+                        value: large
+                    default: medium
           - label: Colors
             name: colors
             widget: object
