@@ -21,8 +21,6 @@ sections:
           - type: layout
             width: full
             fullContent: true
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#111827'
@@ -40,8 +38,6 @@ sections:
       style:
           - type: layout
             width: full
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#3b82f6'
@@ -58,8 +54,6 @@ sections:
           - type: layout
             # width: full
             fullContent: true
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#111827'
@@ -77,8 +71,6 @@ sections:
       style:
           - type: layout
             width: contained
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#22c55e'
@@ -97,8 +89,6 @@ sections:
           - type: layout
             width: full
             fullContent: true
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#eab308'
@@ -116,8 +106,6 @@ sections:
       style:
           - type: layout
             width: contained
-            padding:
-                type: none
           - type: colors
             lightMode:
                 background: '#ec4899'

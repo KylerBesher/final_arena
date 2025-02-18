@@ -62,14 +62,7 @@
             "lineHeight": "normal",
             "textAlign": "left"
         },
-        "layout": {
-            "width": "standard",
-            "padding": "medium",
-            "verticalSpacing": "none",
-            "flexDirection": "row",
-            "justifyContent": "space-between",
-            "alignItems": "start"
-        }
+        "layout": {}
     },
     "navigation": {
         "style": {
@@ -202,28 +195,6 @@
                 "background": "#111827",
                 "text": "#f3f4f6"
             }
-        },
-        "layout": {
-            "maxWidth": "1280px",
-            "spacing": {
-                "contentPadding": "1rem",
-                "sectionSpacing": "4rem",
-                "elementSpacing": "1.5rem"
-            },
-            "width": "full",
-            "flexDirection": "row",
-            "justifyContent": "start",
-            "header": {
-                "height": "4rem",
-                "sticky": true,
-                "transparent": false
-            },
-            "verticalSpacing": "none",
-            "padding": "medium",
-            "footer": {
-                "columns": 4
-            },
-            "alignItems": "center"
         },
         "typography": {
             "fontSize": "normal",
